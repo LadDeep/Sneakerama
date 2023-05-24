@@ -10,7 +10,7 @@
 
 ## Authors
 
-* [Name](email@dal.ca) - *(Role)*
+* [Deep Pravinbhai Lad](dp658583@dal.ca) - *(Developer)*
 * [Name](email@dal.ca) - *(Role)*
 * [Name](email@dal.ca) - *(Role)*
 * [Name](email@dal.ca) - *(Role)*
