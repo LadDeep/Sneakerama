@@ -14,7 +14,7 @@
 * [Kush Sutaria](ks428142@dal.ca) - *(Developer)*
 * [Dhruv Rajesh Kothari](dh801135@dal.ca) - *(Developer)*
 * [Rohin Ashwinkumar Sharma](rh851598@dal.ca) - *(Developer)*
-* [Desai Jaimin Kanubhai](jaimin.desai@dal.ca) - *(Developer)*
+* [Name](email@dal.ca) - *(Role)*
 
 
 ## Testing
