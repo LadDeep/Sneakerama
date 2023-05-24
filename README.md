@@ -13,7 +13,7 @@
 * [Deep Pravinbhai Lad](dp658583@dal.ca) - *(Developer)*
 * [Kush Sutaria](ks428142@dal.ca) - *(Developer)*
 * [Dhruv Rajesh Kothari](dh801135@dal.ca) - *(Developer)*
-* [Name](email@dal.ca) - *(Role)*
+* [Rohin Ashwinkumar Sharma](rh851598@dal.ca) - *(Developer)*
 * [Name](email@dal.ca) - *(Role)*
 
 
