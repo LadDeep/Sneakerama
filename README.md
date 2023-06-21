@@ -10,33 +10,11 @@
 
 ## Authors
 
-* [Desai Jaimin Kanubhai](jaimin.desai@dal.ca) - *(Developer)*
 * [Deep Pravinbhai Lad](dp658583@dal.ca) - *(Developer)*
 * [Kush Sutaria](ks428142@dal.ca) - *(Developer)*
 * [Dhruv Rajesh Kothari](dh801135@dal.ca) - *(Developer)*
 * [Rohin Ashwinkumar Sharma](rh851598@dal.ca) - *(Developer)*
 * [Jaimin Kanubhai Desai](jm690660@dal.ca) - *(Developer)*
-
-
-## Testing
-
-Briefly explain the process you went through to test your work. 
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
 
 
 ## Deployment
