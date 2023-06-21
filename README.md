@@ -17,27 +17,6 @@
 * [Jaimin Kanubhai Desai](jm690660@dal.ca) - *(Developer)*
 
 
-## Testing
-
-Briefly explain the process you went through to test your work. 
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-
 ## Deployment
 
 Deployment platform name: [Netlify](https://app.netlify.com)
