@@ -10,7 +10,6 @@
 
 ## Authors
 
-* [Desai Jaimin Kanubhai](jaimin.desai@dal.ca) - *(Developer)*
 * [Deep Pravinbhai Lad](dp658583@dal.ca) - *(Developer)*
 * [Kush Sutaria](ks428142@dal.ca) - *(Developer)*
 * [Dhruv Rajesh Kothari](dh801135@dal.ca) - *(Developer)*
