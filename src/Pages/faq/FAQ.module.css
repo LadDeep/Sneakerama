@@ -1,0 +1,23 @@
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .container h1 {
+    text-align: center;
+  }
+
+  .question {
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  
+  .answer {
+    margin-bottom: 20px;
+  }
+  
