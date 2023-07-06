@@ -2,8 +2,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import './App.css';
 import Home from './Pages/Home';
-import Contact from './Pages/contact/Contact';
-import FAQ from './Pages/faq/FAQ';
+import Contact from './Pages/Contact';
+import FAQ from './Pages/FAQ';
 
 function App() {
   return (
