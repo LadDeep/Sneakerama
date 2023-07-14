@@ -1,0 +1,19 @@
+{
+    "name": "Sneakerama",
+    "version": "1.0.0",
+    "description": "Node.js",
+    "author": "jm690660@dal.ca",
+    "main": "server.js",
+    "scripts": {
+        "start": "nodemon server.js"
+    },
+    "dependencies": {
+        "body-parser": "^1.20.2",
+        "cors": "^2.8.5",
+        "express": "^4.18.2",
+        "nodemon": "^2.0.22"
+    },
+    "engines": {
+        "node": ">=14.20.1"
+    }
+}
