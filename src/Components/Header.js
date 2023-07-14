@@ -24,7 +24,7 @@ function Header() {
             <div className="header-menu-right">
                 <HeartOutlined className='header-menu-icon' />
                 <ShoppingCartOutlined className='header-menu-icon' />
-                <UserOutlined className='header-menu-icon' />
+                <UserOutlined className='header-menu-icon' onClick={()=> navigate('/login')} />
             </div>
         </div>
     );
