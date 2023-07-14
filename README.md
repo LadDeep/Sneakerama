@@ -4,103 +4,36 @@
 # Sneakers E-commerce
 
 * *Date Created*: 22 MAY 2023
-* *Last Modification Date*: 22 MAY 2023
-* *Lab URL*: <http://example.com/>
+* *Last Modification Date*: 20 JUNE 2023
+* *Hosted URL*: [https://remarkable-sprite-930713.netlify.app/](https://remarkable-sprite-930713.netlify.app/)
 * *Git URL*: https://git.cs.dal.ca/dlad/csci-5709-grp-14
 
 ## Authors
 
 * [Deep Pravinbhai Lad](dp658583@dal.ca) - *(Developer)*
-* [Name](email@dal.ca) - *(Role)*
-* [Name](email@dal.ca) - *(Role)*
-* [Name](email@dal.ca) - *(Role)*
-* [Name](email@dal.ca) - *(Role)*
-
-
-## Testing
-
-Briefly explain the process you went through to test your work. 
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
+* [Kush Sutaria](ks428142@dal.ca) - *(Developer)*
+* [Dhruv Rajesh Kothari](dh801135@dal.ca) - *(Developer)*
+* [Rohin Ashwinkumar Sharma](rh851598@dal.ca) - *(Developer)*
+* [Jaimin Kanubhai Desai](jm690660@dal.ca) - *(Developer)*
 
 
 ## Deployment
 
-Add additional notes about how you deployed this work on a live system
+Deployment platform name: [Netlify](https://app.netlify.com)
+
+Link to hosted project : [https://remarkable-sprite-930713.netlify.app/](https://remarkable-sprite-930713.netlify.app/)
 
 ## Built With
 
-<!--- Provide a list of the frameworks used to build this application, your list should include the name of the framework used, the url where the framework is available for download and what the framework was used for, see the example below --->
+* [npm](https://www.npmjs.com/) - Package manager for node.js
+* [create-react-app](https://create-react-app.dev/) - Tool for creating React applications
+* [nodejs](https://nodejs.org/en) - Runtime used
+* [React.js](https://react.dev/) - The web framework used
+* [react-router-dom](https://reactrouter.com/) - Routing library for React
+* [ant-design](https://ant.design/) - UI library for React applications
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-**
+### References
 
-## Sources Used
+[1] “Get the current route using react router,” Datainfinities, [Online]. Available: https://www.datainfinities.com/41/get-the-current-route-using-react-router [Accessed: June 19, 2023]. 
 
-If in completing your lab / assignment / project you used any interpretation of someone else's code, then provide a list of where the code was implement, how it was implemented, why it was implemented, and how it was modified. See the sections below for more details.
-
-### File Name
-
-*Lines ## - ##*
-
-```
-Copy and paste your code on lines mentioned 
-
-```
-
-The code above was created by adapting the code in [NAME](link) as shown below: 
-
-```
-Copy and paste the snippet of code you are referencing
-
-```
-
-- <!---How---> The code in [NAME](link) was implemented by...
-- <!---Why---> [NAME](link)'s Code was used because...
-- <!---How---> [NAME](link)'s Code was modified by...
-
-*Repeat as needed*
-
-### File Name
-
-*Lines ## - ##*
-
-```
-Copy and paste your code on lines mentioned 
-
-```
-
-The code above was created by adapting the code in [NAME](link) as shown below: 
-
-```
-Copy and paste the snippet of code you are referencing
-
-```
-
-- <!---How---> The code in [NAME](link) was implemented by...
-- <!---Why---> [NAME](link)'s Code was used because...
-- <!---How---> [NAME](link)'s Code was modified by...
-
-*Repeat as needed*
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+[2] “How to - position text over an image,” Tutorials, [Online]. Available: https://www.w3schools.com/howto/howto_css_image_text.asp [Accessed: June 19, 2023]. 
