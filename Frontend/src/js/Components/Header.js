@@ -1,7 +1,7 @@
 import { HeartOutlined, ShoppingCartOutlined, UserOutlined } from '@ant-design/icons';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import '../App.css';
+import '../../css/App.css';
 
 function Header() {
     const navigate = useNavigate();
@@ -24,7 +24,7 @@ function Header() {
             <div className="header-menu-right">
                 <HeartOutlined className='header-menu-icon' />
                 <ShoppingCartOutlined className='header-menu-icon' />
-                <UserOutlined className='header-menu-icon' />
+                <UserOutlined className='header-menu-icon' onClick={()=> navigate('/login')} />
             </div>
         </div>
     );
