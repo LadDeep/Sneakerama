@@ -2,9 +2,9 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
-import './Login.css';
-import Header from '../../Components/Header';
-import Footer from '../../Components/Footer';
+import '../../css/Login.css'
+import Header from '../Components/Header';
+import Footer from '../Components/Footer';
 
 
 const LoginPage = () => {

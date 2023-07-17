@@ -3,8 +3,8 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import '../../css/Signup.css'
 import { useNavigate } from 'react-router-dom';
-import Header from '../../js/Components/Header';
-import Footer from '../../js/Components/Footer';
+import Header from '../Components/Header';
+import Footer from '../Components/Footer';
 
 
 

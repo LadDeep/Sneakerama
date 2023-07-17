@@ -1,6 +1,6 @@
 import '../App.css';
-import Footer from '../js/Components/Footer';
-import Header from '../js/Components/Header';
+import Footer from './Components/Footer';
+import Header from './Components/Header';
 
 function Contact() {
     return (

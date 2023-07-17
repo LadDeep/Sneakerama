@@ -1,7 +1,7 @@
 import { MailOutlined, PhoneOutlined, FacebookOutlined, TwitterOutlined, InstagramOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 
-import '../App.css';
+import '../../css/App.css';
 
 function Footer() {
 
