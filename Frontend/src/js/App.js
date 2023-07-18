@@ -6,6 +6,7 @@ import LoginPage from './UserManagement/Login';
 import Contact from './contact/Contact';
 import FAQ from './faq/FAQ';
 import SignupPage from './UserManagement/Signup';
+import ForgotPassword from './UserManagement/ForgotPassword';
 
 function App() {
   return (
@@ -16,6 +17,9 @@ function App() {
         <Route path="/faq" element={<FAQ />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
+        <Route path="/forgotpassword" element={<ForgotPassword />} />
+        
+
         <Route path="/*" element={<Home />} />
       </Routes>
     </BrowserRouter>

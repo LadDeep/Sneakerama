@@ -32,6 +32,7 @@ const navigate = useNavigate();
 
   const forgotPassword = () => {
     console.log('Forgot button clicked');
+    navigate('/forgotpassword');
   };
   return (
     <div>        
