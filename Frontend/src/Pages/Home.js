@@ -22,7 +22,7 @@ import promo3 from '../Assets/promo3.png'
 
 function Home() {
     return (
-        <div>
+        <div style={{ paddingTop: '50px' }}>
             <Header />
             <div className='home-banner-container'>
                 <img src={banner} className='home-banner-img' alt='banner' />

@@ -68,6 +68,7 @@
 
 .footer-menu-bg {
   display: flex;
+  flex-wrap: wrap;
   margin-bottom: 20px;
 }
 
@@ -98,6 +99,7 @@
 
 .footer-logo-div {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
 }

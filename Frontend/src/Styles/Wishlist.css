@@ -28,7 +28,7 @@
     flex-wrap: wrap;
     justify-content: flex-start;
     margin-bottom: 5%;
-    padding-inline: 15%;
+    padding-inline: 10%;
 }
 
 .wishlist-item {
@@ -114,7 +114,7 @@
     opacity: 0.5;
 }
 
-.selected-btn {
+.wishlist-selected-btn {
     background: #000;
     color: #fff;
     padding: 10px 25px;
