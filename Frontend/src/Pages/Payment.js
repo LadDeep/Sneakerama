@@ -81,7 +81,6 @@ function Payment() {
         })
     }
     const handleSubmit = () => {
-        // Perform validation for all fields
         const newErrors = {};
         if (isFieldEmpty(firstName)) {
           newErrors.firstName = 'First name is required.';
@@ -101,16 +100,11 @@ function Payment() {
         if (isFieldEmpty(postalCode)) {
           newErrors.postalCode = 'Postal code is required.';
         }
-        // Additional validation for phone if needed
-    
-        // Update the errors state
-        setErrors(newErrors);
-    
-        // If there are no errors, proceed to the next step (e.g., payment)
         if (Object.keys(newErrors).length === 0) {
-            setOnPayment(true); // Move to the payment information section
-            // Your logic for payment or any other action here
+            setOnPayment(true); 
         }
+        setErrors(newErrors);
+
       };
 
     // reference from https://www.unimedia.tech/paypal-checkout-integration-with-react/
