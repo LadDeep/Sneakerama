@@ -88,7 +88,7 @@ function Wishlist() {
                     {
                         product.inStock
                             ?
-                            <div className='selected-btn'>Add to Cart</div>
+                            <div className='wishlist-selected-btn'>Add to Cart</div>
                             :
                             <div className='wishlist-out-of-stock'>Out of Stock!!</div>
                     }
