@@ -1,0 +1,126 @@
+.reviews-container {
+    padding-top: 100px;
+    padding-inline: 10%;
+    padding-bottom: 5%;
+    min-height: 70vh;
+}
+
+.reviews-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #e71836;
+}
+
+.reviews-title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.reviews-rating-div {
+    display: flex;
+    align-items: center;
+}
+
+.reviews-rating-value {
+    font-size: 3rem;
+    font-weight: 600;
+    margin-right: 20px;
+}
+
+.reviews-add-btn {
+    background: #000;
+    color: #fff;
+    padding: 15px 25px;
+    cursor: pointer;
+    width: fit-content;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.review-item {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 2%;
+}
+
+.review-item-header {
+    min-width: 20%;
+}
+
+.review-customer-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.review-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.reviews-modal {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    background-color: #000;
+    opacity: 0.5;
+    z-index: 99999;
+}
+
+.reviews-modal-content {
+    position: relative;
+    min-width: 50%;
+    min-height: 50%;
+    background-color: #fff;
+    z-index: 999999;
+    padding-block: 2%;
+    padding-inline: 5%;
+    border-radius: 50px;
+}
+
+.reviews-modal-title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.reviews-modal-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    margin: 2%;
+    cursor: pointer;
+}
+
+.reviews-modal-rating {
+    display: flex;
+    justify-content: center;
+}
+
+.reviews-modal-input {
+    margin-block: 20px;
+}
+
+.reviews-modal-submit-btn {
+    background: #000;
+    color: #fff;
+    padding: 15px 25px;
+    cursor: pointer;
+    width: fit-content;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    margin-inline: auto;
+}
