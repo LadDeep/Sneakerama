@@ -8,6 +8,10 @@
   display: flex;
   padding: 15px 20px;
   align-items: center;
+  position: fixed;
+  top: 0px;
+  z-index: 100;
+  width: 100%;
 }
 
 .header-logo {
@@ -46,6 +50,7 @@
   margin-left: auto;
   display: flex;
   align-items: center;
+  margin-right: 50px;
 }
 
 .header-menu-icon {
@@ -63,6 +68,7 @@
 
 .footer-menu-bg {
   display: flex;
+  flex-wrap: wrap;
   margin-bottom: 20px;
 }
 
@@ -93,6 +99,7 @@
 
 .footer-logo-div {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
 }

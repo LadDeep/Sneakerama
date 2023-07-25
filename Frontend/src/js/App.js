@@ -6,6 +6,8 @@ import LoginPage from './UserManagement/Login';
 import Contact from './contact/Contact';
 import FAQ from './faq/FAQ';
 import SignupPage from './UserManagement/Signup';
+import Wishlist from './Pages/Wishlist';
+import Reviews from './Pages/Reviews';
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/faq" element={<FAQ />} />
+        <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/reviews" element={<Reviews />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/*" element={<Home />} />
