@@ -1,6 +1,6 @@
 const express = require('express');
 const Review = require('../Models/Review');
-
+const SignupPayload = require('../Models/signup');
 const router = express.Router()
 
 //Sample root method
@@ -44,5 +44,34 @@ router.post('/addReview', async (req, res) => {
         return res.status(400).json({ message: error.message })
     }
 })
+
+//create a user
+router.post('/signup', async (req, res) => {
+    const body = req.body;
+    console.log(body)
+    const signupPayload = new SignupPayload({
+        email: body.email,
+        password: body.password,
+        firstName: body.firstName,
+        lastName: body.lastName,
+        address: body.address,
+        city: body.city,
+        state: body.state,
+        country: body.country,
+        phoneNumber: body.phoneNumber,
+        userQuestion: body.userQuestion,
+        userAnswer: body.userAnswer,
+        termsAndConditions: body.termsAndConditions,
+        seller: body.seller
+    })
+    try {
+        const createUser = await signupPayload.save();
+        return res.status(200).json(createUser)
+    }
+    catch (error) {
+        return res.status(400).json({ message: error.message })
+    }
+}
+)
 
 module.exports = router
