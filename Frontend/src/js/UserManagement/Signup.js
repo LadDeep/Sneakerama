@@ -5,8 +5,7 @@ import '../../css/Signup.css'
 import { useNavigate } from 'react-router-dom';
 import Footer from '../Components/Footer';
 import Header from '../Components/Header'
-
-
+import  {authService}  from '../../services/authService';
 
 const SignupPage = () => {
     const navigate = useNavigate();
@@ -29,8 +28,8 @@ const SignupPage = () => {
     termsAndConditions: false,
     userQuestion: '',
     userAnswer: '',
-    Seller: false,
-  };
+    Seller: false
+    };
 
   const validationSchema = Yup.object().shape({
     firstName: Yup.string().required('First Name is required'),
@@ -81,13 +80,27 @@ const SignupPage = () => {
       .required('Confirm Password is required'),
     termsAndConditions: Yup.boolean().oneOf([true], 'You must accept the Terms and Conditions'),
   });
-
+  
   const handleSubmit = async (values) => {
+    console.log(values);
+    try {
+        const response = await authService.createUser(values);
+        console.log(response);
 
-      console.log( values);
-        alert('Registration Successful!');
-        //navigate('/login');
-  }
+        if (response === 200) {
+
+            alert('Registration Successful!');
+            navigate('/login');
+        } else if (response === 409) {
+            alert('Email already exists!');
+        } else {
+            alert('Registration Failed!');
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 
   const loginButton = () => {
     navigate('/login');

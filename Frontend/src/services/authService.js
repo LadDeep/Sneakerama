@@ -1,28 +1,31 @@
 import { backendURL } from "../constants";
 
-const signup = async(signupPayload) => {
-    console.log(signupPayload)
-    await fetch(`${backendURL}/signup`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(signupPayload)
-    })
-    .then((response) => {
-        if (response.data.accessToken) {
-            localStorage.setItem('user', JSON.stringify(response.data));
-        }
-        return response.data;
-    })
-    .catch((error) => {
-        console.log(error);
-    });
-    }
+const createUser = async (signupPayload) => {
+    console.log(signupPayload);
+    try {
+        const response = await fetch(`${backendURL}/auth/signup`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(signupPayload)
+        });
 
-const login = async (loginCredentials) => {
+        if (response.ok) {
+            const data = await response.json();
+            console.log(data);
+            localStorage.setItem('user', JSON.stringify(data));
+        }
+
+        console.log(response.status);
+        return response.status;
+    } catch (error) {
+        console.log(error);
+    }
+}
+const loginUser = async (loginCredentials) => {
     console.log(loginCredentials)
-    const response = await fetch(`${backendURL}/login`, {
+    await fetch(`${backendURL}/auth/login`, {
         method: 'GET'
     })
 
@@ -42,9 +45,9 @@ const getCurrentUser = () => {
     return JSON.parse(localStorage.getItem('user'));
 };
 
-export default {
-    signup,
-    login,
+export const authService = {
+    createUser,
+    loginUser,
     logout,
     getCurrentUser
 };

@@ -1,6 +1,7 @@
 const express = require('express');
 const Review = require('../Models/Review');
 const SignupPayload = require('../Models/signup');
+const loginPayload = require('../Models/login');
 const router = express.Router()
 
 //Sample root method
@@ -46,7 +47,7 @@ router.post('/addReview', async (req, res) => {
 })
 
 //create a user
-router.post('/signup', async (req, res) => {
+router.post('/auth/signup', async (req, res) => {
     const body = req.body;
     console.log(body)
     const signupPayload = new SignupPayload({
@@ -54,7 +55,10 @@ router.post('/signup', async (req, res) => {
         password: body.password,
         firstName: body.firstName,
         lastName: body.lastName,
-        address: body.address,
+        addressLine1: body.addressLine1,
+        addressLine2: body.addressLine2,
+        gender:body.gender,
+        dateOfBirth:body.dateOfBirth,
         city: body.city,
         state: body.state,
         country: body.country,
@@ -62,13 +66,17 @@ router.post('/signup', async (req, res) => {
         userQuestion: body.userQuestion,
         userAnswer: body.userAnswer,
         termsAndConditions: body.termsAndConditions,
-        seller: body.seller
+        Seller: body.Seller
     })
     try {
         const createUser = await signupPayload.save();
         return res.status(200).json(createUser)
     }
     catch (error) {
+        if (error.code === 11000) {
+            // Duplicate key error (email already exists)
+            return res.status(409).json({ message: 'Email already registered' });
+          }
         return res.status(400).json({ message: error.message })
     }
 }

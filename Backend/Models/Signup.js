@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
-const signup = new mongoose.Schema({
-    _id: mongoose.Schema.Types.ObjectId,
+const signupSchema = new mongoose.Schema({
     firstName: {
         type: String,
         required: true
@@ -44,7 +43,8 @@ const signup = new mongoose.Schema({
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        unique:true
     },
     password: {
         type: String,
@@ -52,7 +52,7 @@ const signup = new mongoose.Schema({
     },
     confirmPassword: {
         type: String,
-        required: true
+        required: false
     },
     termsAndConditions: {
         type: Boolean,
@@ -71,3 +71,5 @@ const signup = new mongoose.Schema({
         required: true
     },
 });
+
+module.exports = mongoose.model('Signup', signupSchema);
