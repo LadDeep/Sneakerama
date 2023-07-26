@@ -1,4 +1,3 @@
-
 .cart-item {
     margin-inline: 15px;
     padding-bottom: 15px;
@@ -200,10 +199,6 @@
 .input-container {
     position: relative;
   }
-  
- 
- 
-  
   .input-error-message {
     position: relative;
     bottom: 60px;
@@ -211,4 +206,3 @@
     color: red;
     font-size: 12px;
   }
-  

@@ -140,7 +140,31 @@ function Payment() {
       setSuccess(true);
     });
   };
+  const savePaymentDetailsToBackend = async (paymentDetails) => {
+    try {
+      // Make a POST request to the backend API to process the payment
+      const response = await fetch('http://localhost:3001/payment', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(paymentDetails),
+      });
 
+      const data = await response.json();
+
+      if (response.ok) {
+       toast.success("Payment Successfull")
+        toast.success(data.message);
+      } else {
+        // Payment failed
+        toast.error(data.message);
+      }
+    } catch (error) {
+      console.error('Error processing payment:', error);
+      toast.error('An error occurred while processing the payment.');
+    }
+  };
   //capture likely error
   const onError = (data, actions) => {
     setErrorMessage("An Error occurred with your payment ");
@@ -150,7 +174,18 @@ function Payment() {
   useEffect(() => {
     // eslint-disable-next-line
     if (success) {
-      notify();
+      savePaymentDetailsToBackend({
+        firstName,
+        lastName,
+        address,
+        city,
+        province,
+        postalCode,
+        phone,
+        // Add any other payment-related details you need...
+      });
+    //   notify();
+
       
       console.log("success");
     }
@@ -168,12 +203,12 @@ function Payment() {
           {/* <div style={{ marginLeft: '10px' }}>johndoe@gmail.com</div> */}
           {onPayment ? (
             <>
-              <div style={{ fontSize: '15px', fontWeight: '600', marginTop: '40px', marginBottom: '5px' }}>Payment Information</div>
+              {/* <div style={{ fontSize: '15px', fontWeight: '600', marginTop: '40px', marginBottom: '5px' }}>Payment Information</div> */}
               <div className="checkout-form">
                 <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'center' }}>
-                  <div className='selected-btn' onClick={() => toast.success("Payment Successful.")}>Cash on Delivery</div>
+                  {/* <div className='selected-btn' onClick={() => toast.success("Payment Successful.")}>Cash on Delivery</div> */}
                 </div>
-                <div style={{ marginBlock: '15px', textAlign: 'center', fontStyle: 'italic', color: '#929292' }} >or</div>
+                {/* <div style={{ marginBlock: '15px', textAlign: 'center', fontStyle: 'italic', color: '#929292' }} >or</div> */}
                 <PayPalScriptProvider options={{ "client-id": 'AQzW_bdiCPX0wlUygTaqwFYxuCz_gy0ydq1fmRGn6XnNq__-RMOsNLUOdDrvc-Sv19c1CR8yg6Ff_aUC' }}
                 >
                   <PayPalButtons
