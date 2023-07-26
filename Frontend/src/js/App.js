@@ -8,8 +8,12 @@ import FAQ from './faq/FAQ';
 import SignupPage from './UserManagement/Signup';
 import Wishlist from './Pages/Wishlist';
 import Reviews from './Pages/Reviews';
+import { products } from '../products';
 
 function App() {
+
+  localStorage.setItem('cart', JSON.stringify(products));
+
   return (
     <BrowserRouter>
       <Routes>
