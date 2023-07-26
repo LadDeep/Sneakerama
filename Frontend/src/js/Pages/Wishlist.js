@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import { DeleteFilled } from '@ant-design/icons';
+import { toast, ToastContainer } from 'react-toastify';
+
 import Footer from '../Components/Footer';
 import Header from '../Components/Header';
 import '../../css/Wishlist.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 import image1 from '../../images/jordan-air-1-mid-se.png';
 import image2 from '../../images/adidas-ultra-bounce.png';
@@ -12,27 +15,32 @@ function Wishlist() {
 
     const [products, setProducts] = useState([
         {
-            name: 'Jordan Air 1 Mid SE',
+            id: 1,
+            model: 'Jordan Air 1 Mid SE',
             price: '375',
             image: image1,
             quantity: 1,
             inStock: true
         },
         {
-            name: 'Adidas Ultra Bounce',
+            id: 2,
+            model: 'Adidas Ultra Bounce',
             price: '175',
             image: image2,
             quantity: 1,
             inStock: false
         },
         {
-            name: 'Converse Run Star Hike',
+            id: 3,
+            model: 'Converse Run Star Hike',
             price: '275',
             image: image3,
             quantity: 1,
             inStock: true
         }
     ]);
+
+    const notify = () => toast.success('Item added to cart!');
 
     const renderWishlist = () => {
         if (!products || products.length === 0)
@@ -48,7 +56,7 @@ function Wishlist() {
                         <div style={{ color: "#959595", marginLeft: '10px' }}>
                             <div className="wishlist-item-details">
                                 <div style={{ marginBottom: '15px' }}>
-                                    {product.name}
+                                    {product.model}
                                 </div>
                                 <div style={{ marginBottom: '15px', textAlign: 'start' }}>
                                     ${parseInt(product.price).toFixed(2)}
@@ -88,11 +96,29 @@ function Wishlist() {
                     {
                         product.inStock
                             ?
-                            <div className='wishlist-selected-btn'>Add to Cart</div>
+                            <div className='wishlist-selected-btn' onClick={() => {
+                                const cartProducts = JSON.parse(localStorage.getItem('cart'));
+                                if (cartProducts) {
+                                    const productInTheCart = cartProducts.find(item => item.id === product.id);
+                                    if (productInTheCart) {
+                                        cartProducts.find(item => item.id === product.id).quantity += product.quantity;
+                                        localStorage.setItem('cart', JSON.stringify(cartProducts));
+                                    }
+                                    else {
+                                        cartProducts.push(product);
+                                        localStorage.setItem('cart', JSON.stringify(cartProducts));
+                                    }
+                                }
+                                else {
+                                    localStorage.setItem('cart', JSON.stringify([product]));
+                                }
+                                notify();
+                            }}
+                            >Add to Cart</div>
                             :
                             <div className='wishlist-out-of-stock'>Out of Stock!!</div>
                     }
-                </div>
+                </div >
             )
         })
     }
@@ -114,6 +140,7 @@ function Wishlist() {
                 </div>
             </div>
             <Footer />
+            <ToastContainer position='top-right' autoClose={3000} />
         </>
     );
 }

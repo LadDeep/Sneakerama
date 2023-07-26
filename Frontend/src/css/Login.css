@@ -75,7 +75,7 @@
     border: 1px solid #ccc;
   }
   
-  button {
+  /* button {
     display: block;
     width: 100%;
     padding: 10px;
@@ -85,7 +85,7 @@
     color: #ffffff;
     font-size: 16px;
     cursor: pointer;
-  }
+  } */
 
   .error-message {
     color: red;

@@ -134,3 +134,17 @@
     margin-top: 0;
     margin-left: 10px;
 }
+
+/* Media query for even smaller screens */
+@media screen and (max-width: 768px) {
+    .review-customer-name {
+        margin-top: 15px;
+        margin-bottom: 0px;
+    }
+
+    .review-title {
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+
+}
