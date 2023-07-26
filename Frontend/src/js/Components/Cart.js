@@ -1,8 +1,11 @@
+import { CloseOutlined } from '@ant-design/icons';
 import '../../css/Cart.css';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Cart(props) {
 
+    const navigate = useNavigate();
     const [products, setProducts] = useState(JSON.parse(localStorage.getItem('cart')));
     var total = 0;
 
@@ -79,6 +82,10 @@ function Cart(props) {
                 }}
             >
                 <h2 style={{ textAlign: 'center', textTransform: 'uppercase', borderBottom: '1px solid #f2f2f2', paddingBottom: '20px', marginInline: '15px' }}>Your Cart</h2>
+                <CloseOutlined className='reviews-modal-close-btn' onClick={() => {
+                    document.body.style.overflowY = 'scroll'
+                    props.setIsCartOpen(false);
+                }} />
                 {renderProducts()}
                 {
                     products.length === 0
@@ -100,6 +107,7 @@ function Cart(props) {
                                 onClick={() => {
                                     props.setIsCartOpen(false);
                                     document.body.style.overflowY = 'scroll'
+                                    navigate('/payment');
                                 }}
                             >
                                 Checkout

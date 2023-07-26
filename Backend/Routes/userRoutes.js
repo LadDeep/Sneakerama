@@ -64,6 +64,7 @@ router.post('/auth/login', async (req, res) => {
             isAdmin: users.isAdmin,
             isSeller: users.Seller,
             isVerifiedSeller: users.isVerifiedSeller,
+            name: users.firstName + " " + users.lastName,
             wishlist: users.wishlist,
             cart: users.cart
         }
