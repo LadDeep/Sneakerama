@@ -2,11 +2,11 @@ import { useState } from 'react';
 import { DeleteFilled } from '@ant-design/icons';
 import Footer from '../Components/Footer';
 import Header from '../Components/Header';
-import '../Styles/Wishlist.css';
+import '../../css/Wishlist.css';
 
-import image1 from '../Assets/jordan-air-1-mid-se.png';
-import image2 from '../Assets/adidas-ultra-bounce.png';
-import image3 from '../Assets/converse-run-star-hike.png';
+import image1 from '../../images/jordan-air-1-mid-se.png';
+import image2 from '../../images/adidas-ultra-bounce.png';
+import image3 from '../../images/converse-run-star-hike.png';
 
 function Wishlist() {
 

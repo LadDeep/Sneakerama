@@ -1,25 +1,9 @@
-import '../Styles/Cart.css';
+import '../../css/Cart.css';
 import { useState } from 'react';
-
-import image1 from '../Assets/jordan-air-1-mid-se.png';
-import image2 from '../Assets/adidas-ultra-bounce.png';
 
 function Cart(props) {
 
-    const [products, setProducts] = useState([
-        {
-            name: 'Nike Dunk Low',
-            price: '325',
-            image: image1,
-            quantity: 1
-        },
-        {
-            name: 'Air Jordan 4 Retro',
-            price: '375',
-            image: image2,
-            quantity: 1
-        }
-    ]);
+    const [products, setProducts] = useState(JSON.parse(localStorage.getItem('cart')));
     var total = 0;
 
     const renderProducts = () => {
@@ -36,8 +20,11 @@ function Cart(props) {
                         </div>
                         <div style={{ color: "#959595", marginLeft: '10px' }}>
                             <div className="cart-item-details">
-                                <div style={{ marginBottom: '15px' }}>
-                                    {product.name}
+                                <div style={{ marginBottom: '5px' }}>
+                                    {product.model}
+                                </div>
+                                <div style={{ marginBottom: '5px' }}>
+                                    Size: {product.size}
                                 </div>
                                 <div style={{ marginBottom: '15px', textAlign: 'start' }}>
                                     ${parseInt(product.price).toFixed(2)}
@@ -48,6 +35,7 @@ function Cart(props) {
                                             if (tempProducts[index].quantity > 1) {
                                                 tempProducts[index].quantity -= 1;
                                                 await setProducts(tempProducts);
+                                                localStorage.setItem('cart', JSON.stringify(tempProducts));
                                             }
                                         }
                                         }
@@ -57,6 +45,7 @@ function Cart(props) {
                                         onClick={async () => {
                                             tempProducts[index].quantity += 1;
                                             await setProducts(tempProducts);
+                                            localStorage.setItem('cart', JSON.stringify(tempProducts));
                                         }
                                         }
                                     >+</span>
@@ -66,6 +55,7 @@ function Cart(props) {
                                 tempProducts = await tempProducts.filter((item, count) => count !== index);
                                 console.log(tempProducts);
                                 await setProducts(tempProducts);
+                                localStorage.setItem('cart', JSON.stringify(tempProducts));
                             }} className="cart-item-remove">
                                 Remove item
                             </div>

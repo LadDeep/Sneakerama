@@ -1,28 +1,28 @@
-import '../App.css';
-import Footer from '../Components/Footer';
-import Header from '../Components/Header';
+import '../css/App.css';
+import Footer from './Components/Footer';
+import Header from './Components/Header';
 
-import banner from '../Assets/banner.png'
-import banner2 from '../Assets/banner-2.png'
-import banner3 from '../Assets/banner-3.png'
-import adidas from '../Assets/adidas.png'
-import nike from '../Assets/nike.png'
-import converse from '../Assets/converse.png'
-import newBalance from '../Assets/new-balance.png'
-import on from '../Assets/on.png'
-import NikeAir from '../Assets/nike-air-force-1.png'
-import jordan from '../Assets/jordan-air-1-mid-se.png'
-import nb550 from '../Assets/new-balance-550.png'
-import adidasUltra from '../Assets/nike-air-force-1.png'
-import ASICS from '../Assets/ASICS®-gel-1130.png'
-import converseRun from '../Assets/converse-run-star-hike.png'
-import promo1 from '../Assets/promo1.png'
-import promo2 from '../Assets/promo2.png'
-import promo3 from '../Assets/promo3.png'
+import banner from '../images/banner.png'
+import banner2 from '../images/banner-2.png'
+import banner3 from '../images/banner-3.png'
+import adidas from '../images/adidas.png'
+import nike from '../images/nike.png'
+import converse from '../images/converse.png'
+import newBalance from '../images/new-balance.png'
+import on from '../images/on.png'
+import NikeAir from '../images/nike-air-force-1.png'
+import jordan from '../images/jordan-air-1-mid-se.png'
+import nb550 from '../images/new-balance-550.png'
+import adidasUltra from '../images/nike-air-force-1.png'
+import ASICS from '../images/ASICS®-gel-1130.png'
+import converseRun from '../images/converse-run-star-hike.png'
+import promo1 from '../images/promo1.png'
+import promo2 from '../images/promo2.png'
+import promo3 from '../images/promo3.png'
 
 function Home() {
     return (
-        <div style={{ paddingTop: '50px' }}>
+        <div>
             <Header />
             <div className='home-banner-container'>
                 <img src={banner} className='home-banner-img' alt='banner' />
