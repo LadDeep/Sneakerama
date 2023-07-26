@@ -9,6 +9,7 @@ import SignupPage from './UserManagement/Signup';
 import ForgotPassword from './UserManagement/ForgotPassword';
 import Wishlist from './Pages/Wishlist';
 import Reviews from './Pages/Reviews';
+import EditProfile from './UserManagement/EditProfile';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/forgotpassword" element={<ForgotPassword />} />
+        <Route path="/editprofile" element={<EditProfile />} />
         
 
         <Route path="/*" element={<Home />} />

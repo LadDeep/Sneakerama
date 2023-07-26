@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 95vh;
+    min-height: 100vh;
     background-image: url('https://wallpapercave.com/wp/wp4020962.jpg');
     background-size: cover;
     background-position: center;

@@ -116,11 +116,64 @@ const changePassword= async(userEmail) =>{
     return data;
 }
 
+//update user details
+const updateUserDetails =async(email,updatedValues) =>{
+    console.log(email);
+    console.log(updatedValues);
+    const response= await fetch(`${backendURL}/auth/updateUserDetails`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({"email":email,"updatedValues":updatedValues})
+    })
+    const data = await response.json();
+    console.log(data);
+    return data;
+}
+
+const deleteUser = async(email) =>{
+    console.log(email);
+    const response= await fetch(`${backendURL}/auth/deleteUser`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({"email":email})
+    })
+    const data = await response.json();
+    console.log(data);
+    return data;
+}
+
+const pushCartAndWishlistToDatabase = async (user) => {
+    const email=user.data.email;
+    const cart=user.data.cart;
+    const wishlist=user.data.wishlist;
+    console.log(email);
+    console.log(cart);
+    console.log(wishlist);
+    const response= await fetch(`${backendURL}/auth/pushCartAndWishlistToDatabase`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({"email":email,"cart":cart,"wishlist":wishlist})
+    })
+    const data = await response.json();
+    console.log(data);
+    return data;
+}
+
+
 export const authService = {
     getUser,
     createUser,
     loginUser,
     logout,
     getCurrentUser,
-    changePassword
+    changePassword,
+    updateUserDetails,
+    deleteUser,
+    pushCartAndWishlistToDatabase
 };
