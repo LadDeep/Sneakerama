@@ -10,12 +10,12 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    padding-bottom: 2rem;
+    padding-bottom: 2em;
     border-bottom: 1px solid #e71836;
 }
 
 .reviews-title {
-    font-size: 2rem;
+    font-size: 2em;
     font-weight: 600;
     margin-bottom: 20px;
 }
@@ -26,7 +26,7 @@
 }
 
 .reviews-rating-value {
-    font-size: 3rem;
+    font-size: 3em;
     font-weight: 600;
     margin-right: 20px;
 }
@@ -53,13 +53,13 @@
 }
 
 .review-customer-name {
-    font-size: 1.2rem;
+    font-size: 1.2em;
     font-weight: 600;
     margin-bottom: 10px;
 }
 
 .review-title {
-    font-size: 1rem;
+    font-size: 1em;
     font-weight: 600;
     margin-bottom: 10px;
 }
@@ -89,7 +89,7 @@
 }
 
 .reviews-modal-title {
-    font-size: 2rem;
+    font-size: 2em;
     font-weight: 600;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -106,6 +106,8 @@
 
 .reviews-modal-rating {
     display: flex;
+    align-items: center;
+    flex-direction: column;
     justify-content: center;
 }
 
@@ -123,4 +125,12 @@
     display: flex;
     align-items: center;
     margin-inline: auto;
+}
+
+.registration-error-message {
+    color: red;
+    font-size: 12px;
+    padding-top: 0;
+    margin-top: 0;
+    margin-left: 10px;
 }

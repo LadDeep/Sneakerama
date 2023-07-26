@@ -1,10 +1,10 @@
+import '../../css/Payment.css';
 import { useEffect, useState } from 'react';
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { ToastContainer, toast } from "react-toastify";
 import Footer from '../Components/Footer';
 import Header from '../Components/Header';
 import 'react-toastify/dist/ReactToastify.css';
-import '../../css/payment.css'
 import image1 from '../../images/jordan-air-1-mid-se.png';
 import image2 from '../../images/adidas-ultra-bounce.png';
 
