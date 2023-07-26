@@ -50,6 +50,12 @@ const navigate = useNavigate();
     console.log(currentUser);
   }
 
+  const logOut = () => {
+    console.log('Logout button clicked');
+    authService.logout();
+    console.log('Logged out');
+  }
+
   return (
     <div>        
         <Header/>
@@ -80,6 +86,7 @@ const navigate = useNavigate();
           </button>
           </div>
           <button type="button" className="login-button" onClick={getCurrentUser}> curent user </button>
+          <button type="button" className="login-button" onClick={logOut}> log out </button>
           </Form>
         </Formik>
       </div>
