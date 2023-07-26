@@ -100,7 +100,7 @@ function Header() {
                     <p className='header-menu-item'>WOMEN'S</p>
                     <p className='header-menu-item'>KIDS'</p>
                     <p className='header-menu-item'>ORDERS</p>
-                    <p className='header-menu-item'>EVENTS</p>
+                    <p className={location.pathname === "/events" ? 'header-menu-item-selected' : 'header-menu-item'} onClick={() => navigate('/events')}>EVENTS</p>
                     <p className={location.pathname === "/reviews" ? 'header-menu-item-selected' : 'header-menu-item'} onClick={() => navigate('/reviews')}>REVIEWS</p>
                     <p className={location.pathname === "/contact" ? 'header-menu-item-selected' : 'header-menu-item'} onClick={() => navigate('/contact')}>CONTACT</p>
                     <p className={location.pathname === "/faq" ? 'header-menu-item-selected' : 'header-menu-item'} onClick={() => navigate('/faq')}>FAQ</p>
