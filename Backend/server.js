@@ -8,6 +8,7 @@ const reviewRoutes = require('./Routes/reviewRoutes');
 const userRoutes = require('./Routes/userRoutes');
 const PaymentRoutes = require('./Routes/PaymentRoute')
 const productRoutes = require('./Routes/productRoutes')
+const orderRoutes = require ('./Routes/orderRoutes')
 
 mongoose.connect(mongoString,{
     dbName: 'sneakerama_db'
@@ -30,6 +31,7 @@ app.use(reviewRoutes)
 app.use(userRoutes)
 app.use(productRoutes)
 app.use(PaymentRoutes)
+app.use(orderRoutes)
 
 app.listen(3001, () => {
     console.log(`Server Started at ${3001}`)

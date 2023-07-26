@@ -5,13 +5,17 @@ import { ToastContainer, toast } from "react-toastify";
 import Footer from '../Components/Footer';
 import Header from '../Components/Header';
 import 'react-toastify/dist/ReactToastify.css';
-import image1 from '../../images/jordan-air-1-mid-se.png';
-import image2 from '../../images/adidas-ultra-bounce.png';
 import { addPaymentDetails } from '../../services/payments';
+import {authService} from '../../services/authService';
+import { addOrderDetails  }  from '../../services/orders';
 
 
 function Payment() {
+  const [products, ] = useState(JSON.parse(localStorage.getItem('cart')));
+  const [wishlist, ] = useState(JSON.parse(localStorage.getItem('wishlist')));
 
+  var subtotal = 0
+  
   const notify = () => toast.success("Payment Successful.");
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -37,21 +41,14 @@ function Payment() {
   };
 
 
-  const [products,] = useState([
-    {
-      name: 'Nike Sneaker 1',
-      price: '325',
-      image: image1,
-      quantity: 1
-    },
-    {
-      name: 'Nike Sneaker 2',
-      price: '375',
-      image: image2,
-      quantity: 1
-    }
-  ]);
-  var subtotal = 0
+  // {
+  //   "user": user.username,
+  //   "products": products,
+  //   "date": new Date()
+  // }
+
+  
+  
 //rendering the products which are added by the User in the Cart
   const renderProducts = () => {
     return products.map((product, index) => {
@@ -69,7 +66,7 @@ function Payment() {
               <div className="checkout-details">
                 <div className='checkout-product-details'>
                   <div className="checkout-item-name" style={{ color: "#000", marginBottom: '15px' }}>
-                    {product.name}
+                    {product.model}
                   </div>
                 </div>
                 <div className='checkout-item-price' style={{ color: "#000" }}>
@@ -150,7 +147,7 @@ function Payment() {
       console.log(response,"sss")
   
       if (response.status===200) {
-        toast.success("Payment Successfull")
+        notify();
       } else {
         toast.error("An error occurred while processing the payment.");
       }
@@ -167,27 +164,85 @@ function Payment() {
   };
 
   useEffect(() => {
-    // eslint-disable-next-line
+    // Function to save payment details to the backend
+    const savePaymentAndOrderDetails = async () => {
+      try {
+        const paymentResponse = await addPaymentDetails({
+          firstName,
+          lastName,
+          address,
+          city,
+          province,
+          postalCode,
+          phone,
+        });
+  
+        if (paymentResponse.status === 200) {
+          notify(); // Notify on successful payment
+          // Call the function to save order details to the backend
+          saveOrderDetails();
+        } else {
+          toast.error("An error occurred while processing the payment.");
+        }
+      } catch (error) {
+        console.error('Error processing payment:', error);
+        toast.error('An error occurred while processing the payment.');
+      }
+    };
+  
+    const saveOrderDetails = async () => {
+      try {
+        const userName = await fetchUserData();
+        console.log(userName, "userName");
+        console.log(products, "products");
+         console.log(wishlist,"productIDs")
+        if (products) {
+          const currentDate = new Date();
+          const orderData = {
+            username: userName,
+            orderItems: wishlist,
+            createdAt: currentDate,
+          };
+          console.log(orderData, "orderData");
+    
+          // Instead of using fetch, call the service function to save order details
+          const response = await addOrderDetails(orderData);
+          console.log(response,"order response")
+    
+          if (response.status===200) {
+          } else {
+            console.error('Failed to send order data to the backend.');
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+  
     if (success) {
-      savePaymentDetailsToBackend({
-        firstName,
-        lastName,
-        address,
-        city,
-        province,
-        postalCode,
-        phone,
-        
-      });
-    //   notify();
-
-      
+      savePaymentAndOrderDetails(); // Call the function to save payment and order details
       console.log("success");
     }
-  },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [success]
-  );
+  }, [success, firstName, lastName, address, city, province, postalCode, phone, products]);
+  
+
+  // useEffect(() => {
+  //   const user = authService.getCurrentUser();
+  // }, [])
+  
+  
+  async function fetchUserData() {
+    try {
+      const response = await authService.getCurrentUser();
+      const user = response.data;
+      const username = user.username;
+      return username;
+      // Rest of the code...
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+    }
+  }
+    
 
   return (
     <>
@@ -322,7 +377,7 @@ function Payment() {
           </div>
         </div>
       </div>
-      <ToastContainer position="top-left" autoClose={5000} />
+      <ToastContainer position="top-right" autoClose={5000} />
       <Footer />
     </>
   );

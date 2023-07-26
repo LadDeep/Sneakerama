@@ -1,7 +1,7 @@
 import { backendURL } from "../constants";
 
 export const addPaymentDetails = async (payment) => {
-    console.log(payment);
+    console.log(payment,"ssss");
     try {
         const response = await fetch(`${backendURL}/payment`, {
             method: 'POST',
@@ -12,8 +12,8 @@ export const addPaymentDetails = async (payment) => {
         });
         const data = await response.json();
         return {
-            response: data,
-            status: response.status
+          response: data,
+          status: response.status
         };
     } catch (error) {
         console.error('Error processing payment:', error);
