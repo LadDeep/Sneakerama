@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import '../../css/Login.css'
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
-
+import { authService } from '../../services/authService';
 
 const LoginPage = () => {
 const navigate = useNavigate();
@@ -20,9 +20,18 @@ const navigate = useNavigate();
     password: Yup.string().required('Password is required'),
   });
 
-  const handleSubmit = () => {
-    console.log('Login button clicked!');
-    alert('Login Successful!');
+  const handleSubmit = async(values) => {
+    console.log(values);
+    const response = await authService.loginUser(values);
+    console.log(response);
+    if(response.success===true){
+      console.log('Login button clicked!');
+      alert('Login Successful!');
+      navigate('/');
+    }
+    else{
+      alert('Invalid Credentials!');
+    }
   };
 
   const registerButton = () => {
@@ -34,6 +43,13 @@ const navigate = useNavigate();
     console.log('Forgot button clicked');
     navigate('/forgotpassword');
   };
+
+  const getCurrentUser = () => {
+    console.log('Current user button clicked');
+    let currentUser=authService.getCurrentUser();
+    console.log(currentUser);
+  }
+
   return (
     <div>        
         <Header/>
@@ -63,6 +79,7 @@ const navigate = useNavigate();
             Forgot Password?
           </button>
           </div>
+          <button type="button" className="login-button" onClick={getCurrentUser}> curent user </button>
           </Form>
         </Formik>
       </div>

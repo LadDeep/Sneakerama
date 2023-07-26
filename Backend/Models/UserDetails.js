@@ -70,6 +70,14 @@ const signupSchema = new mongoose.Schema({
         type: Boolean,
         required: true
     },
+    isVerifiedSeller:{
+        type: Boolean,
+        required: false
+    },
+    isAdmin:{
+        type: Boolean,
+        required: false
+    }
 });
 
 module.exports = mongoose.model('Signup', signupSchema);

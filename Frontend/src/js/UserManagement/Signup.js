@@ -28,7 +28,9 @@ const SignupPage = () => {
     termsAndConditions: false,
     userQuestion: '',
     userAnswer: '',
-    Seller: false
+    Seller: false,
+    isVerifiedSeller: false,
+    isAdmin: false
     };
 
   const validationSchema = Yup.object().shape({
@@ -86,12 +88,10 @@ const SignupPage = () => {
     try {
         const response = await authService.createUser(values);
         console.log(response);
-
-        if (response === 200) {
-
+        if (response.status === 200) {
             alert('Registration Successful!');
             navigate('/login');
-        } else if (response === 409) {
+        } else if (response.status === 409) {
             alert('Email already exists!');
         } else {
             alert('Registration Failed!');

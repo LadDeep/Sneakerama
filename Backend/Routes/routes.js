@@ -1,8 +1,11 @@
 const express = require('express');
 const Review = require('../Models/Review');
-const SignupPayload = require('../Models/signup');
-const loginPayload = require('../Models/login');
+const SignupPayload = require('../Models/UserDetails');
 const router = express.Router()
+const LoginPayload = require('../Models/UserDetails');
+const bcrypt = require('bcryptjs');
+const JWT = require('jsonwebtoken');
+require('dotenv').config();
 
 //Sample root method
 router.get('/', async (req, res) => {
@@ -66,8 +69,13 @@ router.post('/auth/signup', async (req, res) => {
         userQuestion: body.userQuestion,
         userAnswer: body.userAnswer,
         termsAndConditions: body.termsAndConditions,
-        Seller: body.Seller
+        Seller: body.Seller,
+        isVerifiedSeller: body.isVerifiedSeller,
+        isAdmin: body.isAdmin
     })
+    const saltRounds = 10;
+    const hashedPassword = await bcrypt.hash(signupPayload.password, saltRounds);
+    signupPayload.password = hashedPassword;
     try {
         const createUser = await signupPayload.save();
         return res.status(200).json(createUser)
@@ -82,4 +90,106 @@ router.post('/auth/signup', async (req, res) => {
 }
 )
 
+//login
+router.post('/auth/login', async (req, res) => {
+    console.log("inside login");
+    const creds = req.body;
+    console.log(creds);
+    try {
+      const users = await LoginPayload.findOne({ email: creds.email });
+      const passwordMatch = await bcrypt.compare(creds.password, users.password);
+      if (!passwordMatch) {
+        return res.status(401).json({ error: 'Invalid credentials.' });
+      }
+      const accessToken = await JWT.sign({ username: creds.email, isAdmin:users.isAdmin, isSeller: users.Seller, isVerifiedSeller: users.isVerifiedSeller }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1h' });
+
+      console.log(accessToken);
+      return res.status(200).json({
+        success: true,
+        data: users,
+        accessToken: accessToken
+      });
+    } catch (error) {
+      console.log(error);
+      return res.status(400).json({
+        success: false,
+        message: error.message
+      });
+    }
+  });
+
+//get user details
+router.post('/auth/getCurrentUser', async (req, res) => {
+    try {
+        const token=req.body.token;
+        console.log(token);
+        const currentUser = JWT.decode(req.body.token, process.env.ACCESS_TOKEN_SECRET);
+        console.log(currentUser); // Log the decoded payload
+        return res.status(200).json({
+            success: true,
+            data: currentUser
+        });
+    } catch (error) {
+        return res.status(400).json({
+            success: false,
+            message: error.message
+        });
+    }
+  });
+
+//get a user
+router.post('/auth/getUser', async (req, res) => {
+    const email = req.body.email;
+    console.log(email);
+
+    try {
+      const users = await LoginPayload.findOne({ email: email });
+        console.log(users);
+        const questionanser = {
+            userQuestion: users.userQuestion,
+            userAnswer: users.userAnswer
+        }
+      return res.status(200).json({
+        success: true,
+        data: questionanser,
+      });
+    } catch (error) {
+      console.log(error);
+      return res.status(400).json({
+        success: false,
+        message: error.message
+      });
+    }
+    }
+);
+
+//change password
+router.put('/auth/changePassword', async (req, res) => {
+    const email = req.body.email;
+    const password = req.body.password;
+    console.log(email);
+    console.log(password);
+    const saltRounds = 10;
+    const hashedPassword = await bcrypt.hash(password, saltRounds);
+    try{
+        const users=await SignupPayload.findOneAndUpdate({email:email},{$set:{password:hashedPassword}});
+        console.log(users);
+        return res.status(200).json({
+            success: true,
+            data: users,
+        });
+
+    }
+    catch(error){
+        console.log(error);
+        return res.status(400).json({
+            success: false,
+            message: error.message
+        });
+    }
+}
+);
+
+
+  
 module.exports = router
