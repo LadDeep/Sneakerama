@@ -1,0 +1,59 @@
+.eventpage {
+  padding: 50px;
+  margin-top: 110px;
+  margin-bottom: 50px;
+  margin-left: 200px;
+  width: 58%;  
+  background: linear-gradient(145deg, #c1c1c1, #f1f1f1);  
+  box-shadow: 5px 5px 15px #aaaaaa, -5px -5px 15px #ffffff;  
+  border-radius: 15px;
+  overflow: hidden; 
+}
+
+.eventinfo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between; 
+  flex-wrap: wrap; 
+}
+
+.eventimage img {
+  width: 400px;
+  height: auto; 
+  margin-right: 20px;
+  object-fit: cover;
+}
+
+.eventname {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-indent: 10%;
+}
+
+.eventdetails {
+  flex: 1; 
+  padding-right: 20px;
+}
+
+.eventdate,
+.eventtime,
+.eventlocation,
+.eventdescription {
+  margin-bottom: 20px;
+}
+
+.registerbutton {
+  background-color: #333333;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 20px;
+  max-width: 100%; 
+  white-space: nowrap; 
+}
+
+.registerbutton:hover {
+  background-color: #222222;
+}

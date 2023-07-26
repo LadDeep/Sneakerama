@@ -1,0 +1,97 @@
+.eventregistration {
+  padding: 50px;
+  margin: 110px auto; 
+  background-color: #dcdcdc; 
+  width: 45%;
+  border-radius: 8px; 
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); 
+  color: #000;
+  background-size: 140% auto;
+  position: relative; 
+}
+
+.pagetitle {
+  text-align: center;
+  font-size: 2.0rem;
+  margin-bottom: 10px;
+  text-indent: 10%; 
+  color: #000;
+}
+
+.registrationform {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.formgroup {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+  color: #000; /* Making the font black */
+  font-size: 1.2rem; /* Increased font size for labels */
+}
+
+input[type='text'],
+input[type='number'],
+input[type='tel'],
+input[type='email'] {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #000; /* Making the font black */
+}
+
+.submitbutton {
+  background-color: #333333;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 5%; /* To ensure the button does not overlap with other elements */
+}
+
+.submitbutton:hover {
+  background-color: #222222;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popupcontent {
+  height: 200px;
+  width: 45%;
+  background-color: #ffffff;
+  padding: 20px;
+  text-align: center;
+  border-radius: 8px; /* To give a slight curve to the borders */
+  color: #000; /* Making the font black */
+}
+
+.closebutton {
+  background-color: #333333;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.closebutton:hover {
+  background-color: #222222;
+}

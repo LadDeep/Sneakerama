@@ -1,0 +1,102 @@
+.postevent {
+    padding: 50px;
+    margin: 110px auto;
+    background-color: #dcdcdc; 
+    width: 45%;
+    border-radius: 8px; 
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); 
+    color: #000; 
+    background-size: 130% auto;
+  }
+  
+  .pagetitle {
+    text-align: left;
+    font-size: 2.2rem; 
+    margin-bottom: 10px;
+    display: inline-block; 
+    margin-right: 5%; 
+    color: #000;
+}
+  
+  .eventform {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .formgroup {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-weight: bold;
+    color: #000; 
+    font-size: 1.2rem; 
+  }
+  
+  input[type='text'],
+  input[type='number'],
+  input[type='tel'],
+  input[type='email'] {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: #000; 
+  }
+  
+  .submitbutton {
+    background-color: #333333;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 5%; 
+  }
+  
+  .submitbutton:hover {
+    background-color: #222222;
+  }
+  
+  .popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .popupcontent {
+    height: 200px;
+    width: 45%;
+    background-color: #ffffff;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    color: #000; 
+  }
+  
+  .closebutton {
+    background-color: #333333;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .closebutton:hover {
+    background-color: #222222;
+  }
+  
+.error {
+    color: red;
+    font-size: 0.8em;
+}

@@ -6,7 +6,8 @@ const cors = require("cors");
 const mongoString = process.env.DATABASE_URL
 const reviewRoutes = require('./Routes/reviewRoutes');
 const userRoutes = require('./Routes/userRoutes');
-const productRoutes = require('./Routes/productRoutes')
+const productRoutes = require('./Routes/productRoutes');
+const eventRoutes = require('./Routes/eventRoutes');
 
 mongoose.connect(mongoString,{
     dbName: 'sneakerama_db'
@@ -28,7 +29,9 @@ app.use(express.json());
 
 app.use(reviewRoutes)
 app.use(userRoutes)
-app.use(productRoutes)
+app.use(productRoutes);
+
+app.use(eventRoutes);
 
 app.listen(3001, () => {
     console.log(`Server Started at ${3001}`)
