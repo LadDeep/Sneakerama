@@ -3,8 +3,8 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import '../../css/Signup.css'
 import { useNavigate } from 'react-router-dom';
-import Header from '../../js/Components/Header';
-import Footer from '../../js/Components/Footer';
+import Header from '../Components/Header';
+import Footer from '../Components/Footer';
 
 
 
@@ -94,7 +94,7 @@ const SignupPage = () => {
         <Header/>
     <div className="signup-page">
       <div className="signup-parent_sect">
-        <h1>Sign Up</h1>
+        <h1>Edit Profile</h1>
         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
           {({ errors, touched }) => (
             <Form>
