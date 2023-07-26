@@ -133,6 +133,7 @@ function Payment() {
         return orderID;
       });
   };
+  
 
   // check Approval
   const onApprove = (data, actions) => {
@@ -151,7 +152,6 @@ function Payment() {
     // eslint-disable-next-line
     if (success) {
       notify();
-      
       console.log("success");
     }
   },
