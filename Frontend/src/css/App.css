@@ -58,16 +58,6 @@
   list-style: none;
   cursor: pointer;
 }
-@media (max-width: 600px) {
-  .header-menu {
-    flex-direction: column;
-  }
-
-  .header-menu-item {
-    margin-right: 0;
-    margin-bottom: 10px;
-  }
-}
 
 /* footer styles */
 .footer-bg {
