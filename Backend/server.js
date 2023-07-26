@@ -6,7 +6,9 @@ const cors = require("cors");
 const mongoString = process.env.DATABASE_URL
 const routes = require('./Routes/routes');
 
-mongoose.connect(mongoString);
+mongoose.connect(mongoString,{
+    dbName: 'sneakerama_db'
+});
 const database = mongoose.connection;
 
 database.on('error', (error) => {
