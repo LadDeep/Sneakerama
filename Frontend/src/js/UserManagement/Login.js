@@ -44,10 +44,10 @@ const navigate = useNavigate();
     navigate('/forgotpassword');
   };
 
-  const getCurrentUser = () => {
+  const getCurrentUser = async() => {
     console.log('Current user button clicked');
-    let currentUser=authService.getCurrentUser();
-    console.log(currentUser);
+    let currentUser=await authService.getCurrentUser();
+    console.log(currentUser.data);
   }
 
   const logOut = () => {
