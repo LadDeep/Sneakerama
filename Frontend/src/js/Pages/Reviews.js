@@ -14,35 +14,16 @@ function Reviews() {
     const starInput = useRef(0);
     const { TextArea } = Input
 
-    const [reviews, setReviews] = useState([
-        {
-            id: 1,
-            name: 'John Doe',
-            rating: 4,
-            review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, diam sit amet dictum ultricies, nunc nisl ultricies nunc, quis aliquam nisl nunc eu nisl. Sed euismod, diam sit amet dictum ultricies, nunc nisl ultricies nunc, quis aliquam nisl nunc eu nisl.',
-            title: 'Great Product',
-        },
-        {
-            id: 2,
-            name: 'David James',
-            rating: 4.5,
-            review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, diam sit amet dictum ultricies, nunc nisl ultricies nunc, quis aliquam nisl nunc eu nisl. Sed euismod, diam sit amet dictum ultricies, nunc nisl ultricies nunc, quis aliquam nisl nunc eu nisl.',
-            title: 'Great Product',
-        },
-        {
-            id: 3,
-            name: 'Donald Trump',
-            rating: 3.5,
-            review: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, diam sit amet dictum ultricies, nunc nisl ultricies nunc, quis aliquam nisl nunc eu nisl. Sed euismod, diam sit amet dictum ultricies, nunc nisl ultricies nunc, quis aliquam nisl nunc eu nisl.',
-            title: 'Great Product',
-        },
-    ]);
+    const [reviews, setReviews] = useState([]);
 
     const [totalReviews, setTotalReviews] = useState(0);
-    const [averageRating, setAverageRating] = useState(4);
+    const [averageRating, setAverageRating] = useState(0);
     const [rating, setRating] = useState(0);
+    const [isRatingValid, setIsRatingValid] = useState(true);
     const [title, setTitle] = useState('');
+    const [isTitleValid, setIsTitleValid] = useState(true);
     const [review, setReview] = useState('');
+    const [isReviewValid, setIsReviewValid] = useState(true);
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -50,30 +31,72 @@ function Reviews() {
         fetchReviews();
     }, [])
 
+    const handleTitleChange = (value) => {
+        setTitle(value)
+        if (value === '') {
+            setIsTitleValid(false)
+            return;
+        }
+        setIsTitleValid(true)
+    }
+
+    const handleReviewChange = (value) => {
+        setReview(value)
+        if (value === '') {
+            setIsReviewValid(false)
+            return;
+        }
+        setIsReviewValid(true)
+    }
+
     const fetchReviews = async () => {
         const response = await getReviews();
         await console.log(response)
-        if (response && response.reviews) {
-            await setReviews(response.reviews);
-            await setTotalReviews(response.reviews.length);
-            var sum = 0;
-            await response.reviews.forEach(review => {
-                sum += review.rating;
-            })
-            await setAverageRating(sum / response.reviews.length);
+        if (response) {
+            if (response.reviews.length === 0) {
+                await setReviews([]);
+                await setTotalReviews(0);
+                await setAverageRating(0);
+            } else {
+                await setReviews(response.reviews);
+                await setTotalReviews(response.reviews.length);
+                var sum = 0;
+                await response.reviews.forEach(review => {
+                    sum += review.rating;
+                })
+                await setAverageRating(sum / response.reviews.length);
+            }
         }
     }
 
     const submitReview = async () => {
-        const newReview = {
-            name: 'John Doe',
-            rating: rating,
-            title: title,
-            review: review
+
+        if (rating === 0) {
+            setIsRatingValid(false)
+            return;
         }
-        const response = await addReview(newReview);
-        await fetchReviews();
-        console.log(response)
+        if (title === '') {
+            setIsTitleValid(false)
+            return;
+        }
+        if (review === '') {
+            setIsReviewValid(false)
+            return;
+        }
+        if (isRatingValid && isTitleValid && isReviewValid) {
+            const newReview = {
+                name: 'John Doe',
+                rating: rating,
+                title: title,
+                review: review
+            }
+            const response = await addReview(newReview);
+            await fetchReviews();
+            document.body.style.overflowY = 'scroll'
+            setIsModalOpen(false)
+            emptyModal();
+            console.log(response)
+        }
     }
 
     const renderReviews = () => {
@@ -112,6 +135,15 @@ function Reviews() {
         })
     }
 
+    const emptyModal = () => {
+        setRating(0);
+        setTitle('');
+        setReview('');
+        setIsRatingValid(true);
+        setIsTitleValid(true);
+        setIsReviewValid(true);
+    }
+
     return (
         <>
             <Header />
@@ -137,13 +169,23 @@ function Reviews() {
                         </div>
                     </div>
                     <div className='reviews-add-btn' onClick={() => {
-                        document.body.style.overflow = 'hidden'
+                        document.body.style.overflowY = 'hidden'
                         setIsModalOpen(true)
                     }} >
                         Leave a Review
                     </div>
                 </div>
-                {renderReviews()}
+                {
+                    totalReviews === 0
+                        ?
+                        <>
+                            <div style={{ width: '100%', textAlign: 'center', marginTop: '3%' }}>Be the first one to leave a review!!</div>
+                        </>
+                        :
+                        <>
+                            {renderReviews()}
+                        </>
+                }
             </div>
             <Footer />
             {
@@ -151,6 +193,7 @@ function Reviews() {
                     ?
                     <div style={{ position: 'fixed', top: '0px', width: '100%', height: '100vh', zIndex: '9999', display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
                         <div className='reviews-modal' onClick={() => {
+                            emptyModal();
                             setIsModalOpen(false);
                             document.body.style.overflowY = 'scroll'
                         }}>
@@ -160,7 +203,8 @@ function Reviews() {
                                 Leave a Review
                             </div>
                             <CloseOutlined className='reviews-modal-close-btn' onClick={() => {
-                                document.body.style.overflow = 'scroll'
+                                document.body.style.overflowY = 'scroll'
+                                emptyModal();
                                 setIsModalOpen(false)
                             }} />
                             <div className='reviews-modal-body'>
@@ -174,23 +218,27 @@ function Reviews() {
                                         activeColor="#ffd700"
                                         onChange={(newRating) => {
                                             setRating(newRating)
+                                            if (newRating !== 0) {
+                                                setIsRatingValid(true)
+                                            }
                                         }}
                                     />
+                                    <p className='registration-error-message' style={{ display: isRatingValid ? 'none' : 'block' }}>Select the star to give ratings.</p>
                                 </div>
                                 <div className='reviews-modal-input'>
-                                    <Input value={title} onChange={(e) => {
-                                        setTitle(e.target.value)
+                                    <Input status={isTitleValid ? 'success' : 'error'} value={title} onChange={(e) => {
+                                        handleTitleChange(e.target.value)
                                     }} placeholder='Title' />
+                                    <p className='registration-error-message' style={{ display: isTitleValid ? 'none' : 'block' }}>Title should not be empty.</p>
                                 </div>
                                 <div className='reviews-modal-input'>
-                                    <TextArea value={review} onChange={(e) => {
-                                        setReview(e.target.value)
+                                    <TextArea value={review} status={isReviewValid ? 'success' : 'error'} onChange={(e) => {
+                                        handleReviewChange(e.target.value)
                                     }} placeholder='Review' />
+                                    <p className='registration-error-message' style={{ display: isReviewValid ? 'none' : 'block' }}>Review should not be empty.</p>
                                 </div>
                                 <div className='reviews-modal-submit-btn' onClick={() => {
-                                    document.body.style.overflow = 'scroll'
                                     submitReview();
-                                    setIsModalOpen(false)
                                 }} >
                                     Submit
                                 </div>
