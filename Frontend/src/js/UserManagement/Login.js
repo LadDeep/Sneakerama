@@ -27,6 +27,7 @@ const navigate = useNavigate();
     if(response.success===true){
       console.log('Login button clicked!');
       alert('Login Successful!');
+      //fetch cart and wishlist details
       navigate('/');
     }
     else{
@@ -44,6 +45,7 @@ const navigate = useNavigate();
     navigate('/forgotpassword');
   };
 
+  /*
   const getCurrentUser = async() => {
     console.log('Current user button clicked');
     let currentUser=await authService.getCurrentUser();
@@ -55,6 +57,7 @@ const navigate = useNavigate();
     authService.logout();
     console.log('Logged out');
   }
+  */
 
   return (
     <div>        
@@ -85,8 +88,6 @@ const navigate = useNavigate();
             Forgot Password?
           </button>
           </div>
-          <button type="button" className="login-button" onClick={getCurrentUser}> curent user </button>
-          <button type="button" className="login-button" onClick={logOut}> log out </button>
           </Form>
         </Formik>
       </div>

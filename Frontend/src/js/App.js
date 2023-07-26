@@ -13,8 +13,17 @@ import Events from './Pages/events/Events';
 import MainEvent from './Pages/events/MainEvent';
 import EventRegistration from './Pages/eventsRegistration/EventRegistration';
 import PostEvent from './Pages/eventposting/NewEvent';
+import { products } from '../products';
+import EditProfile from './UserManagement/EditProfile';
 
 function App() {
+
+  localStorage.setItem('cart', JSON.stringify(products));
+  localStorage.setItem('wishlist', JSON.stringify([
+    '64c0800fdb2ebe7d302ae827',
+    '64c08082db2ebe7d302ae828'
+  ]));
+
   return (
     <BrowserRouter>
       <Routes>
@@ -30,6 +39,7 @@ function App() {
         <Route path="/eventregistration/:id" element={<EventRegistration />} />
         <Route path="/event/:id" element={<MainEvent />} />
         <Route path="/postevent" element={<PostEvent />} />
+        <Route path="/editprofile" element={<EditProfile />} />
         <Route path="/*" element={<Home />} />
       </Routes>
     </BrowserRouter>

@@ -4,7 +4,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require("cors");
 const mongoString = process.env.DATABASE_URL
-const routes = require('./Routes/routes');
+const reviewRoutes = require('./Routes/reviewRoutes');
+const userRoutes = require('./Routes/userRoutes');
+const productRoutes = require('./Routes/productRoutes');
 const eventRoutes = require('./Routes/eventRoutes');
 
 mongoose.connect(mongoString,{
@@ -25,7 +27,9 @@ app.use(cors({ origin: true }));
 
 app.use(express.json());
 
-app.use(routes);
+app.use(reviewRoutes)
+app.use(userRoutes)
+app.use(productRoutes);
 
 app.use(eventRoutes);
 
