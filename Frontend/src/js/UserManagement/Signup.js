@@ -3,10 +3,9 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import '../../css/Signup.css'
 import { useNavigate } from 'react-router-dom';
-import Header from '../Components/Header';
 import Footer from '../Components/Footer';
-
-
+import Header from '../Components/Header'
+import  {authService}  from '../../services/authService';
 
 const SignupPage = () => {
     const navigate = useNavigate();
@@ -29,9 +28,10 @@ const SignupPage = () => {
     termsAndConditions: false,
     userQuestion: '',
     userAnswer: '',
-  };
-
-
+    Seller: false,
+    isVerifiedSeller: false,
+    isAdmin: false
+    };
 
   const validationSchema = Yup.object().shape({
     firstName: Yup.string().required('First Name is required'),
@@ -46,24 +46,61 @@ const SignupPage = () => {
     userQuestion: Yup.string().required('Security Question is required'),
     userAnswer: Yup.string().required('Security Answer is required'),
     email: Yup.string().required('Email is required').matches(/^[a-zA-Z0-9._-]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/, 'Invalid email address'),
-    password: Yup.string().required('Password is required').matches(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-        'Password must contain at least 8 characters, one uppercase, one lowercase, one number, and one special character'
-      ),
-  
+    password: Yup.string().required('Password is required').test(
+      'password-check',
+      'Password must contain at least one uppercase letter',
+      (value) => {
+        return /^(?=.*[A-Z])/.test(value);
+      }
+    ).test(
+      'password-check',
+      'Password must contain at least one lowercase letter',
+      (value) => {
+        return /^(?=.*[a-z])/.test(value);
+      }
+    ).test(
+      'password-check',
+      'Password must contain at least one number',
+      (value) => {
+        return /^(?=.*\d)/.test(value);
+      }
+    ).test(
+      'password-check',
+      'Password must contain at least one special character',
+      (value) => {
+        return /^(?=.*[@$!%*?&])/.test(value);
+      }
+    ).test(
+      'password-check',
+      'Password must be at least 8 characters long',
+      (value) => {
+        return value.length >= 8;
+      }
+    ),
     confirmPassword: Yup.string()
       .oneOf([Yup.ref('password'), null], 'Passwords must match')
       .required('Confirm Password is required'),
     termsAndConditions: Yup.boolean().oneOf([true], 'You must accept the Terms and Conditions'),
   });
-
-  const handleSubmit = () => {
-    console.log('Signup button clicked!');
-    if(validationSchema.isValid){
-      alert('Registration Successful!');
-      navigate('/login');
+  
+  const handleSubmit = async (values) => {
+    console.log(values);
+    try {
+        const response = await authService.createUser(values);
+        console.log(response);
+        if (response.status === 200) {
+            alert('Registration Successful!');
+            navigate('/login');
+        } else if (response.status === 409) {
+            alert('Email already exists!');
+        } else {
+            alert('Registration Failed!');
+        }
+    } catch (error) {
+        console.log(error);
     }
-  };
+}
+
 
   const loginButton = () => {
     navigate('/login');
@@ -138,7 +175,7 @@ const SignupPage = () => {
               <FieldGroup name="email" label="Email" type="email" />
               </div>
               <div className="signup-form-row">
-              <FieldGroup name="password" label="Password" type="password" />
+              <FieldGroup name="password" label="Password" type="password"/>
               <FieldGroup name="confirmPassword" label="Confirm Password" type="password" />
               </div>
               <div className="signup-form-row">
@@ -156,7 +193,7 @@ const SignupPage = () => {
                     Register as Seller
                   </label>
               </div>
-              <button type="submit" className='signup-button' onSubmit={handleSubmit}>Sign Up</button>
+              <button type="submit" className='signup-button'>Sign Up</button>
               <button type="button" className='login-button' onClick={loginButton}>
             Have an account? Log in!
           </button>
