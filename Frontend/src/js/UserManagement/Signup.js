@@ -30,7 +30,9 @@ const SignupPage = () => {
     userAnswer: '',
     Seller: false,
     isVerifiedSeller: false,
-    isAdmin: false
+    isAdmin: false,
+    wishlist: [],
+    cart: [],
     };
 
   const validationSchema = Yup.object().shape({
@@ -208,10 +210,12 @@ const SignupPage = () => {
 };
 
 const FieldGroup = ({ name, label, ...rest }) => (
-  <div className="signup-form-group">
+  <div style={{textAlign:'center'}}>
+ <div className="signup-form-group">
     <label htmlFor={name}>{label}</label>
     <Field id={name} name={name} {...rest} />
-    <ErrorMessage name={name} component="div" className="signup-error-message" />
+    </div>
+  <ErrorMessage name={name} component="div" className="signup-error-message" />
   </div>
 );
 

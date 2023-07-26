@@ -77,7 +77,15 @@ const signupSchema = new mongoose.Schema({
     isAdmin:{
         type: Boolean,
         required: false
-    }
+    },
+    wishlist:{
+        type: Array,
+        required: false
+    },
+    cart:{
+        type: Array,
+        required: false
+    },
 });
 
 module.exports = mongoose.model('Signup', signupSchema);

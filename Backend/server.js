@@ -4,8 +4,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require("cors");
 const mongoString = process.env.DATABASE_URL
-const routes = require('./Routes/routes');
+const reviewRoutes = require('./Routes/reviewRoutes');
+const userRoutes = require('./Routes/userRoutes');
 const PaymentRoutes = require('./Routes/PaymentRoute')
+const productRoutes = require('./Routes/productRoutes')
 
 mongoose.connect(mongoString,{
     dbName: 'sneakerama_db'
@@ -24,7 +26,9 @@ app.use(cors({ origin: true }));
 
 app.use(express.json());
 
-app.use(routes)
+app.use(reviewRoutes)
+app.use(userRoutes)
+app.use(productRoutes)
 app.use(PaymentRoutes)
 
 app.listen(3001, () => {

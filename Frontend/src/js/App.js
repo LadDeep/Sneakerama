@@ -10,8 +10,17 @@ import ForgotPassword from './UserManagement/ForgotPassword';
 import Wishlist from './Pages/Wishlist';
 import Reviews from './Pages/Reviews';
 import Payment  from './Components/Payment';
+import { products } from '../products';
+import EditProfile from './UserManagement/EditProfile';
 
 function App() {
+
+  localStorage.setItem('cart', JSON.stringify(products));
+  localStorage.setItem('wishlist', JSON.stringify([
+    '64c0800fdb2ebe7d302ae827',
+    '64c08082db2ebe7d302ae828'
+  ]));
+
   return (
     <BrowserRouter>
       <Routes>
@@ -24,6 +33,7 @@ function App() {
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/forgotpassword" element={<ForgotPassword />} />
+        <Route path="/editprofile" element={<EditProfile />} />
         
 
         <Route path="/*" element={<Home />} />
