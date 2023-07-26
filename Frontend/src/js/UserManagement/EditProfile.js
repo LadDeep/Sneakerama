@@ -55,16 +55,21 @@ const EditProfile = () => {
     console.log(updatedValues);
     console.log('Update button clicked!');
     console.log(email);
+    if(Object.keys(updatedValues).length===0){
+      return;
+    }
+    else{
     const response = await authService.updateUserDetails(email,updatedValues);
     console.log(response);
     if(validationSchema.isValid){
       if(response.success===true){
         alert('Details Updated!');
-        window.location.reload();
+       // window.location.reload();
       }
       else
         alert('Details not updated!');
     }
+  }
   };
 
   const goToHomePage = () => {
