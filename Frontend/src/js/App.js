@@ -8,6 +8,7 @@ import FAQ from './faq/FAQ';
 import SignupPage from './UserManagement/Signup';
 import Wishlist from './Pages/Wishlist';
 import Reviews from './Pages/Reviews';
+import Payment  from './Components/Payment';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/reviews" element={<Reviews />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
+        <Route path="/payment" element={<Payment />} />
         <Route path="/*" element={<Home />} />
       </Routes>
     </BrowserRouter>
