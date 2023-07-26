@@ -1,4 +1,4 @@
-import { HeartOutlined, ShoppingCartOutlined, UserOutlined } from '@ant-design/icons';
+import { HeartOutlined, MenuOutlined, ShoppingCartOutlined, UserOutlined } from '@ant-design/icons';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { authService } from '../../services/authService';
 import '../../css/App.css';
@@ -10,20 +10,21 @@ function Header() {
     const location = useLocation();
 
     const [isCartOpen, setIsCartOpen] = useState(false);
-    const [isLoggedIn, setIsLoggedIn] = useState(false); 
-    const [showDropdown, setShowDropdown] = useState(false); 
-    const [user, setUser] = useState({}); 
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [showDropdown, setShowDropdown] = useState(false);
+    const [showMenu, setShowMenu] = useState(false);
+    const [user, setUser] = useState({});
 
     const checkIfLoggedIn = async () => {
         const response = await authService.getCurrentUser();
-        if (response.data!=null) {
+        if (response.data != null) {
             setIsLoggedIn(true);
             console.log('User is logged in');
             setUser(response.data);
             console.log(response.data);
             console.log(user);
         }
-        else{
+        else {
             setIsLoggedIn(false);
             console.log('User is not logged in');
         }
@@ -33,13 +34,14 @@ function Header() {
 
     useEffect(() => {
         checkIfLoggedIn();
+        // eslint-disable-next-line
     }, []);
 
     const handleLogout = async () => {
-        const user=await authService.getCurrentUser();
+        const user = await authService.getCurrentUser();
         //send cart and wishlist details to the database
         console.log(user);
-        const response=await authService.pushCartAndWishlistToDatabase(user)
+        const response = await authService.pushCartAndWishlistToDatabase(user)
         console.log(response);
 
         setIsLoggedIn(false);
@@ -51,10 +53,46 @@ function Header() {
         setShowDropdown(false);
     };
 
+    const closeMenu = () => {
+        setShowMenu(false);
+    };
 
     return (
         <div>
             <div className='header-bg'>
+                <div className='profile-dropdown-container'
+                    tabIndex={0}
+                    onBlur={closeMenu} >
+                    <div
+                        onClick={() => setShowMenu((prev) => !prev)}
+                    >
+                        <MenuOutlined className='header-menu-hum-icon' />
+                    </div>
+                    {showMenu && (
+                        <div className="menu-dropdown-content">
+                            <div className='header-mobile-menu'>
+                                <p className='header-mobile-menu-item'>NEW ARRIVALS</p>
+                                <p className='header-mobile-menu-item'>MEN'S</p>
+                                <p className='header-mobile-menu-item'>WOMEN'S</p>
+                                <p className='header-mobile-menu-item'>KIDS'</p>
+                                <p className='header-mobile-menu-item'>ORDERS</p>
+                                <p className='header-mobile-menu-item'>EVENTS</p>
+                                <p className='header-mobile-menu-item' onClick={() => {
+                                    navigate('/reviews')
+                                    closeMenu();
+                                }}>REVIEWS</p>
+                                <p className='header-mobile-menu-item' onClick={() => {
+                                    navigate('/contact')
+                                    closeMenu();
+                                }}>CONTACT</p>
+                                <p className='header-mobile-menu-item' onClick={() => {
+                                    navigate('/faq')
+                                    closeMenu();
+                                }}>FAQ</p>
+                            </div>
+                        </div>
+                    )}
+                </div>
                 <p className='header-logo' onClick={() => navigate('/')}>SNEAKERAMA</p>
                 <div className='header-menu'>
                     <p className='header-menu-item'>NEW ARRIVALS</p>
@@ -62,7 +100,7 @@ function Header() {
                     <p className='header-menu-item'>WOMEN'S</p>
                     <p className='header-menu-item'>KIDS'</p>
                     <p className='header-menu-item'>ORDERS</p>
-                    <p className='header-menu-item'>EVENTS</p>
+                    <p className={location.pathname === "/events" ? 'header-menu-item-selected' : 'header-menu-item'} onClick={() => navigate('/events')}>EVENTS</p>
                     <p className={location.pathname === "/reviews" ? 'header-menu-item-selected' : 'header-menu-item'} onClick={() => navigate('/reviews')}>REVIEWS</p>
                     <p className={location.pathname === "/contact" ? 'header-menu-item-selected' : 'header-menu-item'} onClick={() => navigate('/contact')}>CONTACT</p>
                     <p className={location.pathname === "/faq" ? 'header-menu-item-selected' : 'header-menu-item'} onClick={() => navigate('/faq')}>FAQ</p>

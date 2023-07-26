@@ -96,19 +96,27 @@ router.post('/auth/login', async (req, res) => {
     const creds = req.body;
     console.log(creds);
     try {
-      const users = await LoginPayload.findOne({ email: creds.email });
-      const passwordMatch = await bcrypt.compare(creds.password, users.password);
-      if (!passwordMatch) {
-        return res.status(401).json({ error: 'Invalid credentials.' });
-      }
-      const accessToken = await JWT.sign({ username: creds.email, isAdmin:users.isAdmin, isSeller: users.Seller, isVerifiedSeller: users.isVerifiedSeller }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1h' });
-
-      console.log(accessToken);
-      return res.status(200).json({
-        success: true,
-        data: users,
-        accessToken: accessToken
-      });
+        const users = await LoginPayload.findOne({ email: creds.email });
+        const passwordMatch = await bcrypt.compare(creds.password, users.password);
+        if (!passwordMatch) {
+            return res.status(401).json({ error: 'Invalid credentials.' });
+        }
+        const tokenPayload= {
+            email: creds.email,
+            isAdmin: users.isAdmin,
+            isSeller: users.Seller,
+            isVerifiedSeller: users.isVerifiedSeller,
+            name: users.firstName + " " + users.lastName,
+            wishlist: users.wishlist,
+            cart: users.cart
+        }
+        const accessToken = await JWT.sign(tokenPayload, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1h' });
+        console.log(accessToken);
+        return res.status(200).json({
+            success: true,
+            data: users,
+            accessToken: accessToken
+        });
     } catch (error) {
       console.log(error);
       return res.status(400).json({

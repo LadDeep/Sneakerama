@@ -3,14 +3,18 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import '../css/App.css';
 import Home from './Home';
 import LoginPage from './UserManagement/Login';
-import Contact from './contact/Contact';
-import FAQ from './faq/FAQ';
+import Contact from './Pages/contact/Contact';
+import FAQ from './Pages/faq/FAQ';
 import SignupPage from './UserManagement/Signup';
 import ForgotPassword from './UserManagement/ForgotPassword';
 import Wishlist from './Pages/Wishlist';
 import Reviews from './Pages/Reviews';
 import Payment  from './Components/Payment';
 import Orders from './Orders/orders'
+import Events from './Pages/events/Events';
+import MainEvent from './Pages/events/MainEvent';
+import EventRegistration from './Pages/eventsRegistration/EventRegistration';
+import PostEvent from './Pages/eventposting/NewEvent';
 import { products } from '../products';
 import EditProfile from './UserManagement/EditProfile';
 
@@ -32,9 +36,13 @@ function App() {
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/reviews" element={<Reviews />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/events" element={<Events />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/forgotpassword" element={<ForgotPassword />} />
+        <Route path="/eventregistration/:id" element={<EventRegistration />} />
+        <Route path="/event/:id" element={<MainEvent />} />
+        <Route path="/postevent" element={<PostEvent />} />
         <Route path="/editprofile" element={<EditProfile />} />
         <Route path="/*" element={<Home />} />
       </Routes>
