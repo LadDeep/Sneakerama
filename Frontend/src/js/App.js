@@ -15,6 +15,10 @@ import EditProfile from './UserManagement/EditProfile';
 function App() {
 
   localStorage.setItem('cart', JSON.stringify(products));
+  localStorage.setItem('wishlist', JSON.stringify([
+    '64c0800fdb2ebe7d302ae827',
+    '64c08082db2ebe7d302ae828'
+  ]));
 
   return (
     <BrowserRouter>
