@@ -7,6 +7,8 @@ import Header from '../Components/Header';
 import 'react-toastify/dist/ReactToastify.css';
 import image1 from '../../images/jordan-air-1-mid-se.png';
 import image2 from '../../images/adidas-ultra-bounce.png';
+import { addPaymentDetails } from '../../services/payments';
+
 
 function Payment() {
 
@@ -50,7 +52,7 @@ function Payment() {
     }
   ]);
   var subtotal = 0
-
+//rendering the products which are added by the User in the Cart
   const renderProducts = () => {
     return products.map((product, index) => {
       subtotal += parseInt(product.price) * parseInt(product.quantity);
@@ -80,6 +82,7 @@ function Payment() {
       )
     })
   }
+  // Checking neccessary validations on Submitting
   const handleSubmit = () => {
     const newErrors = {};
     if (isFieldEmpty(firstName)) {
@@ -112,6 +115,7 @@ function Payment() {
   // Card Number: 4000001240000000
   // Expiration Date: Future Month/Future/Current Year
   // CVV: Any 3 digits
+  //Creating a order for PayPal
   const createOrder = (data, actions) => {
     return actions.order
       .create({
@@ -142,29 +146,20 @@ function Payment() {
   };
   const savePaymentDetailsToBackend = async (paymentDetails) => {
     try {
-      // Make a POST request to the backend API to process the payment
-      const response = await fetch('http://localhost:3001/payment', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(paymentDetails),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-       toast.success("Payment Successfull")
-        toast.success(data.message);
+      const response = await addPaymentDetails(paymentDetails);
+      console.log(response,"sss")
+  
+      if (response.status===200) {
+        toast.success("Payment Successfull")
       } else {
-        // Payment failed
-        toast.error(data.message);
+        toast.error("An error occurred while processing the payment.");
       }
     } catch (error) {
       console.error('Error processing payment:', error);
       toast.error('An error occurred while processing the payment.');
     }
   };
+  
   //capture likely error
   const onError = (data, actions) => {
     setErrorMessage("An Error occurred with your payment ");
@@ -182,7 +177,7 @@ function Payment() {
         province,
         postalCode,
         phone,
-        // Add any other payment-related details you need...
+        
       });
     //   notify();
 

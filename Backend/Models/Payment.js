@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-
-const dataSchema = new mongoose.Schema({
+//Model for Payment
+const paymentSchema = new mongoose.Schema({
     firstName: {
         required: true,
         type: String
@@ -31,4 +31,4 @@ const dataSchema = new mongoose.Schema({
     },
 })
 
-module.exports = mongoose.model('Payment', dataSchema)
+module.exports = mongoose.model('Payment', paymentSchema)

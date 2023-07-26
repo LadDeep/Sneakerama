@@ -2,7 +2,7 @@ const express = require('express');
 const  Payment = require('../Models/Payment');
 const router = express.Router()
 require('dotenv').config();
-
+//Route for Payment
 
 router.post('/payment', async (req, res) => {
     const body = req.body;
