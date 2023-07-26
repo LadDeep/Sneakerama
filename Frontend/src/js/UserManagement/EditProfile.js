@@ -3,18 +3,19 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import '../../css/Signup.css'
 import { useNavigate } from 'react-router-dom';
-import Header from '../../js/Components/Header';
-import Footer from '../../js/Components/Footer';
+import Header from '../Components/Header';
+import Footer from '../Components/Footer';
+import { authService } from '../../services/authService';
+import { Modal } from 'antd';
+const EditProfile = () => {
+  const { confirm } = Modal;
 
-
-
-const SignupPage = () => {
     const navigate = useNavigate();
     const dateOfBirthInputRef = useRef(null);
 
   const initialValues = {
     firstName: '',
-    lastName: '',
+    lastName:  '',
     dateOfBirth: '',
     gender: '',
     addressLine1: '',
@@ -24,57 +25,66 @@ const SignupPage = () => {
     country: '',
     phoneNumber: '',
     email: '',
-    password: '',
-    confirmPassword: '',
-    termsAndConditions: false,
     userQuestion: '',
     userAnswer: '',
+    Seller: '',
   };
-
-
 
   const validationSchema = Yup.object().shape({
-    firstName: Yup.string().required('First Name is required'),
-    lastName: Yup.string().required('Last Name is required'),
-    dateOfBirth: Yup.date().required('Date of Birth is required'),
-    gender: Yup.string().required('Gender is required'),
-    addressLine1: Yup.string().required('Address Line 1 is required'),
-    city: Yup.string().required('City is required'),
-    state: Yup.string().required('State/Province is required'),
-    country: Yup.string().required('Country is required'),
-    phoneNumber: Yup.string().required('Phone Number is required').length(10, 'Phone Number is not valid'),
-    userQuestion: Yup.string().required('Security Question is required'),
-    userAnswer: Yup.string().required('Security Answer is required'),
-    email: Yup.string().required('Email is required').matches(/^[a-zA-Z0-9._-]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/, 'Invalid email address'),
-    password: Yup.string().required('Password is required').matches(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-        'Password must contain at least 8 characters, one uppercase, one lowercase, one number, and one special character'
-      ),
-  
-    confirmPassword: Yup.string()
-      .oneOf([Yup.ref('password'), null], 'Passwords must match')
-      .required('Confirm Password is required'),
-    termsAndConditions: Yup.boolean().oneOf([true], 'You must accept the Terms and Conditions'),
+    phoneNumber: Yup.string().length(10, 'Phone Number is not valid'),
+    email: Yup.string().matches(/^[a-zA-Z0-9._-]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/, 'Invalid email address'),
+    dateOfBirth: Yup.date(),
   });
 
-  const handleSubmit = () => {
-    console.log('Signup button clicked!');
-    if(validationSchema.isValid){
-      alert('Registration Successful!');
-      navigate('/login');
+  const handleSubmit = async(values) => {
+    console.log(values);
+    const user =await authService.getCurrentUser();
+    const email=user.data.email;
+    console.log(email);
+    console.log(values);
+    let updatedValues={};
+    for(let key in values){
+      if(values[key]!=='' && values[key]!==null && values[key]!==undefined){
+        updatedValues[key]=values[key];
+      }
+      else{
+        //delete the pair
+        delete (updatedValues[key]);
+      }
+      }
+    console.log(updatedValues);
+    console.log('Update button clicked!');
+    console.log(email);
+    if(Object.keys(updatedValues).length===0){
+      return;
     }
+    else{
+    const response = await authService.updateUserDetails(email,updatedValues);
+    console.log(response);
+    if(validationSchema.isValid){
+      if(response.success===true){
+        alert('Details Updated!');
+       // window.location.reload();
+      }
+      else
+        alert('Details not updated!');
+    }
+  }
   };
 
-  const loginButton = () => {
-    navigate('/login');
+  const goToHomePage = () => {
+    navigate('/');
   };
 
 
   useEffect(() => {
     const dateOfBirthInput = dateOfBirthInputRef.current;
 
-    const today = new Date().toISOString().split('T')[0];
-    dateOfBirthInput.setAttribute('max', today);
+    const today = new Date();
+    const tenYearsAgo = new Date(today);
+    tenYearsAgo.setFullYear(today.getFullYear() - 10);
+    let MaxDate=tenYearsAgo.toISOString().split('T')[0];
+    dateOfBirthInput.setAttribute('max', MaxDate);
 
     dateOfBirthInput.addEventListener('input', function() {
       const selectedDate = new Date(this.value);
@@ -88,13 +98,40 @@ const SignupPage = () => {
     });
   }, []);
 
+  const deleteAccount = async () => {
+    // Ask for confirmation before deleting using Ant Design's confirm modal
+    confirm({
+      title: 'Are you sure you want to delete your account?',
+      onOk: async () => {
+        console.log('Delete account button clicked!');
+        const user = await authService.getCurrentUser();
+        const email = user.data.email;
+        console.log(email);
+        const response = await authService.deleteUser(email);
+        console.log(response);
+        if (response.success === true) {
+          alert('Account Deleted!');
+          authService.logout();
+          navigate('/');
+        } else {
+          alert('Account not deleted!');
+        }
+      },
+      onCancel: () => {
+        // If the user cancels (Cancel), do nothing or show a message, as per your requirement
+        console.log('Account deletion canceled.');
+      },
+    });
+  };
+  
+
 
   return (
     <div>
         <Header/>
     <div className="signup-page">
       <div className="signup-parent_sect">
-        <h1>Sign Up</h1>
+        <h1>Edit Profile</h1>
         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
           {({ errors, touched }) => (
             <Form>
@@ -137,28 +174,18 @@ const SignupPage = () => {
               <div className="signup-form-row">
               <FieldGroup name="email" label="Email" type="email" />
               </div>
-              <div className="signup-form-row">
-              <FieldGroup name="password" label="Password" type="password" />
-              <FieldGroup name="confirmPassword" label="Confirm Password" type="password" />
-              </div>
-              <div className="signup-form-row">
                 <div>
-                  <label>
-                    <Field type="checkbox" name="termsAndConditions" />
-                    Terms and Conditions
-                  </label>
-                  {errors.termsAndConditions && touched.termsAndConditions && (
-                    <div className="signup-error-message">{errors.termsAndConditions}</div>
-                  )}
-                </div>
                 <label>
                     <Field type="checkbox" name="Seller" />
                     Register as Seller
                   </label>
               </div>
-              <button type="submit" className='signup-button' onSubmit={handleSubmit}>Sign Up</button>
-              <button type="button" className='login-button' onClick={loginButton}>
-            Have an account? Log in!
+              <button type="submit" className='signup-button'>Update Details</button>
+              <button type="button" className='login-button' onClick={goToHomePage}>
+            Cancel
+          </button>
+          <button type="button" className='login-button' onClick={deleteAccount} style={{textAlign:'right', color:'red', fontWeight:'bolder'}}>
+            Delete Account
           </button>
             </Form>
           )}
@@ -178,4 +205,4 @@ const FieldGroup = ({ name, label, ...rest }) => (
   </div>
 );
 
-export default SignupPage;
+export default EditProfile;

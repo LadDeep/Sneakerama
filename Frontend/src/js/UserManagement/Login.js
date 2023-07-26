@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import '../../css/Login.css'
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
-
+import { authService } from '../../services/authService';
 
 const LoginPage = () => {
 const navigate = useNavigate();
@@ -20,9 +20,19 @@ const navigate = useNavigate();
     password: Yup.string().required('Password is required'),
   });
 
-  const handleSubmit = () => {
-    console.log('Login button clicked!');
-    alert('Login Successful!');
+  const handleSubmit = async(values) => {
+    console.log(values);
+    const response = await authService.loginUser(values);
+    console.log(response);
+    if(response.success===true){
+      console.log('Login button clicked!');
+      alert('Login Successful!');
+      //fetch cart and wishlist details
+      navigate('/');
+    }
+    else{
+      alert('Invalid Credentials!');
+    }
   };
 
   const registerButton = () => {
@@ -32,7 +42,23 @@ const navigate = useNavigate();
 
   const forgotPassword = () => {
     console.log('Forgot button clicked');
+    navigate('/forgotpassword');
   };
+
+  /*
+  const getCurrentUser = async() => {
+    console.log('Current user button clicked');
+    let currentUser=await authService.getCurrentUser();
+    console.log(currentUser.data);
+  }
+
+  const logOut = () => {
+    console.log('Logout button clicked');
+    authService.logout();
+    console.log('Logged out');
+  }
+  */
+
   return (
     <div>        
         <Header/>

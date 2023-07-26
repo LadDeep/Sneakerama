@@ -1,7 +1,7 @@
 const express = require('express');
 const Review = require('../Models/Review');
-
 const router = express.Router()
+require('dotenv').config();
 
 //Sample root method
 router.get('/', async (req, res) => {
