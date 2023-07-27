@@ -1,7 +1,7 @@
 import Footer from '../../Components/Footer';
 import Header from '../../Components/Header';
 import React, { useState } from 'react';
-import classes from './Contact.module.css';
+import classes from '../../../css/Contact.module.css';
 
 function Contact() {
     const [name, setName] = useState('');
