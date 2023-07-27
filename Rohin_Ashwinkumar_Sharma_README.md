@@ -24,7 +24,7 @@
 - EventRegistration.js: It defines schema for event registration collection in the MongoDB
 
 ### Frontend
-##### Pages
+#### Pages
 - NewEvent.js: Accessible via the "Post Event" button, this page is exclusively available to sellers. Buyers are restricted from posting events on Sneakerama. It allows seller to create a new event.
 - MainEvent.js: It shows the event page which user has selected. User can view all the details about the event on this page. This page also gives option to register for the event. Event Registration is open for all users.
 - Events.js: It shows all the events that sellers have posted on the Sneakerama. It also has post event button available when a seller is logged in.
@@ -33,7 +33,7 @@
 
 -- Note: Validation is added for fields of both new event and event registration forms. 
 
-#### Services
+##### Services
 - events.js: This service file hosts functions responsible for interfacing with the backend APIs related to events. They handle calls to the backend and process the responses in a manner suitable for the frontend.
 
 #### CSS
