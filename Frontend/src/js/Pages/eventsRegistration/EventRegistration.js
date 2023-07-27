@@ -89,22 +89,22 @@ const EventRegistration = () => {
         <h1 className={classes.pagetitle}>Registration Form</h1>
         <form className={classes.registrationform} onSubmit={handleSubmit}>
           <div className={classes.formgroup}>
-            <label htmlFor="name">Name</label>
+            <label className={classes.evelabel} htmlFor="name">Name</label>
             <input type="text" id="name" value={name} onChange={handleNameChange} required />
             {errors.name && <p style={{ color: 'red' }}>{errors.name}</p>}
           </div>
           <div className={classes.formgroup}>
-            <label htmlFor="age">Age</label>
+            <label className={classes.evelabel} htmlFor="age">Age</label>
             <input type="number" id="age" value={age} onChange={handleAgeChange} required />
             {errors.age && <p style={{ color: 'red' }}>{errors.age}</p>}
           </div>
           <div className={classes.formgroup}>
-            <label htmlFor="phone">Phone Number</label>
+            <label className={classes.evelabel} htmlFor="phone">Phone Number</label>
             <input type="tel" id="phone" value={phone} onChange={handlePhoneChange} required />
             {errors.phone && <p style={{ color: 'red' }}>{errors.phone}</p>}
           </div>
           <div className={classes.formgroup}>
-            <label htmlFor="email">Email</label>
+            <label className={classes.evelabel} htmlFor="email">Email</label>
             <input type="email" id="email" value={email} onChange={handleEmailChange} required />
             {errors.email && <p style={{ color: 'red' }}>{errors.email}</p>}
           </div>

@@ -29,10 +29,10 @@
   margin-bottom: 20px;
 }
 
-label {
+.evelabel {
   font-weight: bold;
-  color: #000; /* Making the font black */
-  font-size: 1.2rem; /* Increased font size for labels */
+  color: #000;
+  font-size: 1.2rem; 
 }
 
 input[type='text'],
@@ -44,7 +44,7 @@ input[type='email'] {
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 4px;
-  color: #000; /* Making the font black */
+  color: #000; 
 }
 
 .submitbutton {
@@ -54,7 +54,7 @@ input[type='email'] {
   padding: 10px 20px;
   font-weight: bold;
   cursor: pointer;
-  margin-top: 5%; /* To ensure the button does not overlap with other elements */
+  margin-top: 5%; 
 }
 
 .submitbutton:hover {
@@ -79,8 +79,8 @@ input[type='email'] {
   background-color: #ffffff;
   padding: 20px;
   text-align: center;
-  border-radius: 8px; /* To give a slight curve to the borders */
-  color: #000; /* Making the font black */
+  border-radius: 8px;
+  color: #000;
 }
 
 .closebutton {

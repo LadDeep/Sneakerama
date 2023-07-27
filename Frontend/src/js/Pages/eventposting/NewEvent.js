@@ -121,26 +121,26 @@ const handleEventDescriptionChange = (e) => {
         <form className={classes.eventform} onSubmit={handleSubmit}>
 
         <div className={classes.formgroup}>
-        <h1 className={classes.pagetitle}>Post an Event</h1>
-            <label htmlFor="eventName">Event Name</label>
+        <h1 className={classes.pagetitle}>Post an Event</h1><br></br>
+            <label className={classes.nevelabel} htmlFor="eventName">Event Name</label>
             <p className={classes.error}>{eventNameError}</p>
             <input type="text" id="eventName" value={eventName} onChange={handleEventNameChange} required />
         </div>
 
         <div className={classes.formgroup}>
-            <label htmlFor="eventImage">Event Image URL</label>
+            <label className={classes.nevelabel} htmlFor="eventImage">Event Image URL</label>
             <p className={classes.error}>{eventImageUrlError}</p>
             <input type="url" id="eventImage" value={eventImage} onChange={handleEventImageUrlChange} required />
         </div>
     
         <div className={classes.formgroup}>
-            <label htmlFor="eventDate">Event Date</label>
+            <label className={classes.nevelabel} htmlFor="eventDate">Event Date</label>
             <p className={classes.error}>{eventDateError}</p>
             <input type="date" id="eventDate" value={eventDate} onChange={handleEventDateChange} required />
         </div>
         
         <div className={classes.formgroup}>
-            <label htmlFor="eventTime">Event Time</label>
+            <label className={classes.nevelabel} htmlFor="eventTime">Event Time</label>
             <p className={classes.error}>{eventTimeError}</p>
             <input 
                 type="text" 
@@ -152,13 +152,13 @@ const handleEventDescriptionChange = (e) => {
         </div>
 
         <div className={classes.formgroup}>
-            <label htmlFor="eventLocation">Event Location</label>
+            <label className={classes.nevelabel} htmlFor="eventLocation">Event Location</label>
             <p className={classes.error}>{eventLocationError}</p>
             <input type="text" id="eventLocation" value={eventLocation} onChange={handleEventLocationChange} required />
         </div>
 
         <div className={classes.formgroup}>
-            <label htmlFor="eventDescription">Event Description</label>
+            <label className={classes.nevelabel} htmlFor="eventDescription">Event Description</label>
             <p className={classes.error}>{eventDescriptionError}</p>
             <textarea id="eventDescription" value={eventDescription} onChange={handleEventDescriptionChange} required></textarea>
         </div>
