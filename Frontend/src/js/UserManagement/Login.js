@@ -64,16 +64,16 @@ const navigate = useNavigate();
         <Header/>
     <div className="login-page">
       <div className="login-container">
-        <h1>Login</h1>
+        <h1 className='login-h1'>Login</h1>
         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
           <Form>
             <div className="form-group">
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email" className='login-input'>Email</label>
               <Field type="email" id="email" name="email" />
               <ErrorMessage name="email" component="div" className="error-message" />
             </div>
             <div className="form-group">
-              <label htmlFor="password">Password</label>
+              <label htmlFor="password" className='login-input'>Password</label>
               <Field type="password" id="password" name="password" />
               <ErrorMessage name="password" component="div" className="error-message" />
             </div>

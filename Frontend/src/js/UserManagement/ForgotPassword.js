@@ -123,7 +123,7 @@ const ForgotPassword = () => {
       <Header />
       <div className="login-page">
         <div className="login-container">
-          <h1>Forgot Password</h1>
+          <h1 className='login-h1'>Forgot Password</h1>
           <Formik initialValues={initialValues} validationSchema={validationSchema}>
             {({ values }) => ( // Destructure values from Formik props
               <Form>
@@ -161,7 +161,7 @@ const ForgotPassword = () => {
                     <label htmlFor="confirmPassword">Confirm Password</label>
                     <Field type="password" id="confirmPassword" name="confirmPassword" />
                     <ErrorMessage name="confirmPassword" component="div" className="error-message" />
-                    <button type="submit" className="signup-button" onClick={() => changePassword(values)}>
+                    <button type="submit" className="change-password-button" onClick={() => changePassword(values)}>
                       Change Password
                     </button>
                   </div>

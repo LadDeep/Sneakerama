@@ -133,7 +133,7 @@ const SignupPage = () => {
         <Header/>
     <div className="signup-page">
       <div className="signup-parent_sect">
-        <h1>Sign Up</h1>
+        <h1 className='login-h1'>Sign Up</h1>
         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
           {({ errors, touched }) => (
             <Form>
@@ -148,7 +148,7 @@ const SignupPage = () => {
               type="date"  
               innerRef={dateOfBirthInputRef}
                 />
-                <FieldGroup name="gender" label="Gender" as="select" className="gender">
+                <FieldGroup name="gender" label="Gender" as="select" >
                   <option value="">Select</option>
                   <option value="male">Male</option>
                   <option value="female">Female</option>
@@ -157,11 +157,11 @@ const SignupPage = () => {
                 </FieldGroup>
               </div>
                 <div className="signup-form-row">
-                <FieldGroup name="addressLine1" label="Address Line 1" />
-                <FieldGroup name="addressLine2" label="Address Line 2" />
+                <FieldGroup name="addressLine1" label="Address Line 1"/>
+                <FieldGroup name="addressLine2" label="Address Line 2"/>
               </div>
               <div className="signup-form-row">
-                <FieldGroup name="city" label="City" />
+                <FieldGroup name="city" label="City"/>
                 <FieldGroup name="state" label="State/Province" />
               </div>
               <div className="signup-form-row">
@@ -212,7 +212,7 @@ const SignupPage = () => {
 const FieldGroup = ({ name, label, ...rest }) => (
   <div style={{textAlign:'center'}}>
  <div className="signup-form-group">
-    <label htmlFor={name}>{label}</label>
+    <label htmlFor={name} className="signup-form-group label">{label}</label>
     <Field id={name} name={name} {...rest} />
     </div>
   <ErrorMessage name={name} component="div" className="signup-error-message" />

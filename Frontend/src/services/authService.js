@@ -145,7 +145,7 @@ const deleteUser = async(email) =>{
     console.log(data);
     return data;
 }
-
+/*
 const pushCartAndWishlistToDatabase = async (user) => {
     const email=user.data.email;
     const cart=user.data.cart;
@@ -165,6 +165,7 @@ const pushCartAndWishlistToDatabase = async (user) => {
     return data;
 }
 
+*/
 
 export const authService = {
     getUser,
@@ -175,5 +176,5 @@ export const authService = {
     changePassword,
     updateUserDetails,
     deleteUser,
-    pushCartAndWishlistToDatabase
+   // pushCartAndWishlistToDatabase
 };
