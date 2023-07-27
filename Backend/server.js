@@ -23,10 +23,11 @@ database.on('error', (error) => {
 database.once('connected', () => {
     console.log('Database Connected');
 })
+
 const app = express();
 app.use(cors({ origin: true }));
 
-app.use(express.json());
+app.use(express.json({limit: "10Mb"}));
 
 app.use(reviewRoutes)
 app.use(userRoutes)

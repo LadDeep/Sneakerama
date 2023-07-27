@@ -17,6 +17,9 @@ import EventRegistration from './Pages/eventsRegistration/EventRegistration';
 import PostEvent from './Pages/eventposting/NewEvent';
 import { products } from '../products';
 import EditProfile from './UserManagement/EditProfile';
+import AddProduct from './Pages/AddProduct';
+import EditProduct from './Pages/EditProduct';
+import Inventory from './Pages/Inventory';
 
 function App() {
 
@@ -25,7 +28,6 @@ function App() {
     '64c0800fdb2ebe7d302ae827',
     '64c08082db2ebe7d302ae828'
   ]));
-
   return (
     <BrowserRouter>
       <Routes>
@@ -44,6 +46,11 @@ function App() {
         <Route path="/event/:id" element={<MainEvent />} />
         <Route path="/postevent" element={<PostEvent />} />
         <Route path="/editprofile" element={<EditProfile />} />
+        <Route path="/add-product" element={<AddProduct />} />
+        <Route path="/edit-product" element={<EditProduct />} />
+        <Route path="/inventory" element={<Inventory />} />
+        
+
         <Route path="/*" element={<Home />} />
       </Routes>
     </BrowserRouter>
