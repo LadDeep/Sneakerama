@@ -1,11 +1,9 @@
-<!--- The following README.md sample file was adapted from https://gist.github.com/PurpleBooth/109311bb0361f32d87a2#file-readme-template-md by Gabriella Mosquera for academic use ---> 
-
-
 # Sneakers E-commerce
 
 * *Date Created*: 22 MAY 2023
-* *Last Modification Date*: 20 JUNE 2023
-* *Hosted URL*: [https://remarkable-sprite-930713.netlify.app/](https://remarkable-sprite-930713.netlify.app/)
+* *Last Modification Date*: 26 JULY 2023
+* *Hosted URL*: https://remarkable-sprite-930713.netlify.app/
+* *Backend URL*: https://sneakerama-backend.onrender.com/
 * *Git URL*: https://git.cs.dal.ca/dlad/csci-5709-grp-14
 
 ## Authors
@@ -20,8 +18,6 @@
 ## Deployment
 
 Deployment platform name: [Netlify](https://app.netlify.com)
-
-Link to hosted project : [https://remarkable-sprite-930713.netlify.app/](https://remarkable-sprite-930713.netlify.app/)
 
 ## Built With
 
