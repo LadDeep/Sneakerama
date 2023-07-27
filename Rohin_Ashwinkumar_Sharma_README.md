@@ -38,7 +38,9 @@
 
 ## References
 [1]  "T7V1: NodeJS and Express Option (Live Tutorial)," Brightspace - Dalhousie University.https://dal.brightspace.com/d2l/le/content/274269/viewContent/3608669/View.[Accessed on: July 23, 2023]
+
 [2]   “Develop and deploy websites and apps in record time,” Netlify. https://www.netlify.com/?attr=homepage-modal.[Accessed July 24, 2023]
+
 [3]   “Cloud Application Hosting for Developers - Render,” Render. https://render.com/.[Accessed July 25, 2023]
 
 ‌  
