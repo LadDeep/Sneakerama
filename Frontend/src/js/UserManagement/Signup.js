@@ -174,7 +174,7 @@ const SignupPage = () => {
               </div>
               <div className='white-line'> </div>
               <div className="signup-form-row">
-              <FieldGroup name="email" label="Email" type="email" />
+              <FieldGroup name="email" label="Email" type="email" style={{ width: '170px' }} />
               </div>
               <div className="signup-form-row">
               <FieldGroup name="password" label="Password" type="password"/>

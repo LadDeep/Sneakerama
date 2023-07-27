@@ -39,6 +39,7 @@
     clear: left;
     text-align: right;
     padding-right: 10px;
+    font-weight: normal;
   }
   
   .signup-form-group input,
