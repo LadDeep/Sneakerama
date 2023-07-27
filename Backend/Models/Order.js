@@ -1,3 +1,5 @@
+/*Dhruv Kothari*/
+
 const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema({
@@ -7,6 +9,10 @@ const orderSchema = new mongoose.Schema({
   },
   orderItems: {
     type: Array,
+    required: true
+  },
+  total: {
+    type: Number,
     required: true
   },
   createdAt: {

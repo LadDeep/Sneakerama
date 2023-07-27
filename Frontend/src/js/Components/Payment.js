@@ -1,3 +1,4 @@
+/*Dhruv Kothari*/
 import '../../css/Payment.css';
 import { useEffect, useState } from 'react';
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
@@ -8,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { addPaymentDetails } from '../../services/payments';
 import {authService} from '../../services/authService';
 import { addOrderDetails  }  from '../../services/orders';
+import { useNavigate } from 'react-router-dom';
 
 
 function Payment() {
@@ -39,13 +41,8 @@ function Payment() {
   const isFieldEmpty = (value) => {
     return value.trim() === '';
   };
+  const navigate = useNavigate();
 
-
-  // {
-  //   "user": user.username,
-  //   "products": products,
-  //   "date": new Date()
-  // }
 
   
   
@@ -179,7 +176,6 @@ function Payment() {
   
         if (paymentResponse.status === 200) {
           notify(); // Notify on successful payment
-          // Call the function to save order details to the backend
           saveOrderDetails();
         } else {
           toast.error("An error occurred while processing the payment.");
@@ -201,11 +197,11 @@ function Payment() {
           const orderData = {
             username: userName,
             orderItems: wishlist,
+            total: (subtotal + 15).toFixed(2),
             createdAt: currentDate,
           };
           console.log(orderData, "orderData");
     
-          // Instead of using fetch, call the service function to save order details
           const response = await addOrderDetails(orderData);
           console.log(response,"order response")
     
@@ -220,22 +216,20 @@ function Payment() {
     };
   
     if (success) {
-      savePaymentAndOrderDetails(); // Call the function to save payment and order details
+      savePaymentAndOrderDetails(); 
+      navigate('/orders');
       console.log("success");
     }
   }, [success, firstName, lastName, address, city, province, postalCode, phone, products]);
   
 
-  // useEffect(() => {
-  //   const user = authService.getCurrentUser();
-  // }, [])
   
   
   async function fetchUserData() {
     try {
       const response = await authService.getCurrentUser();
       const user = response.data;
-      const username = user.username;
+      const username = user.email;
       return username;
       // Rest of the code...
     } catch (error) {
@@ -247,8 +241,8 @@ function Payment() {
   return (
     <>
       <Header />
-      <div style={{ display: 'flex', alignItems: 'stretch', minHeight: '100vh' }}>
-        <div style={{ width: '40%', paddingLeft: '250px', borderRight: '1px solid #c1c1c1', paddingTop: '150px' }}>
+      <div style={{ display: 'flex', alignItems: 'stretch', minHeight: '100vh', flexWrap: 'wrap' }}>
+        <div className="payment-bg">
           {/* <div style={{ fontSize: '15px', fontWeight: '600', marginTop: '40px', marginBottom: '5px' }}>Contact Information</div> */}
           {/* <div style={{ marginLeft: '10px' }}>johndoe@gmail.com</div> */}
           {onPayment ? (
@@ -357,7 +351,7 @@ function Payment() {
             </>
           )}
         </div>
-        <div style={{ backgroundColor: '#F6F6F6', flex: '1', paddingTop: '150px' }}>
+        <div className='cart-items-bg'>
           <div style={{ marginLeft: '20px', marginTop: '20px', width: '90%' }}>
             {renderProducts()}
             <div className='checkout-item'>

@@ -75,8 +75,14 @@ function Header() {
                                 <p className='header-mobile-menu-item'>MEN'S</p>
                                 <p className='header-mobile-menu-item'>WOMEN'S</p>
                                 <p className='header-mobile-menu-item'>KIDS'</p>
-                                <p className='header-mobile-menu-item'>ORDERS</p>
-                                <p className='header-mobile-menu-item'>EVENTS</p>
+                                <p className='header-mobile-menu-item' onClick={() => {
+                                    navigate('/orders')
+                                    closeMenu();
+                                }}>ORDERS</p>
+                                <p className='header-mobile-menu-item' onClick={() => {
+                                    navigate('/events')
+                                    closeMenu();
+                                }}>EVENTS</p>
                                 <p className='header-mobile-menu-item' onClick={() => {
                                     navigate('/reviews')
                                     closeMenu();
@@ -99,7 +105,7 @@ function Header() {
                     <p className='header-menu-item'>MEN'S</p>
                     <p className='header-menu-item'>WOMEN'S</p>
                     <p className='header-menu-item'>KIDS'</p>
-                    <p className='header-menu-item'>ORDERS</p>
+                    <p className={location.pathname === "/orders" ? 'header-menu-item-selected' : 'header-menu-item'} onClick={() => navigate('/orders')}>ORDERS</p>
                     <p className={location.pathname === "/events" ? 'header-menu-item-selected' : 'header-menu-item'} onClick={() => navigate('/events')}>EVENTS</p>
                     <p className={location.pathname === "/reviews" ? 'header-menu-item-selected' : 'header-menu-item'} onClick={() => navigate('/reviews')}>REVIEWS</p>
                     <p className={location.pathname === "/contact" ? 'header-menu-item-selected' : 'header-menu-item'} onClick={() => navigate('/contact')}>CONTACT</p>
