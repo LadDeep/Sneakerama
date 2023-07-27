@@ -33,7 +33,7 @@
 
 -- Note: Validation is added for fields of both new event and event registration forms. 
 
-##### Services
+#### Services
 - events.js: This service file hosts functions responsible for interfacing with the backend APIs related to events. They handle calls to the backend and process the responses in a manner suitable for the frontend.
 
 #### CSS
