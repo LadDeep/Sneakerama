@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import classes from './NewEvent.module.css';
+import classes from '../../../css/NewEvent.module.css';
 import Footer from '../../Components/Footer';
 import Header from '../../Components/Header';
 import { postNewEvent } from '../../../services/events';

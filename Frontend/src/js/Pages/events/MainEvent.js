@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams} from 'react-router-dom';
 import { getEventById, formatDate, convertTo12Hour } from '../../../services/events'; 
-import classes from './MainEvent.module.css';
+import classes from '../../../css/MainEvent.module.css';
 import Footer from '../../Components/Footer';
 import Header from '../../Components/Header';
 

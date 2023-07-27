@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { getEvents } from '../../../services/events';
 import Footer from '../../Components/Footer';
 import Header from '../../Components/Header';
-import classes from './Events.module.css';
+import classes from '../../../css/Events.module.css';
 import {Link} from 'react-router-dom';
 import { authService } from '../../../services/authService';
 

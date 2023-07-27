@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { registerForEvent } from '../../../services/events'; 
-import classes from './EventRegistration.module.css';
+import classes from '../../../css/EventRegistration.module.css';
 import Footer from '../../Components/Footer';
 import Header from '../../Components/Header';
 import { useLocation } from 'react-router-dom';
