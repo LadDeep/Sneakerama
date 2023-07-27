@@ -4,8 +4,8 @@
 * *Last Modification Date*: 26 July 2023
 * *A3 Assignemnt Individual Repo URL*: https://git.cs.dal.ca/dlad/csci-5709-grp-14/-/tree/rohin-sharma?ref_type=heads
 * *Group Project Repo URL*: https://git.cs.dal.ca/dlad/csci-5709-grp-14
-* *Website URL*: https://remarkable-sprite-930713.netlify.app/[2]
-* *Backend URL*: https://sneakerama-backend.onrender.com/[3]
+* *Website URL*[2]: https://remarkable-sprite-930713.netlify.app/
+* *Backend URL*[3]: https://sneakerama-backend.onrender.com/
 
 ## Author
 
@@ -35,6 +35,18 @@
 
 #### Services
 - events.js: It contains functions which makes call to backend api for events and return response of the apis according to frontend.
+
+#### CSS
+
+##### The Event Management uses CSS modules to ensure that each page within the module have aesthetic look and resonates with user.
+
+- Events.module.css: This css is used for the design and layout of the Events page, ensuring the presentation of events is both clear and engaging.
+
+- NewEvent.module.css: This css is utilized by the NewEvent page, this CSS module is made to streamline the user interface, making the event creation process easy for sellers.
+
+- EventRegistration.module.css: This css focuses on providing a seamless registration experience, ensuring that user inputs are clearly specified and easy to register for user.
+
+- MainEvent.module.css: This CSS module is used for the look and feel of the MainEvent page. It is optimized to present event details in an organized and captivating manner.
 
 ## References
 [1]  "T7V1: NodeJS and Express Option (Live Tutorial)," Brightspace - Dalhousie University.https://dal.brightspace.com/d2l/le/content/274269/viewContent/3608669/View. [Accessed on: July 23, 2023]
