@@ -41,8 +41,8 @@ function Header() {
         const user = await authService.getCurrentUser();
         //send cart and wishlist details to the database
         console.log(user);
-        const response = await authService.pushCartAndWishlistToDatabase(user)
-        console.log(response);
+      //  const response = await authService.pushCartAndWishlistToDatabase(user)
+     //   console.log(response);
 
         setIsLoggedIn(false);
         authService.logout();

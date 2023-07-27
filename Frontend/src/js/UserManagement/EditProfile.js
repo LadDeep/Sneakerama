@@ -131,9 +131,8 @@ const EditProfile = () => {
         <Header/>
     <div className="signup-page">
       <div className="signup-parent_sect">
-        <h1>Edit Profile</h1>
+        <h1 className='login-h1'>Edit Profile</h1>
         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
-          {({ errors, touched }) => (
             <Form>
               <div className="signup-form-row">
                 <FieldGroup name="firstName" label="First Name" />
@@ -146,7 +145,7 @@ const EditProfile = () => {
               type="date"  
               innerRef={dateOfBirthInputRef}
                 />
-                <FieldGroup name="gender" label="Gender" as="select" className="gender">
+                <FieldGroup name="gender" label="Gender" as="select">
                   <option value="">Select</option>
                   <option value="male">Male</option>
                   <option value="female">Female</option>
@@ -188,7 +187,6 @@ const EditProfile = () => {
             Delete Account
           </button>
             </Form>
-          )}
         </Formik>
       </div>
     </div>
@@ -199,7 +197,7 @@ const EditProfile = () => {
 
 const FieldGroup = ({ name, label, ...rest }) => (
   <div className="signup-form-group">
-    <label htmlFor={name}>{label}</label>
+    <label htmlFor={name} className='label'>{label}</label>
     <Field id={name} name={name} {...rest} />
     <ErrorMessage name={name} component="div" className="signup-error-message" />
   </div>

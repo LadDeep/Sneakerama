@@ -38,20 +38,7 @@
     border: 1px solid #ccc;
   }
   
-  .login-button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    border-radius: 4px;
-    border: none;
-    background-color: #ff0000;
-    color: #ffffff;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 20px;
-  }
-
-  h1 {
+  .login-h1 {
     text-align: center;
     margin-bottom: 20px;
     color: #ffffff;
@@ -61,21 +48,21 @@
     margin-bottom: 20px;
   }
   
-  label {
+  .login-input {
     display: block;
     margin-bottom: 8px;
     color: #ffffff;
   }
   
-  input[type='email'],
-  input[type='password'] {
+  .login-input input[type='email'],
+  .login-input input[type='password'] {
     width: 100%;
     padding: 10px;
     border-radius: 4px;
     border: 1px solid #ccc;
   }
   
-  /* button {
+   .signup-button {
     display: block;
     width: 100%;
     padding: 10px;
@@ -85,7 +72,7 @@
     color: #ffffff;
     font-size: 16px;
     cursor: pointer;
-  } */
+  } 
 
   .error-message {
     color: red;
