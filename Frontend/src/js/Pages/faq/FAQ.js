@@ -1,7 +1,7 @@
 import Footer from '../../Components/Footer';
 import Header from '../../Components/Header';
 import React from 'react';
-import classes from './FAQ.module.css';
+import classes from '../../../css/FAQ.module.css';
 
 function FAQ() {
 
