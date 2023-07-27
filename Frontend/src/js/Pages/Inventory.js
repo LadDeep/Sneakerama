@@ -31,6 +31,7 @@ const Inventory = () => {
   };
   useEffect(() => {
     getProductCount();
+    // eslint-disable-next-line
   }, []);
 
   const getProducts = async () => {
@@ -50,6 +51,7 @@ const Inventory = () => {
   };
   useEffect(() => {
     getProducts();
+    // eslint-disable-next-line
   }, [page]);
   return (
     <div>

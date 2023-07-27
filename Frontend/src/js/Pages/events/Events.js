@@ -20,6 +20,7 @@ const Events = () => {
       setIsSeller(result);
     };
     checkUserStatus();
+    // eslint-disable-next-line
   }, []);
   
 
@@ -29,6 +30,7 @@ const Events = () => {
       setIsSeller(result);
     };
     checkUserStatus();
+    // eslint-disable-next-line
   }, []);
 
   const getUserData = async() => {
