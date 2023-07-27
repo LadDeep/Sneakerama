@@ -1,6 +1,6 @@
 export const products = [
     {
-        "id": "mongodb_id1",
+        "id": "64c0800fdb2ebe7d302ae827",
         "email": "test.seller@gmail.com",
         "brand": "Nike",
         "model": "Jordan 1 Retro High OG",
@@ -12,7 +12,7 @@ export const products = [
         "quantity": "2"
     },
     {
-        "id": "mongodb_id2",
+        "id": "64c08082db2ebe7d302ae828",
         "email": "test.seller@gmail.com",
         "brand": "Nike",
         "model": "AJKO 1 Low x UNION",

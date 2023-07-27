@@ -1,0 +1,23 @@
+/*Dhruv Kothari*/
+
+.orders-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+
+.orders-title {
+    text-align: center;
+}
+
+.products-container {
+    text-align: center;
+}
+
+.products-span {
+    text-decoration: underline;
+    font-weight: 600;
+    cursor: pointer;
+}

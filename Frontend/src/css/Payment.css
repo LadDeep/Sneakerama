@@ -1,0 +1,238 @@
+/* Dhruv Kothari */
+.cart-item {
+    margin-inline: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #f2f2f2;
+    padding-top: 15px;
+}
+
+.payment-bg {
+  width: 40%;
+  padding-left: 250px;
+  border-right: 1px solid #c1c1c1;
+  padding-top: 150px;
+}
+
+.cart-item-name {
+    font-weight: lighter;
+    color: #959595;
+    word-wrap: normal;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.cart-item-image {
+    width: 150px
+}
+
+.cart-list-image {
+    width: 100%;
+}
+
+.quantity-btn {
+    border: 1px solid #f2f2f2;
+    padding: 3px 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.quantity-value {
+    border-top: 1px solid #f2f2f2;
+    border-bottom: 1px solid #f2f2f2;
+    padding: 3px 8px;
+    font-weight: lighter;
+}
+
+.cart-item-remove {
+    color: #000;
+    font-size: 14px;
+    border-bottom: 1px solid #000;
+    padding-bottom: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.continue-shopping {
+    width: fit-content;
+    margin-inline: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.cart-total {
+    text-align: center;
+    color: #959595;
+    text-transform: uppercase;
+    font-size: 14px;
+    line-height: 1.8;
+    margin-top: 20px;
+}
+
+.cart-icon {
+    height: 20px;
+    margin-left: 15px;
+}
+
+.cart-body {
+    margin-top: 10px;
+    margin-right: 30px;
+    cursor: pointer;
+}
+
+.cart-background {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    background-color: #000;
+    opacity: 0.5;
+}
+
+.cart-container {
+    position: absolute;
+    background-color: #fff;
+    width: 420px;
+    height: 100vh;
+    right: 0;
+    top: 0;
+    overflow-y: scroll;
+}
+
+.selected-btn {
+    background: black;
+    color: #fff;
+    padding: 10px 25px;
+    cursor: pointer;
+}
+
+.not-selected-btn {
+    background: #fff;
+    border: solid 1px #000;
+    padding: 10px 25px;
+    cursor: pointer;
+}
+
+
+/* checkout styles */
+
+.checkout-form {
+    width: 80%;
+    margin-bottom: 120px;
+}
+
+.input-wrapper {
+    width: 100%;
+}
+
+.checkout-input {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #f2f2f2;
+    border-radius: 4px;
+    padding: 0 10px;
+    font-size: 14px;
+    font-weight: 400;
+    color: #000;
+}
+
+.checkout-item {
+    margin-block: 15px;
+    width: 80%;
+}
+
+.cart-product-image {
+    width: 70px;
+    border-image-slice: fill;
+    border-radius: 25%;
+    border: 0.5px solid #000;
+}
+
+.checkout-details {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.checkout-product-details {
+    width: 100%;
+    margin-right: auto;
+}
+
+.checkout-item-price {
+    width: fit-content;
+    padding-left: auto;
+}
+
+.checkout-total-item {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.checkout-label {
+    font-size: 14px;
+}
+
+.checkout-value {
+    font-size: 15px;
+}
+
+.checkout-total {
+    font-weight: 600;
+}
+
+.checkout-total-value {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.checkout-quantity {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: #959595;
+    height: 25px;
+    width: 25px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 13px;
+}
+
+.input-container {
+    position: relative;
+  }
+  .input-error-message {
+    position: relative;
+    bottom: 60px;
+    left: 0;
+    color: red;
+    font-size: 12px;
+  }
+
+.cart-items-bg {
+  background-color: #F6F6F6;
+  flex: 1;
+  padding-top: 150px;
+}
+
+  /* Media query for even smaller screens */
+@media screen and (max-width: 768px) {
+  .payment-bg {
+    width: 100%;
+    padding-left: 20px;
+    border-right: 1px solid #c1c1c1;
+    padding-top: 50px;
+  }
+
+  .cart-items-bg {
+    background-color: #F6F6F6;
+    flex: 1;
+    padding-top: 10px;
+  }
+}

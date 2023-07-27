@@ -1,17 +1,16 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { CloseOutlined } from '@ant-design/icons';
-import { Input } from 'antd'
+import { Input, Rate } from 'antd'
 
 import Footer from '../Components/Footer';
 import Header from '../Components/Header';
-import ReactStars from "react-rating-stars-component";
 
 import '../../css/Reviews.css'
 import { addReview, getReviews } from '../../services/reviews';
+import { authService } from '../../services/authService';
 
 function Reviews() {
 
-    const starInput = useRef(0);
     const { TextArea } = Input
 
     const [reviews, setReviews] = useState([]);
@@ -84,18 +83,18 @@ function Reviews() {
             return;
         }
         if (isRatingValid && isTitleValid && isReviewValid) {
+            const user = await authService.getCurrentUser();
             const newReview = {
-                name: 'John Doe',
+                name: user.data.name,
                 rating: rating,
                 title: title,
                 review: review
             }
-            const response = await addReview(newReview);
+            await addReview(newReview);
             await fetchReviews();
             document.body.style.overflowY = 'scroll'
             setIsModalOpen(false)
             emptyModal();
-            console.log(response)
         }
     }
 
@@ -111,15 +110,7 @@ function Reviews() {
                             {review.name}
                         </div>
                         <div className='review-rating'>
-                            <ReactStars
-                                count={5}
-                                ref={starInput}
-                                isHalf={true}
-                                value={review.rating}
-                                edit={false}
-                                size={24}
-                                activeColor="#ffd700"
-                            />
+                            <Rate value={review.rating} disabled={true} />
                         </div>
                     </div>
                     <div className='review-item-body'>
@@ -157,14 +148,9 @@ function Reviews() {
                             {averageRating.toFixed(1)}
                         </div>
                         <div className='reviews-rating'>
-                            <ReactStars
-                                count={5}
-                                isHalf={true}
-                                value={averageRating}
-                                edit={false}
-                                size={24}
-                                activeColor="#ffd700"
-                            />
+                            <div>
+                                <Rate value={averageRating} disabled={true} allowHalf />
+                            </div>
                             {totalReviews} reviews
                         </div>
                     </div>
@@ -209,13 +195,9 @@ function Reviews() {
                             }} />
                             <div className='reviews-modal-body'>
                                 <div className='reviews-modal-rating'>
-                                    <ReactStars
-                                        count={5}
-                                        isHalf={true}
+                                    <Rate
                                         value={rating}
-                                        edit={true}
-                                        size={36}
-                                        activeColor="#ffd700"
+                                        allowHalf
                                         onChange={(newRating) => {
                                             setRating(newRating)
                                             if (newRating !== 0) {
