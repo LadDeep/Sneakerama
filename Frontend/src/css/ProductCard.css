@@ -1,0 +1,47 @@
+.card-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border-radius: 1rem;
+  box-sizing: border-box;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  justify-content: center;
+  align-items: center;
+  margin: 2rem;
+}
+
+.card-edit-button {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  padding: 0.5rem;
+}
+
+.card-display-contianer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.card-display {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-around;
+  padding: 0 0.25rem
+}
+.card-display p{
+    text-transform: uppercase;
+    padding: 0 0.5rem;
+    background-color: lightskyblue;
+    border-radius: 1rem;
+  }
+.tag-green{
+    background-color: lightgreen;
+    border-radius: 1rem;
+    padding: 0 0.5rem;
+}
+
+.tag-red{
+    background-color: rgba(240, 128, 128, 0.742);
+    border-radius: 1rem;
+    padding: 0 0.5rem;
+
+}
