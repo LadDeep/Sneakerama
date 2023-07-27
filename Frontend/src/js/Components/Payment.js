@@ -7,17 +7,17 @@ import Footer from '../Components/Footer';
 import Header from '../Components/Header';
 import 'react-toastify/dist/ReactToastify.css';
 import { addPaymentDetails } from '../../services/payments';
-import {authService} from '../../services/authService';
-import { addOrderDetails  }  from '../../services/orders';
+import { authService } from '../../services/authService';
+import { addOrderDetails } from '../../services/orders';
 import { useNavigate } from 'react-router-dom';
 
 
 function Payment() {
-  const [products, ] = useState(JSON.parse(localStorage.getItem('cart')));
-  const [wishlist, ] = useState(JSON.parse(localStorage.getItem('wishlist')));
+  const [products,] = useState(JSON.parse(localStorage.getItem('cart')));
+  const [wishlist,] = useState(JSON.parse(localStorage.getItem('wishlist')));
 
   var subtotal = 0
-  
+
   const notify = () => toast.success("Payment Successful.");
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -44,9 +44,9 @@ function Payment() {
   const navigate = useNavigate();
 
 
-  
-  
-//rendering the products which are added by the User in the Cart
+
+
+  //rendering the products which are added by the User in the Cart
   const renderProducts = () => {
     return products.map((product, index) => {
       subtotal += parseInt(product.price) * parseInt(product.quantity);
@@ -138,22 +138,22 @@ function Payment() {
       setSuccess(true);
     });
   };
-  const savePaymentDetailsToBackend = async (paymentDetails) => {
-    try {
-      const response = await addPaymentDetails(paymentDetails);
-      console.log(response,"sss")
-  
-      if (response.status===200) {
-        notify();
-      } else {
-        toast.error("An error occurred while processing the payment.");
-      }
-    } catch (error) {
-      console.error('Error processing payment:', error);
-      toast.error('An error occurred while processing the payment.');
-    }
-  };
-  
+  // const savePaymentDetailsToBackend = async (paymentDetails) => {
+  //   try {
+  //     const response = await addPaymentDetails(paymentDetails);
+  //     console.log(response,"sss")
+
+  //     if (response.status===200) {
+  //       notify();
+  //     } else {
+  //       toast.error("An error occurred while processing the payment.");
+  //     }
+  //   } catch (error) {
+  //     console.error('Error processing payment:', error);
+  //     toast.error('An error occurred while processing the payment.');
+  //   }
+  // };
+
   //capture likely error
   const onError = (data, actions) => {
     setErrorMessage("An Error occurred with your payment ");
@@ -173,7 +173,7 @@ function Payment() {
           postalCode,
           phone,
         });
-  
+
         if (paymentResponse.status === 200) {
           notify(); // Notify on successful payment
           saveOrderDetails();
@@ -185,13 +185,13 @@ function Payment() {
         toast.error('An error occurred while processing the payment.');
       }
     };
-  
+
     const saveOrderDetails = async () => {
       try {
         const userName = await fetchUserData();
         console.log(userName, "userName");
         console.log(products, "products");
-         console.log(wishlist,"productIDs")
+        console.log(wishlist, "productIDs")
         if (products) {
           const currentDate = new Date();
           const orderData = {
@@ -201,11 +201,11 @@ function Payment() {
             createdAt: currentDate,
           };
           console.log(orderData, "orderData");
-    
+
           const response = await addOrderDetails(orderData);
-          console.log(response,"order response")
-    
-          if (response.status===200) {
+          console.log(response, "order response")
+
+          if (response.status === 200) {
           } else {
             console.error('Failed to send order data to the backend.');
           }
@@ -214,17 +214,18 @@ function Payment() {
         console.error('Error fetching user data:', error);
       }
     };
-  
+
     if (success) {
-      savePaymentAndOrderDetails(); 
+      savePaymentAndOrderDetails();
       navigate('/orders');
       console.log("success");
     }
+    // eslint-disable-next-line
   }, [success, firstName, lastName, address, city, province, postalCode, phone, products]);
-  
 
-  
-  
+
+
+
   async function fetchUserData() {
     try {
       const response = await authService.getCurrentUser();
@@ -236,7 +237,7 @@ function Payment() {
       console.error('Error fetching user data:', error);
     }
   }
-    
+
 
   return (
     <>

@@ -52,34 +52,35 @@ function Orders() {
         };
 
         fetchProducts();
+        // eslint-disable-next-line
     }, [intitalOrders]);
 
-    const renderOrders = () => {
-        console.log(orders)
-        return orders.map((order, index) => {
-            return (
-                <div className="order-item" key={index}>
-                    {renderProducts(order.orderItems)}
-                </div>
-            );
-        });
-    };
+    // const renderOrders = () => {
+    //     console.log(orders)
+    //     return orders.map((order, index) => {
+    //         return (
+    //             <div className="order-item" key={index}>
+    //                 {renderProducts(order.orderItems)}
+    //             </div>
+    //         );
+    //     });
+    // };
 
-    const renderProducts = (products) => {
-        return products.map((product, index) => {
-            return (
-                <>
-                    <div className="order-image">
-                        <img src={product.image[0]} alt="Product" className="product-list-image" />
-                    </div>
-                    <div className="product-details">
-                        <div className="product-model">{product.model}</div>
-                        <div className="product-price">${parseInt(product.price).toFixed(2)}</div>
-                    </div>
-                </>
-            )
-        })
-    }
+    // const renderProducts = (products) => {
+    //     return products.map((product, index) => {
+    //         return (
+    //             <>
+    //                 <div className="order-image">
+    //                     <img src={product.image[0]} alt="Product" className="product-list-image" />
+    //                 </div>
+    //                 <div className="product-details">
+    //                     <div className="product-model">{product.model}</div>
+    //                     <div className="product-price">${parseInt(product.price).toFixed(2)}</div>
+    //                 </div>
+    //             </>
+    //         )
+    //     })
+    // }
 
     return (
         <>

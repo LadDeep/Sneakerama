@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { ErrorMessage, Field, Form, Formik, FieldArray, getIn } from "formik";
+import { ErrorMessage, Field, Form, Formik, FieldArray } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import Header from "../Components/Header";
@@ -96,6 +96,7 @@ const EditProduct = () => {
     const trimmedObj = trimIds(product);
     console.log("trimmedObj", { ...trimmedObj, _id: productId });
     setSelectedProduct(trimmedObj);
+    // eslint-disable-next-line
   }, []);
 
   return (
@@ -244,12 +245,12 @@ const EditProduct = () => {
                         <div className="size-selection-container">
                           {values.availableSizes.map((item, index) => {
                             const size = `availableSizes[${index}].size`;
-                            const touchedsize = getIn(touched, size);
-                            const errorsize = getIn(errors, size);
+                            // const touchedsize = getIn(touched, size);
+                            // const errorsize = getIn(errors, size);
 
                             const quantity = `availableSizes[${index}].quantity`;
-                            const touchedquantity = getIn(touched, quantity);
-                            const errorquantity = getIn(errors, quantity);
+                            // const touchedquantity = getIn(touched, quantity);
+                            // const errorquantity = getIn(errors, quantity);
 
                             return (
                               <div key={index} className="size-selection-row">

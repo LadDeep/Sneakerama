@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
-import { ErrorMessage, Field, FieldArray, Form, Formik, getIn } from "formik";
+import { ErrorMessage, Field, FieldArray, Form, Formik } from "formik";
 import * as Yup from "yup";
 import ImagePreview from "../Components/ImagePreview";
 import "../../css/ProductForm.css";
@@ -63,12 +63,12 @@ const AddProduct = () => {
     setSubmitting(false);
   };
   // TODO: filter selected sizes
-  const getAvailableSizes = (selectedSizes) => {
-    console.log("selectedSizes", selectedSizes);
-    const newS = sizes.filter((size) => !selectedSizes.includes(size));
-    console.log(newS);
-    return sizes.filter((size) => !selectedSizes.includes(size));
-  };
+  // const getAvailableSizes = (selectedSizes) => {
+  //   console.log("selectedSizes", selectedSizes);
+  //   const newS = sizes.filter((size) => !selectedSizes.includes(size));
+  //   console.log(newS);
+  //   return sizes.filter((size) => !selectedSizes.includes(size));
+  // };
 
   return (
     <div>
@@ -216,12 +216,12 @@ const AddProduct = () => {
                         <div className="size-selection-container">
                           {values.availableSizes.map((item, index) => {
                             const size = `availableSizes[${index}].size`;
-                            const touchedsize = getIn(touched, size);
-                            const errorsize = getIn(errors, size);
+                            // const touchedsize = getIn(touched, size);
+                            // const errorsize = getIn(errors, size);
 
                             const quantity = `availableSizes[${index}].quantity`;
-                            const touchedquantity = getIn(touched, quantity);
-                            const errorquantity = getIn(errors, quantity);
+                            // const touchedquantity = getIn(touched, quantity);
+                            // const errorquantity = getIn(errors, quantity);
 
                             return (
                               <div key={index} className="size-selection-row">
