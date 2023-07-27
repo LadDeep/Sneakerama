@@ -13,6 +13,7 @@ const ProductCard = ({ product }) => {
     <>
       <div className="card-container">
         <img
+        alt="product"
           src={product.image.length > 0 && product.image[0]}
           style={{
             objectFit: "contain",
