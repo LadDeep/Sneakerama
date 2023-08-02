@@ -25,8 +25,9 @@ function App() {
 
   localStorage.setItem('cart', JSON.stringify(products));
   localStorage.setItem('wishlist', JSON.stringify([
-    '64c0800fdb2ebe7d302ae827',
-    '64c08082db2ebe7d302ae828'
+    '64c1284710ff280cc12d7b5a',
+    '64c08082db2ebe7d302ae828',
+    '64c16a0b961cd60d0e9247b4'
   ]));
   return (
     <BrowserRouter>
