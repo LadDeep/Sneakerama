@@ -41,8 +41,8 @@ function Header() {
         const user = await authService.getCurrentUser();
         //send cart and wishlist details to the database
         console.log(user);
-        const response = await authService.pushCartAndWishlistToDatabase(user)
-        console.log(response);
+      //  const response = await authService.pushCartAndWishlistToDatabase(user)
+     //   console.log(response);
 
         setIsLoggedIn(false);
         authService.logout();
@@ -107,6 +107,11 @@ function Header() {
                     <p className='header-menu-item'>KIDS'</p>
                     <p className={location.pathname === "/orders" ? 'header-menu-item-selected' : 'header-menu-item'} onClick={() => navigate('/orders')}>ORDERS</p>
                     <p className={location.pathname === "/events" ? 'header-menu-item-selected' : 'header-menu-item'} onClick={() => navigate('/events')}>EVENTS</p>
+                    {
+                        user && user.isSeller && 
+                        <p className={location.pathname === "/add-product" ? 'header-menu-item-selected' : 'header-menu-item'} onClick={() => navigate('/inventory')}>INVENTORY</p>
+
+                    }
                     <p className={location.pathname === "/reviews" ? 'header-menu-item-selected' : 'header-menu-item'} onClick={() => navigate('/reviews')}>REVIEWS</p>
                     <p className={location.pathname === "/contact" ? 'header-menu-item-selected' : 'header-menu-item'} onClick={() => navigate('/contact')}>CONTACT</p>
                     <p className={location.pathname === "/faq" ? 'header-menu-item-selected' : 'header-menu-item'} onClick={() => navigate('/faq')}>FAQ</p>

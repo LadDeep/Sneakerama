@@ -1,0 +1,95 @@
+.container {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 5rem;
+  padding-bottom: 2rem;
+  background-image: url(https://images.unsplash.com/photo-1528734056081-a1149a9a0856?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80);
+}
+
+.product-form-contianer {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 2rem;
+  border-radius: 1rem;
+  color: white !important;
+}
+
+.size-selection-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.size-selection-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 0.5fr;
+  align-items: baseline;
+  margin: 0.5rem;
+}
+.product-field-input {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+
+.product-field-input .selection {
+  padding: 0.75rem;
+}
+
+.product-field-input-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.secondary-button {
+  width: fit-content;
+  color: white;
+  background-color: rgb(22, 21, 22);
+  border: none;
+  border-radius: 0.25rem;
+  margin: 0 1rem;
+  font-weight: bold;
+}
+
+.delete-button {
+  position: absolute;
+  top: 2rem;
+  right: 5%;
+  color: red;
+}
+
+label {
+  margin-right: 0.75rem;
+  color: white;
+}
+
+input[type="color"] {
+  padding: 0;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+}
+.button {
+  color: white;
+  background-color: red;
+  border: none;
+  border-radius: 0.25rem;
+  margin: 0 1rem;
+  font-weight: bold;
+}
+@media (max-width: 768px) {
+  .size-selection-container {
+    grid-template-columns: 1fr;
+  }
+  .product-field-input-row {
+    grid-template-columns: 1fr;
+  }
+}

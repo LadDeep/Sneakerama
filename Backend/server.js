@@ -10,6 +10,7 @@ const PaymentRoutes = require('./Routes/PaymentRoute')
 const productRoutes = require('./Routes/productRoutes');
 const eventRoutes = require('./Routes/eventRoutes');
 const orderRoutes = require ('./Routes/orderRoutes')
+const wishListRoutes = require ('./Routes/wishListRoutes')
 
 mongoose.connect(mongoString,{
     dbName: 'sneakerama_db'
@@ -23,15 +24,16 @@ database.on('error', (error) => {
 database.once('connected', () => {
     console.log('Database Connected');
 })
+
 const app = express();
 app.use(cors({ origin: true }));
 
-app.use(express.json());
+app.use(express.json({limit: "10Mb"}));
 
 app.use(reviewRoutes)
 app.use(userRoutes)
 app.use(productRoutes);
-
+app.use(wishListRoutes);
 app.use(eventRoutes);
 app.use(PaymentRoutes)
 app.use(orderRoutes)

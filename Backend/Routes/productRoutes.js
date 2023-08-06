@@ -19,10 +19,11 @@ router.post("/addProduct", async (req, res) => {
 });
 
 // Route to get all products
-router.get("/products", async (req, res) => {
+router.post("/products", async (req, res) => {
+  const { email } = req.body;
   try {
     const { offset = 0, limit = 10 } = req.query;
-    const products = await Product.find()
+    const products = await Product.find({email})
       .skip(parseInt(offset))
       .limit(parseInt(limit));
     res.status(200).json(products);
@@ -55,6 +56,22 @@ router.get("/products/filter", async (req, res) => {
     res.status(200).json(products);
   } catch (error) {
     res.status(500).json({ message: "Failed to filter products." });
+  }
+});
+
+router.post("/products/count", async (req, res) => {
+  const { email } = req.body;
+
+  if (!email) {
+    return res.status(400).json({ error: "Seller's email is required in the request body" });
+  }
+
+  try {
+    const count = await Product.countDocuments({ email });
+    res.json({ count });
+  } catch (err) {
+    console.error("Error counting products:", err);
+    res.status(500).json({ error: "Error counting products" });
   }
 });
 
@@ -105,7 +122,19 @@ router.get('/product', async (req, res) => {
   }
 });
 
+router.delete("/products/:id", async (req, res) => {
+  const productId = req.params.id;
 
-
+  try {
+    const deletedProduct = await Product.findByIdAndDelete(productId);
+    if (deletedProduct) {
+      res.status(200).json({ message: "Product deleted successfully" });
+    } else {
+      res.status(404).json({ message: "Product not found" });
+    }
+  } catch (error) {
+    res.status(500).json({ error: "Unable to delete product" });
+  }
+});
 
 module.exports = router;
