@@ -1,7 +1,7 @@
 import { backendURL } from "../constants";
 
 const createUser = async (signupPayload) => {
-    console.log(signupPayload);
+
     try {
         const response = await fetch(`${backendURL}/auth/signup`, {
             method: 'POST',
@@ -11,7 +11,6 @@ const createUser = async (signupPayload) => {
             body: JSON.stringify(signupPayload)
         })
         .then ((response) => {
-            console.log(response);
 
             return response;
         })
@@ -27,7 +26,6 @@ const createUser = async (signupPayload) => {
 }
 
 const loginUser = async (loginCredentials) => {
-    console.log(loginCredentials)
     const response= await fetch(`${backendURL}/auth/login`, {
         method: 'POST',
         headers: {
@@ -38,12 +36,8 @@ const loginUser = async (loginCredentials) => {
     .then((response) =>{
         if(response.body.accessToken)
         {
-            console.log(response);
-            console.log(response.data.accessToken);
             localStorage.setItem('user', JSON.stringify(response.data.accessToken));
-            console.log(response.data.accessToken);
         }
-        console.log(response);
         return response;
     })
     .catch(error => {
@@ -59,10 +53,8 @@ const loginUser = async (loginCredentials) => {
         storage.isAdmin=data.data.isAdmin;
         storage.isVerified=data.data.isVerifiedSeller;
         localStorage.setItem('user', JSON.stringify(data.accessToken));
-        console.log(data.accessToken);  
     }
-    console.log(data)
-    console.log(response)
+
     return data;
 }
 
@@ -72,7 +64,6 @@ const logout = () => {
 
 const getCurrentUser = async() => {
     let token=JSON.parse(localStorage.getItem('user'));
-    console.log(token);
     const response= await fetch(`${backendURL}/auth/getCurrentUser`, {
         method: 'POST',
         headers: {
@@ -81,14 +72,11 @@ const getCurrentUser = async() => {
         body: JSON.stringify({"token":token})
     })
     const data = await response.json();
-    console.log(response);
-    console.log(data);
     return data;
 };
 
 const getUser = async(userEmail) =>{
     let email = userEmail.email;
-    console.log(email);
     const response= await fetch(`${backendURL}/auth/getUser`, {
         method: 'POST',
         headers: {
@@ -97,13 +85,11 @@ const getUser = async(userEmail) =>{
         body: JSON.stringify({"email":email})
     })
     const data = await response.json();
-    console.log(data);
     return data;
 }
 const changePassword= async(userEmail) =>{
     let email = userEmail.email;
     let password = userEmail.password;
-    console.log(email);
     const response= await fetch(`${backendURL}/auth/changePassword`, {
         method: 'PUT',
         headers: {
@@ -112,14 +98,12 @@ const changePassword= async(userEmail) =>{
         body: JSON.stringify({"email":email,"password":password})
     })
     const data = await response.json();
-    console.log(data);
     return data;
 }
 
 //update user details
 const updateUserDetails =async(email,updatedValues) =>{
-    console.log(email);
-    console.log(updatedValues);
+
     const response= await fetch(`${backendURL}/auth/updateUserDetails`, {
         method: 'PUT',
         headers: {
@@ -128,12 +112,12 @@ const updateUserDetails =async(email,updatedValues) =>{
         body: JSON.stringify({"email":email,"updatedValues":updatedValues})
     })
     const data = await response.json();
-    console.log(data);
+
     return data;
 }
 
 const deleteUser = async(email) =>{
-    console.log(email);
+
     const response= await fetch(`${backendURL}/auth/deleteUser`, {
         method: 'DELETE',
         headers: {
@@ -142,7 +126,7 @@ const deleteUser = async(email) =>{
         body: JSON.stringify({"email":email})
     })
     const data = await response.json();
-    console.log(data);
+
     return data;
 }
 /*

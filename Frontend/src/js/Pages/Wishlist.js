@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { DeleteFilled } from '@ant-design/icons';
 import { toast, ToastContainer } from 'react-toastify';
 
@@ -7,38 +7,26 @@ import Header from '../Components/Header';
 import '../../css/Wishlist.css';
 import 'react-toastify/dist/ReactToastify.css';
 
-import image1 from '../../images/jordan-air-1-mid-se.png';
-import image2 from '../../images/adidas-ultra-bounce.png';
-import image3 from '../../images/converse-run-star-hike.png';
+import { getWishlist } from '../../services/wishlist';
 
 function Wishlist() {
 
-    const [products, setProducts] = useState([
-        {
-            id: 1,
-            model: 'Jordan Air 1 Mid SE',
-            price: '375',
-            image: image1,
-            quantity: 1,
-            inStock: true
-        },
-        {
-            id: 2,
-            model: 'Adidas Ultra Bounce',
-            price: '175',
-            image: image2,
-            quantity: 1,
-            inStock: false
-        },
-        {
-            id: 3,
-            model: 'Converse Run Star Hike',
-            price: '275',
-            image: image3,
-            quantity: 1,
-            inStock: true
+    const [products, setProducts] = useState([]);
+
+    const fetchWishList = async () => {
+        const wishlist = await JSON.parse(localStorage.getItem('wishlist'));
+        if (wishlist) {
+            const products = await getWishlist(wishlist.join(','));
+            if (products)
+                setProducts(products.products)
+            else
+                setProducts([]);
         }
-    ]);
+    }
+
+    useEffect(() => {
+        fetchWishList();
+    }, []);
 
     const notify = () => toast.success('Item added to cart!');
 
@@ -51,7 +39,7 @@ function Wishlist() {
                 <div className="wishlist-item" key={index}>
                     <div style={{ display: 'flex', alignItems: 'center' }}>
                         <div className="wishlist-item-image">
-                            <img src={product.image} alt="Product" className='wishlist-list-image' />
+                            <img src={product.image[0]} alt="Product" className='wishlist-list-image' />
                         </div>
                         <div style={{ color: "#959595", marginLeft: '10px' }}>
                             <div className="wishlist-item-details">
@@ -61,7 +49,7 @@ function Wishlist() {
                                 <div style={{ marginBottom: '15px', textAlign: 'start' }}>
                                     ${parseInt(product.price).toFixed(2)}
                                 </div>
-                                {
+                                {/* {
                                     product.inStock
                                         ?
                                         <div style={{ display: 'flex', alignItems: 'center', marginBottom: '15px' }}>
@@ -84,32 +72,35 @@ function Wishlist() {
                                         </div>
                                         :
                                         null
-                                }
+                                } */}
                             </div>
                         </div>
                         <DeleteFilled onClick={async () => {
                             tempProducts = await tempProducts.filter((item, count) => count !== index);
                             console.log(tempProducts);
                             await setProducts(tempProducts);
+                            localStorage.setItem('wishlist', JSON.stringify(tempProducts.map(item => item._id)));
                         }} className="wishlist-item-remove" />
                     </div>
                     {
-                        product.inStock
+                        !product.empty
                             ?
                             <div className='wishlist-selected-btn' onClick={() => {
                                 const cartProducts = JSON.parse(localStorage.getItem('cart'));
                                 if (cartProducts) {
-                                    const productInTheCart = cartProducts.find(item => item.id === product.id);
+                                    const productInTheCart = cartProducts.find(item => item._id === product._id);
                                     if (productInTheCart) {
-                                        cartProducts.find(item => item.id === product.id).quantity += product.quantity;
+                                        cartProducts.find(item => item._id === product._id).quantity += 1;
                                         localStorage.setItem('cart', JSON.stringify(cartProducts));
                                     }
                                     else {
+                                        product.quantity = 1;
                                         cartProducts.push(product);
                                         localStorage.setItem('cart', JSON.stringify(cartProducts));
                                     }
                                 }
                                 else {
+                                    product.quantity = 1;
                                     localStorage.setItem('cart', JSON.stringify([product]));
                                 }
                                 notify();

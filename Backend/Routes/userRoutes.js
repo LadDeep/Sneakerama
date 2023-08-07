@@ -170,6 +170,40 @@ router.post('/auth/getUser', async (req, res) => {
     }
     }
 );
+//update user details
+router.put('/auth/updateUserDetails', async (req, res) => {
+    const email = req.body.email;
+    const body = req.body.updatedValues;
+    console.log("--------------------");
+    console.log(email);
+    console.log(body);
+    console.log("--------------------");
+    try {
+        const user = await SignupPayload.findOne({ email: email });
+        //console.log(user);
+        for (let key in body) {
+            console.log(key, body[key]);
+            const check = await user.updateOne({ $set: { [key]: body[key] } });
+            console.log(check);
+        }
+        console.log(user);
+
+        return res.status(200).json({
+            success: true,
+            data: user,
+        });
+
+    }
+    catch (error) {
+        console.log(error);
+        return res.status(400).json({
+            success: false,
+            message: error.message
+        });
+    }
+}
+);
+
 
 //change password
 router.put('/auth/changePassword', async (req, res) => {
@@ -197,6 +231,19 @@ router.put('/auth/changePassword', async (req, res) => {
     }
 }
 );
+
+router.delete('/auth/deleteUser', async (req, res) => {
+    const email = req.body.email;
+    console.log(email);
+    const response = await SignupPayload.deleteOne({ email: email });
+    console.log(response);
+    return res.status(200).json({
+        success: true,
+        data: response,
+    });
+}
+);
+
 
 
   
