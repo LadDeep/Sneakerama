@@ -1,0 +1,118 @@
+.catalogpage {
+  padding: 10px;
+  margin-top: 100px;
+  margin-left: 20px;
+}
+
+.catalogcards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  justify-content: space-evenly;
+
+}
+
+.sidebar {
+  width: 250px;
+  padding: 20px;
+  background-color: #f7f7f7;
+  position: fixed;
+  top: 150px;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.verticalline {
+  width: 1px;
+  background-color: #ccc;
+  margin-left: 300px;
+  height: 100;
+}
+
+.cataloggrid {
+  display: grid;
+  grid-template-columns: 0.25fr 1.75fr;
+  gap: 30px;
+  margin-top: 100px;
+}
+
+
+.catalogcard {
+  background-color: #f0f0f0;
+  padding: 20px;
+  text-align: center;
+  height: 90%;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.catalogname {
+  margin-bottom: 10px;
+}
+
+.catalogimage {
+  max-width: 75%;
+  max-height: 75%;
+  margin: 0 auto;
+}
+
+
+.addtocartbutton {
+  text-decoration: none;
+  background-color: #333333;
+  color: #ffffff;
+  border: none;
+  padding: 5px 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.addtocartbutton:hover {
+  background-color: #222222;
+}
+
+.catalogpagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 0;
+  list-style-type: none;
+}
+
+.catalogpagination button {
+  background-color: #ffffff;
+  color: #000; 
+  border: 1px solid #ddd; 
+  margin: 0 2px; 
+  padding: 5px 2px; 
+  min-width: 8px; 
+  font-size: 14px; 
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  line-height: 1.5; 
+  font-weight: 600; 
+}
+
+.catalogpagination button:hover:not(.activePage) {
+  background-color: #f7f7f7; 
+}
+
+.catalogpagination .activePage {
+  background-color: #e7e9ec; 
+  font-weight: bold;
+}
+
+.catalogpagination button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  border-color: #f5f5f5; 
+}
+
+

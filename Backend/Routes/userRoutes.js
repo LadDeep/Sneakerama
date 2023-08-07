@@ -232,6 +232,19 @@ router.put('/auth/changePassword', async (req, res) => {
 }
 );
 
+router.delete('/auth/deleteUser', async (req, res) => {
+    const email = req.body.email;
+    console.log(email);
+    const response = await SignupPayload.deleteOne({ email: email });
+    console.log(response);
+    return res.status(200).json({
+        success: true,
+        data: response,
+    });
+}
+);
+
+
 
   
 module.exports = router
