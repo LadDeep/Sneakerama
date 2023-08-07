@@ -15,6 +15,9 @@ import { useNavigate } from 'react-router-dom';
 function Payment() {
   const [products,] = useState(JSON.parse(localStorage.getItem('cart')));
   const [wishlist,] = useState(JSON.parse(localStorage.getItem('wishlist')));
+  console.log(wishlist,"wishlist")
+  console.log(products,"cart")
+
 
   var subtotal = 0
 
@@ -191,6 +194,9 @@ function Payment() {
         const userName = await fetchUserData();
         console.log(userName, "userName");
         console.log(products, "products");
+        const productIDs = products.map((product) => product._id);
+        console.log(productIDs,"productsidfrom cart")
+
         // console.log(wishlist, "productIDs")
         if (products) {
           const currentDate = new Date();
@@ -203,7 +209,7 @@ function Payment() {
           });
           const orderData = {
             username: userName,
-            orderItems: wishlist,
+            orderItems: productIDs,
             total: (subtotal + 15).toFixed(2),
             createdAt: currentDate,
             quantities: quantities, 

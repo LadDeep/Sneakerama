@@ -35,14 +35,13 @@ function Orders() {
       
             const orderPromises = intitalOrders.map(async (order) => {
               const ids = order.orderItems.join(',');
+              console.log(ids,"ids")
               const response = await fetch(`${backendURL}/product/?ids=${ids}`);
               const data = await response.json();
               console.log(data, "data");
               console.log(order.total, "total");
               console.log(order.quantities,"quantities")
-
-
-            
+        
               return {
                 date: order.createdAt,
                 total: order.total,

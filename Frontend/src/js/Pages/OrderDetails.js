@@ -34,7 +34,7 @@ const OrderDetails = () => {
 
               </div>
               <div className="product-price">
-                ${parseInt(product.price).toFixed(2)}
+                ${parseInt(product.price).toFixed(2)*quantity[index]}
               </div>
             </div>
           ))}
