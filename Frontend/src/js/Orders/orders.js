@@ -60,7 +60,9 @@ function Orders() {
 
     const renderOrders = () => {
         console.log("orders",orders)
-        return orders.map((order, index) => {
+        const sortedOrders = orders.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+            return sortedOrders.map((order, index) => {
             return (
               <div
                 className="order-item"
