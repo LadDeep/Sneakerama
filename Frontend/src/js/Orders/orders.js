@@ -17,6 +17,7 @@ function Orders() {
         const fetchOrders = async () => {
             try {
                 const ordersList = await getOrders();
+                console.log(ordersList,"orderList")
                 setInitialOrders(ordersList.response);
             } catch (error) {
                 console.error('Error fetching orders:', error);
@@ -37,7 +38,7 @@ function Orders() {
                         'http://localhost:3001/product/?ids=' + ids
                     );
                     const data = await response.json();
-                    console.log(data);
+                    console.log(data,"data");
                     const savedOrders = orders;
                     await savedOrders.push({
                         date: order.createdAt,
@@ -55,32 +56,32 @@ function Orders() {
         // eslint-disable-next-line
     }, [intitalOrders]);
 
-    // const renderOrders = () => {
-    //     console.log(orders)
-    //     return orders.map((order, index) => {
-    //         return (
-    //             <div className="order-item" key={index}>
-    //                 {renderProducts(order.orderItems)}
-    //             </div>
-    //         );
-    //     });
-    // };
+    const renderOrders = () => {
+        console.log(orders)
+        return orders.map((order, index) => {
+            return (
+                <div className="order-item" key={index}>
+                    {renderProducts(order.orderItems)}
+                </div>
+            );
+        });
+    };
 
-    // const renderProducts = (products) => {
-    //     return products.map((product, index) => {
-    //         return (
-    //             <>
-    //                 <div className="order-image">
-    //                     <img src={product.image[0]} alt="Product" className="product-list-image" />
-    //                 </div>
-    //                 <div className="product-details">
-    //                     <div className="product-model">{product.model}</div>
-    //                     <div className="product-price">${parseInt(product.price).toFixed(2)}</div>
-    //                 </div>
-    //             </>
-    //         )
-    //     })
-    // }
+    const renderProducts = (products) => {
+        return products.map((product, index) => {
+            return (
+                <>
+                    <div className="order-image">
+                        <img src={product.image[0]} alt="Product" className="product-list-image" />
+                    </div>
+                    <div className="product-details">
+                        <div className="product-model">{product.model}</div>
+                        <div className="product-price">${parseInt(product.price).toFixed(2)}</div>
+                    </div>
+                </>
+            )
+        })
+    }
 
     return (
         <>
@@ -88,7 +89,7 @@ function Orders() {
             <div className="orders-container">
                 <h2 className="orders-title">Your Orders</h2>
                 <div className="products-container">
-                    {/* {
+                    {
                         orders.length === 0
                             ?
                             <div style={{ color: '#959595', fontSize: '18px', minHeight: '80vh', textAlign: 'center', marginTop: '20px' }}>
@@ -98,8 +99,8 @@ function Orders() {
                             <>
                                 {renderOrders()}
                             </>
-                    } */}
-                    <p>Your order has been places successfully. <span className='products-span' onClick={() => navigate('/home')}>Continue Shopping.</span></p>
+                    }
+                    {/* <p>Your order has been places successfully. <span className='products-span' onClick={() => navigate('/home')}>Continue Shopping.</span></p> */}
                 </div>
             </div>
             <Footer />
