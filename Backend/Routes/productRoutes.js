@@ -4,7 +4,7 @@ const router = express.Router();
 const Product = require("../Models/Products");
 const bodyParser = require("body-parser");
 
-router.use(bodyParser.json({ limit: "10Mb" }));
+router.use(bodyParser.json({ limit: "100Mb" }));
 
 // Route to create a new product
 router.post("/addProduct", async (req, res) => {
@@ -136,5 +136,21 @@ router.delete("/products/:id", async (req, res) => {
     res.status(500).json({ error: "Unable to delete product" });
   }
 });
+
+router.get("/product/:id", async (req, res) => {
+  const productId = req.params.id;
+
+  try {
+    const product = await Product.findById(productId);
+    if (product) {
+      res.status(200).json(product);
+    } else {
+      res.status(404).json({ message: "Product not found" });
+    }
+  } catch (error) {
+    res.status(500).json({ error: "Unable to fetch product" });
+  }
+}
+);
 
 module.exports = router;

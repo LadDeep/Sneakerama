@@ -21,6 +21,7 @@ import AddProduct from './Pages/AddProduct';
 import EditProduct from './Pages/EditProduct';
 import Inventory from './Pages/Inventory';
 import OrderDetails from './Pages/OrderDetails';
+import Catalog from './Pages/product/catalog';
 
 function App() {
 
@@ -52,6 +53,7 @@ function App() {
         <Route path="/add-product" element={<AddProduct />} />
         <Route path="/edit-product" element={<EditProduct />} />
         <Route path="/inventory" element={<Inventory />} />
+        <Route path='/catalog' element={<Catalog />} />
         
 
         <Route path="/*" element={<Home />} />
