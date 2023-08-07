@@ -20,6 +20,7 @@ import EditProfile from './UserManagement/EditProfile';
 import AddProduct from './Pages/AddProduct';
 import EditProduct from './Pages/EditProduct';
 import Inventory from './Pages/Inventory';
+import OrderDetails from './Pages/OrderDetails';
 
 function App() {
 
@@ -35,6 +36,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/orders" element={<Orders />} />
+        <Route path="/orders/:id" element={<OrderDetails />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/reviews" element={<Reviews />} />

@@ -6,7 +6,9 @@ import Footer from '../Components/Footer';
 import Header from '../Components/Header';
 import { getOrders } from '../../services/orders';
 import { useNavigate } from 'react-router-dom';
-
+import { backendURL } from '../../constants';
+import { dateFormatOptions } from '../../constants';
+  
 function Orders() {
     const [intitalOrders, setInitialOrders] = useState([]);
     const [orders, setOrders] = useState([]);
@@ -35,7 +37,7 @@ function Orders() {
                 await intitalOrders.forEach(async order => {
                     const ids = order.orderItems.join(',');
                     const response = await fetch(
-                        'http://localhost:3001/product/?ids=' + ids
+                        `${backendURL}/product/?ids=` + ids
                     );
                     const data = await response.json();
                     console.log(data,"data");
@@ -57,31 +59,67 @@ function Orders() {
     }, [intitalOrders]);
 
     const renderOrders = () => {
-        console.log(orders)
+        console.log("orders",orders)
         return orders.map((order, index) => {
             return (
-                <div className="order-item" key={index}>
-                    {renderProducts(order.orderItems)}
+              <div
+                className="order-item"
+                key={index}
+                onClick={() =>
+                  navigate(`/orders/${index}`, {
+                    state: {
+                      orderDetails: order.orderItems,
+                      date: new Date(order.date).toLocaleString(
+                        "en-US",
+                        dateFormatOptions
+                      ),
+                      total: order.total,
+                    },
+                  })
+                }
+              >
+                <div className="order-card-container">
+                  <div className="order-image">
+                    <img src={order.orderItems[0].image[0]} />
+                  </div>
+
+                  <div className="order-details">
+                    <div className="order-title">
+                      {order.orderItems[0].model}
+                    </div>
+                    <div className="product-model">
+                      +{order.orderItems.length - 1} more
+                    </div>
+                  </div>
+                  <div className="order-price">
+                    ${parseInt(order.total).toFixed(2)}
+                  </div>
                 </div>
+                <p className="order-delivery-info">
+                  Ordered on:{" "}
+                  {new Date(order.date).toLocaleString("en-US", dateFormatOptions)}
+                </p>
+              </div>
             );
         });
     };
 
-    const renderProducts = (products) => {
-        return products.map((product, index) => {
-            return (
-                <>
-                    <div className="order-image">
-                        <img src={product.image[0]} alt="Product" className="product-list-image" />
-                    </div>
-                    <div className="product-details">
-                        <div className="product-model">{product.model}</div>
-                        <div className="product-price">${parseInt(product.price).toFixed(2)}</div>
-                    </div>
-                </>
-            )
-        })
-    }
+    // const renderProducts = (products) => {
+    //     console.log("products",products)
+    //     return products.map((product, index) => {
+    //         return (
+    //             <>
+    //                 <div className="order-image">
+    //                     <img src={product.image[0]} alt="Product" className="product-list-image" />
+    //                 </div>
+    //                 <div className="product-details">
+    //                     <div className="product-model">{product.model}</div>
+    //                     <div className="product-price">${parseInt(product.price).toFixed(2)}</div>
+    //                 </div>
+    //             </>
+    //         )
+    //     })
+    // }
 
     return (
         <>
@@ -97,6 +135,7 @@ function Orders() {
                             </div>
                             :
                             <>
+                                <h2>Your Orders</h2>
                                 {renderOrders()}
                             </>
                     }
