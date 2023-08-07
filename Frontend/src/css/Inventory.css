@@ -17,6 +17,12 @@
     border: none;
 }
 
+.inventory-image {
+  height: 100vh;
+  width: 100vh;
+  object-fit: cover
+}
+
 @media (max-width: 767px) {
   .product-list-container {
     display: flex;
