@@ -53,7 +53,7 @@ function Payment() {
       return (
         <div className="checkout-item" key={index}>
           <div style={{ display: 'flex', alignItems: 'center', width: '100%' }}>
-            <div style={{ position: 'relative', width: '70px', height: '70px' }}>
+            <div style={{ position: 'relative', width: '70px', height: '70px',marginTop:'20px' }}>
               <img src={product.image} alt="Product" className='cart-product-image' />
               <div className='checkout-quantity'>
                 <div style={{ margin: 'auto' }}>{product.quantity}</div>
@@ -232,7 +232,6 @@ function Payment() {
       const user = response.data;
       const username = user.email;
       return username;
-      // Rest of the code...
     } catch (error) {
       console.error('Error fetching user data:', error);
     }
