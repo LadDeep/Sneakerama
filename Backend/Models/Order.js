@@ -15,6 +15,10 @@ const orderSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
+  quantities: {
+    type: Array,
+    required: true
+  },
   createdAt: {
     type: Date,
     default: Date.now

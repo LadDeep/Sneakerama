@@ -95,7 +95,6 @@ router.put("/products/:id", async (req, res) => {
     res.status(500).json({ error: "Unable to update product" });
   }
 });
-//Route to get all products with the Array of Ids
 router.get('/product', async (req, res) => {
   const { ids } = req.query;
   console.log(ids);
@@ -104,8 +103,9 @@ router.get('/product', async (req, res) => {
     return res.status(400).json({ error: 'Invalid or missing product IDs' });
   }
 
-  // Split the comma-separated string of IDs into an array
   const idArray = ids.split(',');
+
+  console.log(idArray,"idArray")
 
   try {
     const products = await Product.find({ _id: { $in: idArray } });
