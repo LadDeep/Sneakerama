@@ -29,7 +29,8 @@ const FileInput = ({ name, multiple, onChange }) => {
       }
     }
 
-    onChange(base64Images);
+    onChange( base64Images );
+    event.target.value = ""
   };
 
   return (
