@@ -15,54 +15,55 @@ function Orders() {
     const navigate = useNavigate();
 
     useEffect(() => {
-
         const fetchOrders = async () => {
-            try {
-                const ordersList = await getOrders();
-                console.log(ordersList,"orderList")
-                setInitialOrders(ordersList.response);
-            } catch (error) {
-                console.error('Error fetching orders:', error);
-            }
+          try {
+            const ordersList = await getOrders();
+            console.log(ordersList, "orderList");
+            setInitialOrders(ordersList.response);
+          } catch (error) {
+            console.error('Error fetching orders:', error);
+          }
         };
-
+      
         fetchOrders();
-    }, []);
-
-    useEffect(() => {
-
+      }, []);
+      
+      useEffect(() => {
         const fetchProducts = async () => {
-            try {
-                setOrders([]);
-                await intitalOrders.forEach(async order => {
-                    const ids = order.orderItems.join(',');
-                    const response = await fetch(
-                        `${backendURL}/product/?ids=` + ids
-                    );
-                    const data = await response.json();
-                    console.log(data,"data");
-                    const savedOrders = orders;
-                    await savedOrders.push({
-                        date: order.createdAt,
-                        total: order.total,
-                        orderItems: data
-                    })
-                    await setOrders(savedOrders);
-                })
-            } catch (error) {
-                console.error('Error fetching products:', error);
-            }
+          try {
+            setOrders([]);
+      
+            const orderPromises = intitalOrders.map(async (order) => {
+              const ids = order.orderItems.join(',');
+              const response = await fetch(`${backendURL}/product/?ids=${ids}`);
+              const data = await response.json();
+              console.log(data, "data");
+      
+              return {
+                date: order.createdAt,
+                total: order.total,
+                orderItems: data,
+              };
+            });
+      
+            const fetchedOrders = await Promise.all(orderPromises);
+            setOrders(fetchedOrders);
+          } catch (error) {
+            console.error('Error fetching products:', error);
+          }
         };
-
-        fetchProducts();
-        // eslint-disable-next-line
-    }, [intitalOrders]);
+      
+        if (intitalOrders.length > 0) {
+          fetchProducts();
+        }
+      }, [intitalOrders]);
+      
 
     const renderOrders = () => {
         console.log("orders",orders)
         const sortedOrders = orders.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-            return sortedOrders.map((order, index) => {
+        return sortedOrders.map((order, index) => {
             return (
               <div
                 className="order-item"
