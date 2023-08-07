@@ -9,7 +9,7 @@ import SignupPage from './UserManagement/Signup';
 import ForgotPassword from './UserManagement/ForgotPassword';
 import Wishlist from './Pages/Wishlist';
 import Reviews from './Pages/Reviews';
-import Payment  from './Components/Payment';
+import Payment  from './Payment/Payment';
 import Orders from './Orders/orders'
 import Events from './Pages/events/Events';
 import MainEvent from './Pages/events/MainEvent';
