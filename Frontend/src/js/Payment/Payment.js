@@ -54,7 +54,7 @@ function Payment() {
         <div className="checkout-item" key={index}>
           <div style={{ display: 'flex', alignItems: 'center', width: '100%' }}>
             <div style={{ position: 'relative', width: '70px', height: '70px',marginTop:'20px' }}>
-              <img src={product.image} alt="Product" className='cart-product-image' />
+              <img src={product.image[0]} alt="Product" className='cart-product-image' />
               <div className='checkout-quantity'>
                 <div style={{ margin: 'auto' }}>{product.quantity}</div>
               </div>
@@ -191,19 +191,28 @@ function Payment() {
         const userName = await fetchUserData();
         console.log(userName, "userName");
         console.log(products, "products");
-        console.log(wishlist, "productIDs")
+        // console.log(wishlist, "productIDs")
         if (products) {
           const currentDate = new Date();
+          const quantities = products.map((product) => {
+            const quantityValue = parseInt(product.quantity); 
+
+            console.log(quantityValue,"quantity")
+            return isNaN(quantityValue) ? 0 : quantityValue;
+
+          });
           const orderData = {
             username: userName,
             orderItems: wishlist,
             total: (subtotal + 15).toFixed(2),
             createdAt: currentDate,
+            quantities: quantities, 
+
           };
           console.log(orderData, "orderData");
 
           const response = await addOrderDetails(orderData);
-          console.log(response, "order response")
+          // console.log(response, "order response")
 
           if (response.status === 200) {
           } else {

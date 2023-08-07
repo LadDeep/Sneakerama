@@ -6,7 +6,8 @@ import "../../css/OrderDetails.css";
 
 const OrderDetails = () => {
   const location = useLocation();
-  const { orderDetails, date, total } = location.state;
+  const { orderDetails, date, total,quantity} = location.state;
+  console.log(quantity)
   return (
     <>
       <Header />
@@ -28,7 +29,9 @@ const OrderDetails = () => {
               </div>
               <div className="product-details">
                 <div className="product-model">{product.model}</div>
-                <div className="product-quantity">Quantity: {1}</div>
+                <div className="product-quantity">Quantity: {quantity[index]}</div>
+                <div className="product-quantity">Seller Name: {product.email}</div>
+
               </div>
               <div className="product-price">
                 ${parseInt(product.price).toFixed(2)}

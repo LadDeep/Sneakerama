@@ -38,14 +38,20 @@ function Orders() {
               const response = await fetch(`${backendURL}/product/?ids=${ids}`);
               const data = await response.json();
               console.log(data, "data");
-      
+              console.log(order.total, "total");
+              console.log(order.quantities,"quantities")
+
+
+            
               return {
                 date: order.createdAt,
                 total: order.total,
                 orderItems: data,
+                selleremail:order.email,
+                quantities:order.quantities
               };
             });
-      
+            
             const fetchedOrders = await Promise.all(orderPromises);
             setOrders(fetchedOrders);
           } catch (error) {
@@ -77,6 +83,7 @@ function Orders() {
                         dateFormatOptions
                       ),
                       total: order.total,
+                      quantity:order.quantities
                     },
                   })
                 }

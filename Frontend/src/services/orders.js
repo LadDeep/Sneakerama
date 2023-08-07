@@ -12,6 +12,7 @@ export const addOrderDetails = async (orderData) => {
         });
 
         const data = await response.json();
+
         return {
             response: data,
             status: response.status,
@@ -30,6 +31,7 @@ export const getOrders = async () => {
         });
 
         const data = await response.json();
+        console.log(data,"dataaaaaaaaaaaaaaaaaa")
         return {
             response: data.orders,
             status: response.status,
