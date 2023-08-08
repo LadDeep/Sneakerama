@@ -89,24 +89,24 @@ function Orders() {
               >
                 <div className="order-card-container">
                   <div className="order-image">
-                    <img src={order.orderItems[0].image[0]} />
+                    <img src={order?.orderItems[0]?.image[0]} />
                   </div>
 
                   <div className="order-details">
                     <div className="order-title">
-                      {order.orderItems[0].model}
+                      {order?.orderItems[0]?.model}
                     </div>
                     <div className="product-model">
-                      +{order.orderItems.length - 1} more
+                      +{order?.orderItems.length - 1} more
                     </div>
                   </div>
                   <div className="order-price">
-                    ${parseInt(order.total).toFixed(2)}
+                    ${parseInt(order?.total).toFixed(2)}
                   </div>
                 </div>
                 <p className="order-delivery-info">
                   Ordered on:{" "}
-                  {new Date(order.date).toLocaleString("en-US", dateFormatOptions)}
+                  {new Date(order?.date).toLocaleString("en-US", dateFormatOptions)}
                 </p>
               </div>
             );
