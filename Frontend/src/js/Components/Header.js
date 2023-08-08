@@ -72,8 +72,14 @@ function Header() {
                         <div className="menu-dropdown-content">
                             <div className='header-mobile-menu'>
                                 <p className='header-mobile-menu-item'>NEW ARRIVALS</p>
-                                <p className='header-mobile-menu-item'>MEN'S</p>
-                                <p className='header-mobile-menu-item'>WOMEN'S</p>
+                                <p className='header-mobile-menu-item'onClick={() => {
+                                    navigate('/orders')
+                                    closeMenu();
+                                    }}>MEN'S</p>
+                                <p className='header-mobile-menu-item' onClick={()=>{
+                                    navigate('/catalog')
+                                    closeMenu();
+                                    }}>WOMEN'S</p>
                                 <p className='header-mobile-menu-item'>KIDS'</p>
                                 <p className='header-mobile-menu-item' onClick={() => {
                                     navigate('/orders')
@@ -101,10 +107,10 @@ function Header() {
                 </div>
                 <p className='header-logo' onClick={() => navigate('/')}>SNEAKERAMA</p>
                 <div className='header-menu'>
-                    <p className='header-menu-item'>NEW ARRIVALS</p>
-                    <p className='header-menu-item'>MEN'S</p>
-                    <p className='header-menu-item'>WOMEN'S</p>
-                    <p className='header-menu-item'>KIDS'</p>
+                <p className={location.pathname==="/catalog" ? 'header-menu-item' : 'header-menu-item'} onClick={()=>navigate('/catalog')}>NEW ARRIVALS</p>
+                    <p className={location.pathname==="/catalog" ? 'header-menu-item' : 'header-menu-item'} onClick={()=>navigate('/catalog')}>MEN'S</p>
+                    <p className={location.pathname==="/catalog" ? 'header-menu-item' : 'header-menu-item'} onClick={()=>navigate('/catalog')}>WOMEN'S</p>
+                    <p className={location.pathname==="/catalog" ? 'header-menu-item' : 'header-menu-item'} onClick={()=>navigate('/catalog')}>KIDS'</p>
                     <p className={location.pathname === "/orders" ? 'header-menu-item-selected' : 'header-menu-item'} onClick={() => navigate('/orders')}>ORDERS</p>
                     <p className={location.pathname === "/events" ? 'header-menu-item-selected' : 'header-menu-item'} onClick={() => navigate('/events')}>EVENTS</p>
                     {

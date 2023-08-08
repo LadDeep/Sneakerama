@@ -15,16 +15,16 @@ import Events from './Pages/events/Events';
 import MainEvent from './Pages/events/MainEvent';
 import EventRegistration from './Pages/eventsRegistration/EventRegistration';
 import PostEvent from './Pages/eventposting/NewEvent';
-import { products } from '../products';
 import EditProfile from './UserManagement/EditProfile';
 import AddProduct from './Pages/AddProduct';
 import EditProduct from './Pages/EditProduct';
 import Inventory from './Pages/Inventory';
 import Catalog from './Pages/product/catalog';
+import IndividualProduct from './Pages/product/individualProduct';
 
 function App() {
 
-  localStorage.setItem('cart', JSON.stringify(products));
+  //localStorage.setItem('cart', JSON.stringify(products));
   localStorage.setItem('wishlist', JSON.stringify([
     '64c1284710ff280cc12d7b5a',
     '64c08082db2ebe7d302ae828',
@@ -52,7 +52,7 @@ function App() {
         <Route path="/edit-product" element={<EditProduct />} />
         <Route path="/inventory" element={<Inventory />} />
         <Route path='/catalog' element={<Catalog />} />
-        
+        <Route path='/catalog/:id' element={<IndividualProduct />} />
 
         <Route path="/*" element={<Home />} />
       </Routes>
