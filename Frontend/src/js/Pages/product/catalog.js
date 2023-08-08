@@ -70,7 +70,11 @@ const Catalog = () => {
       "size": size, //getProductbyID.product.size,
       "quantity": quantity, //getProductbyID.product.quantity
     }
-    if (cartProducts == null) {
+    console.log(dataForCart)
+    console.log(cartProducts)
+    if (cartProducts.length==0) {
+      console.log("No products in cart")
+      console.log([dataForCart])
       localStorage.setItem('cart', JSON.stringify([dataForCart]));
       return;
     }
