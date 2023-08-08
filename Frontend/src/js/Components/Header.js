@@ -4,6 +4,7 @@ import { authService } from '../../services/authService';
 import '../../css/App.css';
 import { useEffect, useState } from 'react';
 import Cart from './Cart';
+import { ToastContainer,toast } from 'react-toastify';
 
 function Header() {
     const navigate = useNavigate();
@@ -56,6 +57,15 @@ function Header() {
     const closeMenu = () => {
         setShowMenu(false);
     };
+
+    const navigateWishlist = () => {
+        if(isLoggedIn){
+            navigate('/wishlist');
+        }
+        else{
+            toast.error("Please login to view your wishlist");
+        }
+    }
 
     return (
         <div>
@@ -124,13 +134,12 @@ function Header() {
                 </div>
                 <div className="header-menu-right">
                     <HeartOutlined className='header-menu-icon' onClick={() => {
-                        navigate('/wishlist')
+                        navigateWishlist();
                     }} />
                     <ShoppingCartOutlined className='header-menu-icon' onClick={() => {
                         document.body.style.overflow = 'hidden'
                         setIsCartOpen(true)
                     }} />
-                    {/* Show dropdown when the user is logged in */}
                     {isLoggedIn ? (
                         <div
                             className="profile-dropdown-container"
@@ -163,6 +172,7 @@ function Header() {
                     :
                     null
             }
+    <ToastContainer position='top-right' autoClose={3000} />
         </div>
     );
 }
