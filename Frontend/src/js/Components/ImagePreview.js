@@ -5,6 +5,7 @@ import {
 } from "@ant-design/icons";
 import React, { useState } from "react";
 import "../../css/ImagePreview.css";
+import addPhoto from "../../images/add-photos.jpg"
 
 function ImagePreview({ imageFiles, onChange }) {
   const [currentStep, setCurrentStep] = useState(0);
@@ -20,7 +21,7 @@ function ImagePreview({ imageFiles, onChange }) {
     <>
       {imageFiles.length === 0 ? (
         <img
-          src={"../../images/add-photos.jpg"}
+          src={addPhoto}
           alt="Selected"
           className="carousal-image"
         />
