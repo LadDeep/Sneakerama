@@ -84,8 +84,8 @@ function App() {
         {isSeller && isVerified ? (
           <>
             <Route path="/inventory" element={<Inventory />} />
-            <Route path="/add-product" element={<AddProduct />} />
-            <Route path="/edit-product" element={<EditProduct />} />
+            <Route path="/inventory/add-product" element={<AddProduct />} />
+            <Route path="/inventory/edit-product" element={<EditProduct />} />
           </>
         ) : null}
 
