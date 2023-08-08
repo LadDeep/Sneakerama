@@ -125,7 +125,7 @@ function Header() {
                     <p className={location.pathname === "/events" ? 'header-menu-item-selected' : 'header-menu-item'} onClick={() => navigate('/events')}>EVENTS</p>
                     {
                         user && user.isSeller && 
-                        <p className={location.pathname === "/add-product" ? 'header-menu-item-selected' : 'header-menu-item'} onClick={() => navigate('/inventory')}>INVENTORY</p>
+                        <p className={location.pathname === "/inventory" ? 'header-menu-item-selected' : 'header-menu-item'} onClick={() => navigate('/inventory')}>INVENTORY</p>
 
                     }
                     <p className={location.pathname === "/reviews" ? 'header-menu-item-selected' : 'header-menu-item'} onClick={() => navigate('/reviews')}>REVIEWS</p>

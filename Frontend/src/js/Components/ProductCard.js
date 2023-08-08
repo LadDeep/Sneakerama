@@ -7,7 +7,7 @@ const ProductCard = ({ product }) => {
   console.log(product);
   const navigate = useNavigate();
   const handleEdit = () => {
-    navigate("/edit-product", { state: { product } });
+    navigate("/inventory/edit-product", { state: { product } });
   };
   return (
     <>

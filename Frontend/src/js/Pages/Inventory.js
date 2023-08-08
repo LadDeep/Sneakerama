@@ -69,7 +69,7 @@ const Inventory = () => {
     <div>
       <Header />
       <div className="inventory-container">
-        <button onClick={() => navigate("/add-product")} className="add-button">
+        <button onClick={() => navigate("/inventory/add-product")} className="add-button">
           Add New Product
         </button>
         {isLoading ? (
@@ -99,7 +99,7 @@ const Inventory = () => {
             )}
           </>
         )}
-        <button onClick={() => navigate("/add-product")} className="add-button">
+        <button onClick={() => navigate("/inventory/add-product")} className="add-button">
           Add New Product
         </button>
       </div>
