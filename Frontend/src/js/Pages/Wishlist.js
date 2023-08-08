@@ -31,7 +31,7 @@ function Wishlist() {
     const notify = () => toast.success('Item added to cart!');
 
     const renderWishlist = () => {
-        if (!products || products.length === 0)
+        if (!products || products.length === 0 || !products[0])
             return;
         var tempProducts = [...products];
         return products.map((product, index) => {
