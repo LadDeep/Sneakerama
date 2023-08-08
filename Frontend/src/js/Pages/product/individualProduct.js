@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import classes from '../../../css/MainEvent.module.css';
 import Footer from '../../Components/Footer';
 import Header from '../../Components/Header';
@@ -13,7 +13,6 @@ const IndividualProduct = () => {
     const [quantity, setQuantity] = useState(1);
     const [size, setSize] = useState(6.5);
 
-    const navigate = useNavigate();
     let { id } = useParams();
 
     id = id.replace('id:', '');
@@ -113,6 +112,7 @@ const IndividualProduct = () => {
                     }
                 }
             }
+            toast.success("Added to cart");
             //   navigate('/cart');
         }
     }

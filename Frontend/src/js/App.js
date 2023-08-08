@@ -35,15 +35,18 @@ function App() {
     const result = await authService.getCurrentUser();
     console.log(result.data);
     if (result.data) {
-      if (result.data.isAdmin == true) {
+      // eslint-disable-next-line
+      if (result.data.isAdmin === true) {
         console.log("Admin");
         setIsAdmin(true);
       }
-      if (result.data.isSeller == true) {
+      // eslint-disable-next-line
+      if (result.data.isSeller === true) {
         console.log("Seller");
         setIsSeller(true);
       }
-      if (result.data.isVerifiedSeller == true) {
+      // eslint-disable-next-line
+      if (result.data.isVerifiedSeller === true) {
         console.log("Verified");
         setIsVerified(true);
       }
@@ -57,6 +60,7 @@ function App() {
   getCurrentUser();
   useEffect(() => {
     getCurrentUser();
+    // eslint-disable-next-line
   }, [user])
 
 
@@ -87,7 +91,7 @@ function App() {
             <Route path="/inventory/add-product" element={<AddProduct />} />
             <Route path="/inventory/edit-product" element={<EditProduct />} />
           </>
-        ) : null}
+        ) : <Route path="/" element={<Home />} />}
 
         {user ? (
           <>

@@ -105,6 +105,7 @@ const EditProduct = () => {
     setProductId(productId);
     const trimmedObj = trimIds(product);
     setSelectedProduct(trimmedObj);
+    // eslint-disable-next-line
   }, []);
 
   return (

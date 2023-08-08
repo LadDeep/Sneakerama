@@ -89,7 +89,7 @@ function Orders() {
               >
                 <div className="order-card-container">
                   <div className="order-image">
-                    <img src={order?.orderItems[0]?.image[0]} />
+                    <img src={order?.orderItems[0]?.image[0]} alt='' />
                   </div>
 
                   <div className="order-details">

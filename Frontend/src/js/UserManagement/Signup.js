@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import Footer from '../Components/Footer';
 import Header from '../Components/Header'
 import  {authService}  from '../../services/authService';
-import { toast, ToastContainer } from 'react-toastify';
+import {  ToastContainer } from 'react-toastify';
 
 const SignupPage = () => {
     const navigate = useNavigate();
