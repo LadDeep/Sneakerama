@@ -2,6 +2,7 @@
   padding: 10px;
   margin-top: 100px;
   margin-left: 20px;
+  min-height: 70vh;
 }
 
 .catalogcards {
@@ -15,16 +16,26 @@
 .sidebar {
   width: 250px;
   padding: 20px;
-  background-color: #f7f7f7;
-  position: fixed;
+  position:fixed;
   top: 150px;
   left: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  height: 300px;
 }
 
+.sidebarButton{
+  color:black;
+  border: none;
+  padding: 5px 10px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  background-color: #f7f7f7;
+  min-width: 100px;
+}
 
 .verticalline {
   width: 1px;
@@ -57,8 +68,8 @@
 }
 
 .catalogimage {
-  max-width: 75%;
-  max-height: 75%;
+  max-width: 60%;
+  max-height: 60%;
   margin: 0 auto;
 }
 
@@ -113,6 +124,26 @@
   cursor: not-allowed;
   opacity: 0.6;
   border-color: #f5f5f5; 
+}
+.sizeQuantityContainer {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.sizeQuantityContainer button {
+  border: none;
+  background-color: #f0f0f0;
+  font-size: 20px;
+  padding: 5px 5px;
+  cursor: pointer;
+}
+
+.sizeQuantityContainer span {
+  font-size: 18px;
+  margin: 0 10px;
 }
 
 
