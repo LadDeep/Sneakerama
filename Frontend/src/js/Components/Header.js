@@ -4,6 +4,7 @@ import { authService } from '../../services/authService';
 import '../../css/App.css';
 import { useEffect, useState } from 'react';
 import Cart from './Cart';
+import { ToastContainer,toast } from 'react-toastify';
 
 function Header() {
     const navigate = useNavigate();
@@ -57,6 +58,15 @@ function Header() {
         setShowMenu(false);
     };
 
+    const navigateWishlist = () => {
+        if(isLoggedIn){
+            navigate('/wishlist');
+        }
+        else{
+            toast.error("Please login to view your wishlist");
+        }
+    }
+
     return (
         <div>
             <div className='header-bg'>
@@ -72,8 +82,14 @@ function Header() {
                         <div className="menu-dropdown-content">
                             <div className='header-mobile-menu'>
                                 <p className='header-mobile-menu-item'>NEW ARRIVALS</p>
-                                <p className='header-mobile-menu-item'>MEN'S</p>
-                                <p className='header-mobile-menu-item'>WOMEN'S</p>
+                                <p className='header-mobile-menu-item'onClick={() => {
+                                    navigate('/orders')
+                                    closeMenu();
+                                    }}>MEN'S</p>
+                                <p className='header-mobile-menu-item' onClick={()=>{
+                                    navigate('/catalog')
+                                    closeMenu();
+                                    }}>WOMEN'S</p>
                                 <p className='header-mobile-menu-item'>KIDS'</p>
                                 <p className='header-mobile-menu-item' onClick={() => {
                                     navigate('/orders')
@@ -101,10 +117,10 @@ function Header() {
                 </div>
                 <p className='header-logo' onClick={() => navigate('/')}>SNEAKERAMA</p>
                 <div className='header-menu'>
-                    <p className='header-menu-item'>NEW ARRIVALS</p>
-                    <p className='header-menu-item'>MEN'S</p>
-                    <p className='header-menu-item'>WOMEN'S</p>
-                    <p className='header-menu-item'>KIDS'</p>
+                <p className={location.pathname==="/catalog" ? 'header-menu-item' : 'header-menu-item'} onClick={()=>navigate('/catalog')}>NEW ARRIVALS</p>
+                    <p className={location.pathname==="/catalog" ? 'header-menu-item' : 'header-menu-item'} onClick={()=>navigate('/catalog')}>MEN'S</p>
+                    <p className={location.pathname==="/catalog" ? 'header-menu-item' : 'header-menu-item'} onClick={()=>navigate('/catalog')}>WOMEN'S</p>
+                    <p className={location.pathname==="/catalog" ? 'header-menu-item' : 'header-menu-item'} onClick={()=>navigate('/catalog')}>KIDS'</p>
                     <p className={location.pathname === "/orders" ? 'header-menu-item-selected' : 'header-menu-item'} onClick={() => navigate('/orders')}>ORDERS</p>
                     <p className={location.pathname === "/events" ? 'header-menu-item-selected' : 'header-menu-item'} onClick={() => navigate('/events')}>EVENTS</p>
                     {
@@ -118,13 +134,12 @@ function Header() {
                 </div>
                 <div className="header-menu-right">
                     <HeartOutlined className='header-menu-icon' onClick={() => {
-                        navigate('/wishlist')
+                        navigateWishlist();
                     }} />
                     <ShoppingCartOutlined className='header-menu-icon' onClick={() => {
                         document.body.style.overflow = 'hidden'
                         setIsCartOpen(true)
                     }} />
-                    {/* Show dropdown when the user is logged in */}
                     {isLoggedIn ? (
                         <div
                             className="profile-dropdown-container"
@@ -157,6 +172,7 @@ function Header() {
                     :
                     null
             }
+    <ToastContainer position='top-right' autoClose={3000} />
         </div>
     );
 }
