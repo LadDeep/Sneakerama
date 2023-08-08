@@ -9,7 +9,7 @@ import SignupPage from './UserManagement/Signup';
 import ForgotPassword from './UserManagement/ForgotPassword';
 import Wishlist from './Pages/Wishlist';
 import Reviews from './Pages/Reviews';
-import Payment from './Components/Payment';
+import Payment  from './Payment/Payment';
 import Orders from './Orders/orders'
 import Events from './Pages/events/Events';
 import MainEvent from './Pages/events/MainEvent';
@@ -19,6 +19,7 @@ import EditProfile from './UserManagement/EditProfile';
 import AddProduct from './Pages/AddProduct';
 import EditProduct from './Pages/EditProduct';
 import Inventory from './Pages/Inventory';
+import OrderDetails from './Pages/OrderDetails';
 import Catalog from './Pages/product/catalog';
 import IndividualProduct from './Pages/product/individualProduct';
 import { authService } from '../services/authService';
@@ -64,6 +65,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/orders/:id" element={<OrderDetails />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/reviews" element={<Reviews />} />
         <Route path="/login" element={<LoginPage />} />

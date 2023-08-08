@@ -47,6 +47,15 @@
   grid-template-columns: 1fr 1fr;
 }
 
+.product-field-input input[type="file"]{
+  color: rgba(0, 0, 0, 0);
+}
+.image-preview{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
 .secondary-button {
   width: fit-content;
   color: white;

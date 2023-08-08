@@ -1,6 +1,6 @@
 export const products = [
     {
-        "_id": "64c0800fdb2ebe7d302ae827",
+        "_id": "64c16a0b961cd60d0e9247b4",
         "email": "test.seller@gmail.com",
         "brand": "Nike",
         "model": "Jordan 1 Retro High OG",
@@ -13,7 +13,7 @@ export const products = [
         "quantity": "2"
     },
     {
-        "_id": "64c08082db2ebe7d302ae828",
+        "_id": "64d072b495215740bc8fe8ec",
         "email": "test.seller@gmail.com",
         "brand": "Nike",
         "model": "AJKO 1 Low x UNION",

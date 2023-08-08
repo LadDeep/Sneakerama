@@ -18,6 +18,7 @@ router.post('/orders', async (req, res) => {
     username: body.username,
     orderItems: body.orderItems,
     total: body.total,
+    quantities:body.quantities,
     createdAt: new Date() 
   });
 
@@ -35,7 +36,7 @@ router.get('/orders/:email', async (req, res) => {
   console.log("email: " + email);
   try {
     const orders = await Order.find({ username: email });
-    console.log(orders)
+    console.log(orders,"orders")
     return res.status(200).json({ orders: orders });
   } catch (error) {
     return res.status(400).json({ message: error.message });

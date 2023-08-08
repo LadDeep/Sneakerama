@@ -1,0 +1,28 @@
+.carousal-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousal-icon {
+  font-size: larger;
+  margin: 1rem;
+}
+
+.carousal-image {
+  object-fit: cover;
+  width: 300px;
+  height: 300px;
+  margin-top: 10px;
+}
+
+.carousal-image-container {
+  position: relative;
+}
+
+.delete-icon {
+  position: absolute;
+  top: 5%;
+  right: 2%;
+  color: red;
+}

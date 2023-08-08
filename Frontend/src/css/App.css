@@ -291,6 +291,19 @@ body {
   .header-menu-right {
     margin-right: 20px;
   }
+  /* .home-banner2-btn {
+    background-color: white;
+    color: #1c1c1c;
+    width: fit-content;
+    padding: 10px 20px;
+    font-size: 0.5rem;
+    font-weight: 300;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -40px;
+    cursor: pointer;
+    transition: 0.3s;
+  } */
 
   .menu-dropdown-content {
     background-color: #1c1c1c;
