@@ -6,6 +6,8 @@ import '../../css/Login.css'
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
 import { authService } from '../../services/authService';
+import { toast, ToastContainer } from 'react-toastify';
+
 
 const LoginPage = () => {
 const navigate = useNavigate();
@@ -36,7 +38,7 @@ const navigate = useNavigate();
   };
 
   const registerButton = () => {
-    console.log('Register button clicked');
+    toast.info("Redirecting to Sign Up page!");
     navigate('/signup');
   };
 
@@ -92,6 +94,8 @@ const navigate = useNavigate();
         </Formik>
       </div>
     </div>
+    <ToastContainer position='top-right' autoClose={3000} />
+
     <Footer/>
     </div>
   );

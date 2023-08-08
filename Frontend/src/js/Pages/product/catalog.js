@@ -5,6 +5,7 @@ import classes from '../../../css/Catalog.module.css';
 import { authService } from '../../../services/authService';
 import { getProducts, getProductById } from '../../../services/catalogService';
 import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
 
 const Catalog = () => {
   const navigate = useNavigate();
@@ -47,6 +48,12 @@ const Catalog = () => {
   const addToCart = async (id) => {
     console.log(id);
     const user = await getUserData();
+    console.log(user);
+    if (!user.data) {
+      toast.error("Please login to add to cart");
+      return;
+    }
+    else {
     const cartProducts = JSON.parse(localStorage.getItem('cart'));
     console.log(cartProducts)
     const getProductbyID = await getProductById(id);
@@ -82,7 +89,7 @@ const Catalog = () => {
       localStorage.setItem('cart', JSON.stringify(cartProducts));
     }
   }
-
+  };
 
   async function incrementSize(id) {
     const prod = await getProductById(id);
@@ -208,6 +215,7 @@ const Catalog = () => {
         </div>
         </div>
         )}
+        <ToastContainer position='top-right' autoClose={3000} />
       <Footer />
     </>
   );
