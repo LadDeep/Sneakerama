@@ -12,6 +12,7 @@ const Catalog = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 9;
   const [products, setProducts] = useState([]);
+  // eslint-disable-next-line no-unused-vars
   const [quantity, setQuantity] = useState(1);
   const [size, setSize] = useState(6.5);
   const getUserData = async () => {
@@ -72,6 +73,7 @@ const Catalog = () => {
     }
     console.log(dataForCart)
     console.log(cartProducts)
+    // eslint-disable-next-line
     if (cartProducts.length==0) {
       console.log("No products in cart")
       console.log([dataForCart])
@@ -92,6 +94,7 @@ const Catalog = () => {
 
       localStorage.setItem('cart', JSON.stringify(cartProducts));
     }
+    toast.success("Product added to cart");
   }
   };
 
@@ -116,6 +119,7 @@ const Catalog = () => {
     console.log(productData.product[0].gender)
     let menProducts = [];
     for(let i=0;i<productData.product.length;i++){
+      // eslint-disable-next-line
       if(productData.product[i].category=='men'){
         console.log(productData.product[i]);
         menProducts.push(productData.product[i]);
@@ -129,6 +133,7 @@ const Catalog = () => {
     console.log(productData.product);
     let womenProducts = [];
     for(let i=0;i<productData.product.length;i++){
+      // eslint-disable-next-line
       if(productData.product[i].category=='women'){
         console.log(productData.product[i]);
         womenProducts.push(productData.product[i]);
@@ -142,6 +147,7 @@ const Catalog = () => {
     console.log(productData.product);
     let kidsProducts = [];
     for(let i=0;i<productData.product.length;i++){
+      // eslint-disable-next-line
       if(productData.product[i].category=='boys'){
         console.log(productData.product[i]);
         kidsProducts.push(productData.product[i]);

@@ -90,11 +90,20 @@ const EditProduct = () => {
     return obj;
   }
 
+  const handleImageChange = (files, images, setFieldValue)=>{
+    const newImages = [...images,...files]
+    setFieldValue('image', newImages)
+  }
+
+  const handleRemoveImage = (removeIndex, images, setFieldValue)=>{
+    const filteredImages = images.filter((_,index)=>index!==removeIndex);
+    setFieldValue('image', filteredImages)
+  }
+  
   useEffect(() => {
     const productId = product._id;
     setProductId(productId);
     const trimmedObj = trimIds(product);
-    console.log("trimmedObj", { ...trimmedObj, _id: productId });
     setSelectedProduct(trimmedObj);
     // eslint-disable-next-line
   }, []);
@@ -193,13 +202,22 @@ const EditProduct = () => {
                 <div style={{ margin: "1.5rem 0" }}>
                   <div className="product-field-input-row">
                     <div className="product-field-input">
-                      <ImagePreview imageFiles={values.image} />
-                      <FileInput
-                        name={`image`}
-                        multiple
-                        onChange={(files) => setFieldValue(`image`, files)}
-                      />
-
+                      <div className="image-preview">
+                        <ImagePreview
+                          imageFiles={values.image}
+                          onChange={(index) =>
+                            handleRemoveImage(index, values.image, setFieldValue)
+                          }
+                        />
+                        <FileInput
+                          images={values.image}
+                          name={`image`}
+                          multiple
+                          onChange={(files) =>
+                            handleImageChange(files, values.image, setFieldValue)
+                          }
+                        />
+                      </div>
                       <ErrorMessage
                         className="error-message"
                         name={`image`}

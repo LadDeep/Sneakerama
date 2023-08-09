@@ -9,7 +9,7 @@ import SignupPage from './UserManagement/Signup';
 import ForgotPassword from './UserManagement/ForgotPassword';
 import Wishlist from './Pages/Wishlist';
 import Reviews from './Pages/Reviews';
-import Payment from './Components/Payment';
+import Payment  from './Payment/Payment';
 import Orders from './Orders/orders'
 import Events from './Pages/events/Events';
 import MainEvent from './Pages/events/MainEvent';
@@ -19,6 +19,7 @@ import EditProfile from './UserManagement/EditProfile';
 import AddProduct from './Pages/AddProduct';
 import EditProduct from './Pages/EditProduct';
 import Inventory from './Pages/Inventory';
+import OrderDetails from './Pages/OrderDetails';
 import Catalog from './Pages/product/catalog';
 import IndividualProduct from './Pages/product/individualProduct';
 import AdminHome from './Pages/admin/AdminHome';
@@ -43,10 +44,6 @@ function App() {
         console.log("Seller");
         setIsSeller(true);
       }
-      if (result.data.isVerifiedSeller === true) {
-        console.log("Verified");
-        setIsVerified(true);
-      }
     }
     console.log(isadmin);
     console.log(isSeller);
@@ -57,6 +54,7 @@ function App() {
   getCurrentUser();
   useEffect(() => {
     getCurrentUser();
+    // eslint-disable-next-line
   }, [user])
 
 
@@ -71,6 +69,7 @@ function App() {
         
         <Route path="/" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/orders/:id" element={<OrderDetails />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/reviews" element={<Reviews />} />
         <Route path="/login" element={<LoginPage />} />
@@ -85,10 +84,10 @@ function App() {
         {isSeller && isVerified ? (
           <>
             <Route path="/inventory" element={<Inventory />} />
-            <Route path="/add-product" element={<AddProduct />} />
-            <Route path="/edit-product" element={<EditProduct />} />
+            <Route path="/inventory/add-product" element={<AddProduct />} />
+            <Route path="/inventory/edit-product" element={<EditProduct />} />
           </>
-        ) : null}
+        ) : <Route path="/" element={<Home />} />}
 
         {user ? (
           <>

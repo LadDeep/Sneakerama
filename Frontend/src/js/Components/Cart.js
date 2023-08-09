@@ -46,7 +46,8 @@ function Cart(props) {
                                     <span className="quantity-value">{product.quantity}</span>
                                     <span className="quantity-btn"
                                         onClick={async () => {
-                                            tempProducts[index].quantity += 1;
+                                            const stringQuantity = tempProducts[index].quantity;
+                                            tempProducts[index].quantity = parseInt(stringQuantity) + 1;
                                             await setProducts(tempProducts);
                                             localStorage.setItem('cart', JSON.stringify(tempProducts));
                                         }

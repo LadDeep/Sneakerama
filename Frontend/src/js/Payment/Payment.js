@@ -15,6 +15,9 @@ import { useNavigate } from 'react-router-dom';
 function Payment() {
   const [products,] = useState(JSON.parse(localStorage.getItem('cart')));
   const [wishlist,] = useState(JSON.parse(localStorage.getItem('wishlist')));
+  console.log(wishlist,"wishlist")
+  console.log(products,"cart")
+
 
   var subtotal = 0
 
@@ -53,8 +56,8 @@ function Payment() {
       return (
         <div className="checkout-item" key={index}>
           <div style={{ display: 'flex', alignItems: 'center', width: '100%' }}>
-            <div style={{ position: 'relative', width: '70px', height: '70px' }}>
-              <img src={product.image} alt="Product" className='cart-product-image' />
+            <div style={{ position: 'relative', width: '70px', height: '70px',marginTop:'20px' }}>
+              <img src={product.image[0]} alt="Product" className='cart-product-image' />
               <div className='checkout-quantity'>
                 <div style={{ margin: 'auto' }}>{product.quantity}</div>
               </div>
@@ -191,19 +194,31 @@ function Payment() {
         const userName = await fetchUserData();
         console.log(userName, "userName");
         console.log(products, "products");
-        console.log(wishlist, "productIDs")
+        const productIDs = products.map((product) => product._id);
+        console.log(productIDs,"productsidfrom cart")
+
+        // console.log(wishlist, "productIDs")
         if (products) {
           const currentDate = new Date();
+          const quantities = products.map((product) => {
+            const quantityValue = parseInt(product.quantity); 
+
+            console.log(quantityValue,"quantity")
+            return isNaN(quantityValue) ? 0 : quantityValue;
+
+          });
           const orderData = {
             username: userName,
-            orderItems: wishlist,
+            orderItems: productIDs,
             total: (subtotal + 15).toFixed(2),
             createdAt: currentDate,
+            quantities: quantities, 
+
           };
           console.log(orderData, "orderData");
 
           const response = await addOrderDetails(orderData);
-          console.log(response, "order response")
+          // console.log(response, "order response")
 
           if (response.status === 200) {
           } else {
@@ -232,7 +247,6 @@ function Payment() {
       const user = response.data;
       const username = user.email;
       return username;
-      // Rest of the code...
     } catch (error) {
       console.error('Error fetching user data:', error);
     }

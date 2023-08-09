@@ -70,6 +70,18 @@ const AddProduct = () => {
   //   return sizes.filter((size) => !selectedSizes.includes(size));
   // };
 
+  const handleImageChange = (files, images, setFieldValue)=>{
+    const newImages = [...images,...files]
+    console.log("image Change", newImages)
+    setFieldValue('image', newImages)
+  }
+
+  const handleRemoveImage = (removeIndex, images, setFieldValue)=>{
+    const filteredImages = images.filter((_,index)=>index!==removeIndex);
+    console.log("remove Change", filteredImages)
+    setFieldValue('image', filteredImages)
+  }
+
   return (
     <div>
       <Header />
@@ -164,13 +176,30 @@ const AddProduct = () => {
                 <div style={{ margin: "1.5rem 0" }}>
                   <div className="product-field-input-row">
                     <div className="product-field-input">
-                      <ImagePreview imageFiles={values.image} />
-                      <FileInput
-                        name={`image`}
-                        multiple
-                        onChange={(files) => setFieldValue(`image`, files)}
-                      />
-
+                      <div className="image-preview">
+                        <ImagePreview
+                          imageFiles={values.image}
+                          onChange={(index) =>
+                            handleRemoveImage(
+                              index,
+                              values.image,
+                              setFieldValue
+                            )
+                          }
+                        />
+                        <FileInput
+                          images={values.image}
+                          name={`image`}
+                          multiple
+                          onChange={(files) =>
+                            handleImageChange(
+                              files,
+                              values.image,
+                              setFieldValue
+                            )
+                          }
+                        />
+                      </div>
                       <ErrorMessage
                         className="error-message"
                         name={`image`}
@@ -282,7 +311,9 @@ const AddProduct = () => {
                     </FieldArray>
                   </div>
                 </div>
-                <button type="submit" className="button">Add</button>
+                <button type="submit" className="button">
+                  Add
+                </button>
               </Form>
             )}
           </Formik>
