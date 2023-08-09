@@ -21,6 +21,7 @@ import EditProduct from './Pages/EditProduct';
 import Inventory from './Pages/Inventory';
 import Catalog from './Pages/product/catalog';
 import IndividualProduct from './Pages/product/individualProduct';
+import AdminHome from './Pages/admin/AdminHome';
 import { authService } from '../services/authService';
 import { useEffect, useState } from 'react';
 
@@ -34,15 +35,15 @@ function App() {
     const result = await authService.getCurrentUser();
     console.log(result.data);
     if (result.data) {
-      if (result.data.isAdmin == true) {
+      if (result.data.isAdmin === true) {
         console.log("Admin");
         setIsAdmin(true);
       }
-      if (result.data.isSeller == true) {
+      if (result.data.isSeller === true) {
         console.log("Seller");
         setIsSeller(true);
       }
-      if (result.data.isVerifiedSeller == true) {
+      if (result.data.isVerifiedSeller === true) {
         console.log("Verified");
         setIsVerified(true);
       }
@@ -62,6 +63,12 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+      {isadmin ? (
+          <>
+            <Route path="/admin/home" element={<AdminHome />} />
+          </>
+        ) : null}
+        
         <Route path="/" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/faq" element={<FAQ />} />
@@ -72,12 +79,8 @@ function App() {
         <Route path="/event/:id" element={<MainEvent />} />
         <Route path='/catalog' element={<Catalog />} />
         <Route path='/catalog/:id' element={<IndividualProduct />} />
-
-        {isadmin ? (
-          <>
-            <Route path="/admin/home" element={<Home />} />
-          </>
-        ) : null}
+        <Route path="/eventregistration/:id" element={<EventRegistration />} />
+        <Route path="/postevent" element={<PostEvent />} />
 
         {isSeller && isVerified ? (
           <>
@@ -93,8 +96,6 @@ function App() {
             <Route path="/wishlist" element={<Wishlist />} />
             <Route path="/payment" element={<Payment />} />
             <Route path="/forgotpassword" element={<ForgotPassword />} />
-            <Route path="/eventregistration/:id" element={<EventRegistration />} />
-            <Route path="/postevent" element={<PostEvent />} />
             <Route path="/editprofile" element={<EditProfile />} />
           </>
         ) : null}

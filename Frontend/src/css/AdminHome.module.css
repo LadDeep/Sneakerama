@@ -1,0 +1,55 @@
+.adminHomeContainer {
+    display: flex;
+    flex-direction: column;
+    min-height: 80vh;  
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-top: 60px;
+    flex: 1;
+}
+
+.graphsContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.graph {
+    width: calc(33% - 10px); 
+    height: 200px; 
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tableContainer {
+    width: 100%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #e0e0e0;
+}
+
+th, td {
+    padding: 8px 12px;
+    text-align: left;
+}
+
+.approveButton {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.approveButton:hover {
+    background-color: #45a049;
+}
