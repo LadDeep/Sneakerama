@@ -14,15 +14,6 @@ const Events = () => {
   const [isSeller, setIsSeller] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const checkUserStatus = async () => {
-      const result = await isUserLoggedInAndSeller();
-      setIsSeller(result);
-    };
-    checkUserStatus();
-    // eslint-disable-next-line
-  }, []);
-  
 
   useEffect(() => {
     const checkUserStatus = async () => {
@@ -30,7 +21,6 @@ const Events = () => {
       setIsSeller(result);
     };
     checkUserStatus();
-    // eslint-disable-next-line
   }, []);
 
   const getUserData = async() => {
@@ -57,12 +47,10 @@ const Events = () => {
     fetchEvents();
   }, []);
 
-  // Get current posts
   const indexOfLastEvent = currentPage * eventsPerPage;
   const indexOfFirstEvent = indexOfLastEvent - eventsPerPage;
   const currentEvents = events.slice(indexOfFirstEvent, indexOfLastEvent);
 
-  // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   console.log(isUserLoggedInAndSeller());

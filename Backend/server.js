@@ -11,6 +11,7 @@ const productRoutes = require('./Routes/productRoutes');
 const eventRoutes = require('./Routes/eventRoutes');
 const orderRoutes = require ('./Routes/orderRoutes')
 const wishListRoutes = require ('./Routes/wishListRoutes')
+const adminRoutes = require('./Routes/adminRoutes');
 
 mongoose.connect(mongoString,{
     dbName: 'sneakerama_db'
@@ -37,6 +38,7 @@ app.use(wishListRoutes);
 app.use(eventRoutes);
 app.use(PaymentRoutes)
 app.use(orderRoutes)
+app.use(adminRoutes);
 
 app.listen(3001, () => {
     console.log(`Server Started at ${3001}`)

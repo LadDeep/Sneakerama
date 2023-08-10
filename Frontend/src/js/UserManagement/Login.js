@@ -30,7 +30,12 @@ const navigate = useNavigate();
       console.log('Login button clicked!');
       alert('Login Successful!');
       //fetch cart and wishlist details
-      navigate('/');
+      if(response.data.isAdmin === false){
+        navigate('/');
+      }else if(response.data.isAdmin === true){
+        navigate('/admin/home');
+      }
+      
     }
     else{
       alert('Invalid Credentials!');
