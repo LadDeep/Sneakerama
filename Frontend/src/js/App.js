@@ -23,6 +23,7 @@ import OrderDetails from './Pages/OrderDetails';
 import Catalog from './Pages/product/catalog';
 import IndividualProduct from './Pages/product/individualProduct';
 import AdminHome from './Pages/admin/AdminHome';
+import EditAdminInfo from './Pages/admin/EditAdminInfo';
 import { authService } from '../services/authService';
 import { useEffect, useState } from 'react';
 
@@ -64,6 +65,7 @@ function App() {
       {isadmin ? (
           <>
             <Route path="/admin/home" element={<AdminHome />} />
+            <Route path="/admin/edit-information" element={<EditAdminInfo />}/>
           </>
         ) : null}
         
