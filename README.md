@@ -72,70 +72,49 @@ Steps performed to deploy the application (frontend):
 * [Formik](https://formik.org/) - Scalable, performant, form helper with a minimal API
 
 ## Web Application Screenshots
-![Screenshot 2023-08-08 at 19 50 45_macbookpro15_front](https://github.com/LadDeep/Sneakerama/assets/68908897/3c25bbf2-345c-4659-b515-f5395a0237fc)*Figure 1. Landing Page showcasing all different btands to choose from*
+![Screenshot 2023-08-08 at 19 50 45_macbookpro15_front](https://github.com/LadDeep/Sneakerama/assets/68908897/be7a505f-d788-48ad-8ee9-56debf7de642)*Figure 1. Landing Page showcasing all different btands to choose from*
 
+![Screenshot 2023-08-08 at 19 51 03_macbookpro15_front](https://github.com/LadDeep/Sneakerama/assets/68908897/8efb1c5c-cec2-46e7-ac65-317dc30b580b)*Figure 2. Filterable Catalogue Page displaying available sneakers*
 
-![Screenshot 2023-08-08 at 19 51 03_macbookpro15_front](https://github.com/LadDeep/Sneakerama/assets/68908897/9db904ed-05ce-44db-baa9-3ccc2b1bd0b5)*Figure 2. Filterable Catalogue Page displaying available sneakers*
+![Screenshot 2023-08-09 at 15 08 16_macbookpro15_front](https://github.com/LadDeep/Sneakerama/assets/68908897/23cae358-f87e-49c6-aa7d-f7decaef5be4)*Figure 3. Saved sneakers in Wishlist*
 
+![Screenshot 2023-08-09 at 15 03 20_macbookpro15_front](https://github.com/LadDeep/Sneakerama/assets/68908897/83d19d2d-e7aa-4c85-b65a-d02e2f92a0c8)*Figure 4. Registration Page for Buyer and Seller with active touch validation*
 
-![Screenshot 2023-08-09 at 15 08 16_macbookpro15_front](https://github.com/LadDeep/Sneakerama/assets/68908897/206584d3-aee4-4b14-98ef-b36358aa6eb1)*Figure 3. Saved sneakers in Wishlist*
+![Screenshot 2023-08-09 at 15 02 39_macbookpro15_front](https://github.com/LadDeep/Sneakerama/assets/68908897/1649c3be-ddd3-41fc-bd11-8f02b94eb93e)*Figure 5. Login Page for Sneakerama*
 
+![Screenshot 2023-08-08 at 19 57 25_macbookpro15_front](https://github.com/LadDeep/Sneakerama/assets/68908897/d8f4198f-ac59-4840-b040-abece56f481d)*Figure 6. Edit Profile Page opening up on clicking User Icon -> Edit Profile on the top-right corner*
 
-![Screenshot 2023-08-09 at 15 03 20_macbookpro15_front](https://github.com/LadDeep/Sneakerama/assets/68908897/1f08da0a-8320-436c-8650-2cf4054841c5)*Figure 4. Registration Page for Buyer and Seller with active touch validation*
+![Screenshot 2023-08-08 at 19 54 25_macbookpro15_front](https://github.com/LadDeep/Sneakerama/assets/68908897/b3d88910-679e-4228-b857-5dc6b075714e)*Figure 7. Cart Drawer opening up on clicking Cart Icon on the top-right corner*
 
+![Screenshot 2023-08-08 at 19 54 39_macbookpro15_front](https://github.com/LadDeep/Sneakerama/assets/68908897/57059ba2-bbb9-45c0-96f2-0af5c6f33e83)*Figure 8. Checkout page gathering shipping address on clicking "Checkout" button in Figure 7*
 
-![Screenshot 2023-08-09 at 15 02 39_macbookpro15_front](https://github.com/LadDeep/Sneakerama/assets/68908897/3327aecb-d28e-4110-856b-3af5a25ac21a)*Figure 5. Login Page for Sneakerama*
+![Screenshot 2023-08-08 at 19 55 57_macbookpro15_front](https://github.com/LadDeep/Sneakerama/assets/68908897/45de3261-e0d2-444f-8b65-3808ebf30a64)*Figure 9. Checkout page with filled shipping address*
 
+![Screenshot 2023-08-08 at 19 56 04_macbookpro15_front](https://github.com/LadDeep/Sneakerama/assets/68908897/0353f8f5-2d8d-4194-820a-f2f55390c0b5)*Figure 10. Payment options provided by PayPal integration*
 
-![Screenshot 2023-08-08 at 19 57 25_macbookpro15_front](https://github.com/LadDeep/Sneakerama/assets/68908897/021bda41-235a-45ca-a73c-e71182a69c2d)*Figure 6. Edit Profile Page opening up on clicking User Icon -> Edit Profile on the top-right corner*
+![Screenshot 2023-08-08 at 19 56 13_macbookpro15_front](https://github.com/LadDeep/Sneakerama/assets/68908897/b9e0b549-d8bc-4491-b723-15bc9c3b09bc)*Figure 11. Form prompting for card details and shipping address for successfull order placement*
 
+![Screenshot 2023-08-08 at 19 57 43_macbookpro15_front](https://github.com/LadDeep/Sneakerama/assets/68908897/9cbafe25-fb29-4f34-b143-ff2b0a20d33e)*Figure 12. Orders Page listing previous orders*
 
-![Screenshot 2023-08-08 at 19 54 25_macbookpro15_front](https://github.com/LadDeep/Sneakerama/assets/68908897/98f5a8f7-5d66-4c5e-815d-d87a8710009a)*Figure 7. Cart Drawer opening up on clicking Cart Icon on the top-right corner*
+![Screenshot 2023-08-08 at 20 16 12_macbookpro15_front](https://github.com/LadDeep/Sneakerama/assets/68908897/f8bed6f0-f842-413a-bb22-6841a3dbef6a)*Figure 13. Order Details page showcasing order summary*
 
+![Screenshot 2023-08-08 at 19 53 18_macbookpro15_front](https://github.com/LadDeep/Sneakerama/assets/68908897/7bdbebdd-4054-46d9-a4b0-c2955f0a8e57)*Figure 14. FAQ page with frequent queries*
 
-![Screenshot 2023-08-08 at 19 54 39_macbookpro15_front](https://github.com/LadDeep/Sneakerama/assets/68908897/24248319-3fa2-471e-a6d1-a4c1beed30a0)*Figure 8. Checkout page gathering shipping address on clicking "Checkout" button in Figure 7*
+![Screenshot 2023-08-08 at 19 53 08_macbookpro15_front](https://github.com/LadDeep/Sneakerama/assets/68908897/e83c8b3b-5221-4092-9a7c-6ab8fdc3d55f)*Figure 15. Contact Page for any queries*
 
+![Screenshot 2023-08-08 at 19 52 57_macbookpro15_front](https://github.com/LadDeep/Sneakerama/assets/68908897/2f0e6ee3-9227-4f8a-bb0a-855621140d0f)*Figure 16. Review Page displaying customer reviews and option to make one*
 
-![Screenshot 2023-08-08 at 19 55 57_macbookpro15_front](https://github.com/LadDeep/Sneakerama/assets/68908897/c8c56e38-f5a2-4213-9429-a292844d6c18)*Figure 9. Checkout page with filled shipping address*
+![Screenshot 2023-08-08 at 19 52 39_macbookpro15_front](https://github.com/LadDeep/Sneakerama/assets/68908897/a7b8a669-0097-47f3-b3fa-18028ca9146f)*Figure 17. Inventory page for seller's displaying image on empty inventory*
 
+![Screenshot 2023-08-08 at 19 52 10_macbookpro15_front](https://github.com/LadDeep/Sneakerama/assets/68908897/8a540bb7-f8dd-408d-848e-379ea0413741)*Figure 18. Inventory page for seller's displaying sneakers and their status in inventory*
 
-![Screenshot 2023-08-08 at 19 56 04_macbookpro15_front](https://github.com/LadDeep/Sneakerama/assets/68908897/f4629d56-ce48-4473-8413-1d6089e62052)*Figure 10. Payment options provided by PayPal integration*
+![Screenshot 2023-08-08 at 19 52 21_macbookpro15_front](https://github.com/LadDeep/Sneakerama/assets/68908897/65cc72ef-a71b-4f82-865c-f4fa3a1e691b)*Figure 19. Form for adding new product to the inventory by clicking on "Add Product" in Figure 18*
 
+![Screenshot 2023-08-08 at 19 52 50_macbookpro15_front](https://github.com/LadDeep/Sneakerama/assets/68908897/42dc8db6-39a8-4a55-836a-5934ccf80b11)*Figure 20. Edit Product page opening up on clicking up Pencil Icon on top-right corner on Sneaker Card in Figure 18*
 
-![Screenshot 2023-08-08 at 19 56 13_macbookpro15_front](https://github.com/LadDeep/Sneakerama/assets/68908897/60bf2af6-d18c-4dc9-b06f-22d666b9d7b5)*Figure 11. Form prompting for card details and shipping address for successfull order placement*
+![Screenshot 2023-08-08 at 19 51 45_macbookpro15_front](https://github.com/LadDeep/Sneakerama/assets/68908897/4889270c-30e6-4760-9dc5-b23b1b9a63aa)*Figure 21. Events page listing upcoming Sneaker events*
 
-
-![Screenshot 2023-08-08 at 19 57 43_macbookpro15_front](https://github.com/LadDeep/Sneakerama/assets/68908897/36f19b0b-0950-48c7-b123-0f109962bb00)*Figure 12. Orders Page listing previous orders*
-
-
-![Screenshot 2023-08-08 at 20 16 12_macbookpro15_front](https://github.com/LadDeep/Sneakerama/assets/68908897/87748d84-9086-4cc1-b549-f63ee01fa6b8)*Figure 13. Order Details page showcasing order summary*
-
-
-![Screenshot 2023-08-08 at 19 53 18_macbookpro15_front](https://github.com/LadDeep/Sneakerama/assets/68908897/49c874e7-dfd6-4f80-8e61-dccb5932e0b4)*Figure 14. FAQ page with frequent queries*
-
-
-![Screenshot 2023-08-08 at 19 53 08_macbookpro15_front](https://github.com/LadDeep/Sneakerama/assets/68908897/07fb224b-73f9-478e-b765-022932e83516)*Figure 15. Contact Page for any queries*
-
-
-![Screenshot 2023-08-08 at 19 52 57_macbookpro15_front](https://github.com/LadDeep/Sneakerama/assets/68908897/83d85901-f6fa-4084-a96b-1207ac793142)*Figure 16. Review Page displaying customer reviews and option to make one*
-
-
-![Screenshot 2023-08-08 at 19 52 39_macbookpro15_front](https://github.com/LadDeep/Sneakerama/assets/68908897/d362ae9f-eee9-48eb-b9b4-dfed174685e9)*Figure 17. Inventory page for seller's displaying image on empty inventory*
-
-
-![Screenshot 2023-08-08 at 19 52 10_macbookpro15_front](https://github.com/LadDeep/Sneakerama/assets/68908897/7fd0c894-47af-4a69-ab5e-7aecf4696d07)*Figure 18. Inventory page for seller's displaying sneakers and their status in inventory*
-
-
-![Screenshot 2023-08-08 at 19 52 21_macbookpro15_front](https://github.com/LadDeep/Sneakerama/assets/68908897/0b3b92f4-ff59-4ac9-9bbe-a54011d8145f)*Figure 19. Form for adding new product to the inventory by clicking on "Add Product" in Figure 18*
-
-
-![Screenshot 2023-08-08 at 19 52 50_macbookpro15_front](https://github.com/LadDeep/Sneakerama/assets/68908897/07cf508d-78eb-47f0-8ba7-f68e724258ae)*Figure 20. Edit Product page opening up on clicking up Pencil Icon on top-right corner on Sneaker Card in Figure 18*
-
-
-![Screenshot 2023-08-08 at 19 51 45_macbookpro15_front](https://github.com/LadDeep/Sneakerama/assets/68908897/b9da9909-96c5-45a0-a912-1077f799a432)*Figure 21. Events page listing upcoming Sneaker events*
-
-
-![Screenshot 2023-08-08 at 19 51 53_macbookpro15_front](https://github.com/LadDeep/Sneakerama/assets/68908897/a1603fd1-21f7-4cf3-bb81-ebc9252fa641)*Figure 22. Clicking on Event in Figure 21 pops-up page to register that specific event*
+![Screenshot 2023-08-08 at 19 51 53_macbookpro15_front](https://github.com/LadDeep/Sneakerama/assets/68908897/d31d8113-fe01-4f3f-a739-c322af749085)*Figure 22. Clicking on Event in Figure 21 pops-up page to register that specific event*
 
 
 ## Sources Used
